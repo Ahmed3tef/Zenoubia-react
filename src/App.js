@@ -1,6 +1,12 @@
 import React, { Fragment } from 'react';
 // import { Container } from 'react-bootstrap';
-import { Banner, CatSection, Footer, Navbar } from './components';
+import {
+  Banner,
+  CatSection,
+  Footer,
+  Navbar,
+  ProductCardSm,
+} from './components';
 
 const App = () => (
   <>
@@ -8,8 +14,8 @@ const App = () => (
     <main>
       <Banner />
       <CatSection />
-      <div className='section'>some text</div>
     </main>
+    <ProductCardSm />
     <Footer />
   </>
 );

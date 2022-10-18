@@ -1,11 +1,10 @@
-import { ImFacebook2 } from 'react-icons/im';
+import { IoLogoFacebook, IoLogoWhatsapp } from 'react-icons/io';
 import { TiSocialInstagram } from 'react-icons/ti';
-import { FaTwitterSquare } from 'react-icons/fa';
-import { ImFacebook2 } from 'react-icons/im';
 
-// export const social = [
-//   {icon:, link:},
-//   {icon:, link:},
-//   {icon:, link:},
-//   {icon:, link:},
-// ]
+import { FaWhatsapp } from 'react-icons/fa';
+
+export const social = [
+  { icon: <IoLogoFacebook />, link: 'https://www.facebook.com/Zenoubia.Alger' },
+  { icon: <TiSocialInstagram />, link: '/' },
+  { icon: <FaWhatsapp />, link: 'http://wa.me/+213560933380' },
+];

@@ -8,15 +8,15 @@ import arrowDown from '../../assets/arrow-down.svg';
 import './_navbar.scss';
 const Navbar = () => {
   return (
-    <div className='nav'>
+    <div className='nav sticky-top'>
       <Container>
         <div className='nav__main'>
           <div className='search'>
             <img src={searchIcon} alt='search icon' className='nav__icon' />
           </div>
-          <div className='logo'>
+          <a className='logo' href='/'>
             <img src={mainLogo} alt='logo' className='img-fluid' />
-          </div>
+          </a>
           <div className='nav__icons'>
             <img src={profile} alt='logo' className='nav__icon ' />
             <img src={cart} alt='logo' className='nav__icon' />

@@ -1,6 +1,8 @@
 import React from 'react';
 import logoImg from '../../assets/zenoubia logo.png';
+import { social } from './contact';
 import './_footer.scss';
+
 const Footer = props => {
   return (
     <div className='footer'>
@@ -14,13 +16,34 @@ const Footer = props => {
               <li className='footer__link'>Nos buts</li>
             </ul>
           </div>
-          <div className='footer__links'>
-            <div className='footer__logo'>
+          <div className='footer__contact'>
+            <div className='footer__logo mb-5'>
               <img src={logoImg} alt='' />
             </div>
-            <div className='footer__social'>
-              <div className='footer__social-link'></div>
+            <div className='footer__social mb-5'>
+              {social.map(({ icon, link }) => {
+                return (
+                  <a
+                    href={link}
+                    target='_blank'
+                    rel='noreferrer'
+                    className='footer__social-link'>
+                    {icon}
+                  </a>
+                );
+              })}
             </div>
+            <a
+              href='mailto:zenoubia.combany@gmail.com'
+              target='_blank'
+              rel='noreferrer'
+              className='mb-5'>
+              zenoubia.combany@gmail.com
+            </a>
+
+            <a href='tel:+213560933380' target='_blank' rel='noreferrer'>
+              +213 560 93 33 80
+            </a>
           </div>
           <div className='footer__links'>
             <div className='footer__links-title'>Aider</div>

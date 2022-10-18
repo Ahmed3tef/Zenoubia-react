@@ -35,4 +35,22 @@
     background-color: var(--color-main-darker);
     @extend %JC;
   }
+  &__social {
+    @extend %JSB;
+
+    &-link {
+      svg {
+        width: 6rem;
+        height: 6rem;
+        padding: 0;
+      }
+      &:not(:last-child) {
+        margin-right: 6rem;
+      }
+    }
+  }
+  &__contact {
+    @extend %FLEX-COL-ALIGN-C;
+    color: var(--color-main-lightest);
+  }
 }

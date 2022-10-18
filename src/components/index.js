@@ -3,4 +3,7 @@ export { default as Banner } from './Banner/Banner';
 export { default as ProductImg } from './ProductImg/ProductImg';
 export { default as ProductImgWithTitle } from './ProductImg/ProductImgWithTitle';
 export { default as CatSection } from './sections/CatSection';
+export { default as ProductCardSm } from './Cards/ProductCardSm';
+export { default as ProductCardLg } from './Cards/ProductCardLg';
+export { default as Ratings } from './Ratings/Ratings';
 export { default as Footer } from './Footer/Footer';
