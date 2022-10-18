@@ -1,0 +1,34 @@
+@use '../../index';
+.section__category {
+  font-family: var(--font-family-secondary);
+  &-head {
+    @extend %JSB;
+    margin-bottom: 3rem;
+    &--btn {
+      @extend %JC;
+      background-color: var(--color-main-darker);
+      color: var(--color-white);
+      width: 10rem;
+      height: 4.4rem;
+      box-shadow: var(--product-img-shadow);
+      border-radius: 1.5rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      &:hover {
+        transform: scale(1.07);
+        box-shadow: var(--btn-shadow-hover);
+      }
+      &:active {
+        transform: scale(0.97);
+        box-shadow: var(--btn-shadow-active);
+      }
+    }
+    &--title {
+      color: var(--color-main-darker);
+      font-size: 2.4rem;
+    }
+  }
+}
+.products-wrapper {
+  margin-right: 3rem;
+}

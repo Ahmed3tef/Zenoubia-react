@@ -1,0 +1,41 @@
+@use '../../index';
+
+.nav {
+  background-color: var(--color-main);
+  height: 17rem;
+  position: -webkit-sticky;
+  position: sticky;
+  &__main {
+    @extend %JSB;
+    height: 11rem;
+    width: 100%;
+    .logo {
+      width: 40rem;
+    }
+  }
+  &__secondary {
+    @extend %JC;
+    height: 6rem;
+    width: 100%;
+    background-color: var(--color-main-darker);
+  }
+  &__icons > img:first-child {
+    margin-right: 6rem;
+  }
+  &__icon {
+    width: 5rem;
+    height: 5.5rem;
+    cursor: pointer;
+  }
+  &__links {
+    @extend %JC;
+  }
+  &__link {
+    margin-right: 6rem;
+    font-family: var(--font-family-primary);
+    font-weight: 400;
+    font-size: 2rem;
+    line-height: 2.5rem;
+    cursor: pointer;
+  }
+}

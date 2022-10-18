@@ -1,0 +1,38 @@
+@use '../../index';
+.footer {
+  font-family: var(--font-family-primary);
+  background-color: var(--color-main);
+  &__main {
+    &-wrapper {
+      @extend %JSB;
+    }
+  }
+  &__links {
+    &-title {
+      color: var(--color-main-lightest);
+      margin-bottom: 2rem;
+      font-size: 2.4rem;
+    }
+    &-wrapper {
+      margin-left: 2rem;
+    }
+  }
+  &__link {
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+  }
+  &__logo {
+    // width: 74rem;
+    height: 13rem;
+    img {
+      @extend %img-fill;
+    }
+  }
+  &__copyright {
+    height: 9rem;
+    font-size: 2.2rem;
+    background-color: var(--color-main-darker);
+    @extend %JC;
+  }
+}
