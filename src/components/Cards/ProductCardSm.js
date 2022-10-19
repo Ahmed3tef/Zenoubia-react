@@ -6,43 +6,45 @@ import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
 const ProductCardSm = props => {
   const sizes = ['M', 'L', 'XL'];
   const [isLiked, setIsLiked] = useState(false);
-  const [largeCards, setLargeCards] = useState(false);
 
   return (
-    <>
-      <div className='toggle-card' onClick={() => setLargeCards(!largeCards)}>
-        t
+    <div className='card-sm'>
+      <div className='card__img'>
+        <div className='card__badge'>-44%</div>
+        <img src={productImg} alt='product' />
       </div>
-      <div className={largeCards ? 'card-lg' : 'card-sm'}>
-        <div className='card-sm__img'>
-          <div className='card-sm__badge'>-44%</div>
-          <img src={productImg} alt='product' />
-        </div>
-        <div className='card-sm__title'>Abaya d'été en satin crêpe brodé</div>
-        <div className='card-sm__prices'>
-          <span className='card-sm__price'>DA 3400</span>
-          <Ratings />
-        </div>
-        <div className='card-sm__sizes'>
+      <div className='card__title'>Abaya d'été en satin crêpe brodé</div>
+      <div className='card__prices'>
+        <span className='card__price'>DA 3400</span>
+        <Ratings />
+      </div>
+      <div className='card__info'>
+        <div className='card__sizes'>
           {sizes.map((size, i) => (
-            <span className='card-sm__size ' key={i}>
+            <span className='card__size ' key={i}>
               {size}
             </span>
           ))}
         </div>
-        <div className='card-sm__actions'>
-          <div
-            className='card-sm__actions-like'
-            onClick={() => setIsLiked(!isLiked)}>
-            {isLiked ? <BsHeartFill /> : <BsHeart />}
-          </div>
-          <div className='card-sm__actions-add'>
-            <BsCartPlusFill />
-            Ajouter au panier
-          </div>
+        <div className='card__color'>
+          Couleur:
+          <span
+            className='card__color-wrapper'
+            style={{ backgroundColor: 'red' }}></span>
         </div>
       </div>
-    </>
+      <div className='card__actions'>
+        <div
+          className='card__actions-like'
+          onClick={() => setIsLiked(!isLiked)}>
+          {isLiked ? <BsHeartFill /> : <BsHeart />}
+        </div>
+        <div className='card__actions-add'>
+          <BsCartPlusFill />
+          Ajouter au panier
+        </div>
+      </div>
+    </div>
   );
 };
 

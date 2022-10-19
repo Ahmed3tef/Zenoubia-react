@@ -2,20 +2,25 @@
 
 .nav {
   background-color: var(--color-main);
-  height: 17rem;
+  height: 9rem;
   position: -webkit-sticky;
   position: sticky;
+  box-shadow: var(--product-img-shadow);
   &__main {
     @extend %JSB;
-    height: 11rem;
+    height: 6rem;
     width: 100%;
     .logo {
-      width: 40rem;
+      // width: 28rem;
+      height: 5rem;
+      img {
+        @extend %img-fill;
+      }
     }
   }
   &__secondary {
     @extend %JC;
-    height: 6rem;
+    height: 3rem;
     width: 100%;
     background-color: var(--color-main-darker);
   }
@@ -23,8 +28,8 @@
     margin-right: 6rem;
   }
   &__icon {
-    width: 5rem;
-    height: 5.5rem;
+    width: 3rem;
+    height: 3.3rem;
     cursor: pointer;
   }
   &__links {
@@ -34,8 +39,43 @@
     margin-right: 6rem;
     font-family: var(--font-family-primary);
     font-weight: 400;
-    font-size: 2rem;
+    font-size: 1.4rem;
     line-height: 2.5rem;
     cursor: pointer;
+    img {
+      width: 1rem;
+    }
+  }
+  &__search {
+    @extend %JSB;
+    width: 50rem;
+    height: 5rem;
+    border-radius: 2rem;
+    border: var(--border-card-lg-img);
+    background-color: var(--color-white);
+    padding: 1rem 2rem;
+    color: var(--color-main-darker);
+    margin: auto;
+    margin-top: 2rem;
+    box-shadow: var(--searchBar-shadow);
+    &-input {
+      width: 90%;
+      outline: none;
+      border: none;
+      font-size: 1.4rem;
+      font-family: var(--font-family-secondary);
+      letter-spacing: 0.6px;
+      &::placeholder {
+        color: var(--color-main-darker);
+      }
+    }
+    &-icon {
+      @extend %JC;
+      width: 10%;
+      svg {
+        font-size: 2.5rem;
+        cursor: pointer;
+      }
+    }
   }
 }

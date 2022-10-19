@@ -6,7 +6,7 @@ import './_footer.scss';
 const Footer = props => {
   return (
     <div className='footer'>
-      <div className='footer__main py-3 py-md-5 mb-2 mb-md-5'>
+      <div className='footer__main py-3 py-md-5 '>
         <div className='container footer__main-wrapper'>
           <div className='footer__links'>
             <div className='footer__links-title'>À propos de nous</div>
@@ -17,10 +17,10 @@ const Footer = props => {
             </ul>
           </div>
           <div className='footer__contact'>
-            <div className='footer__logo mb-5'>
+            <div className='footer__logo mb-4'>
               <img src={logoImg} alt='' />
             </div>
-            <div className='footer__social mb-5'>
+            <div className='footer__social mb-4'>
               {social.map(({ icon, link }) => {
                 return (
                   <a
@@ -37,7 +37,7 @@ const Footer = props => {
               href='mailto:zenoubia.combany@gmail.com'
               target='_blank'
               rel='noreferrer'
-              className='mb-5'>
+              className='mb-4'>
               zenoubia.combany@gmail.com
             </a>
 
@@ -56,7 +56,7 @@ const Footer = props => {
         </div>
       </div>
       <div className='footer__copyright'>
-        <p>All Rights Reserved - Icon © 2022</p>
+        <span>All Rights Reserved - Icon © 2022</span>
       </div>
     </div>
   );
