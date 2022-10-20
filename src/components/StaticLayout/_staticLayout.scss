@@ -1,0 +1,47 @@
+@use '../../index';
+
+.static {
+  font-family: var(--font-family-primary);
+  font-size: 3.2rem;
+  color: var(--color-black);
+  text-align: center;
+
+  &__header {
+    color: var(--color-main-darker);
+    font-size: 3rem;
+    margin: 3rem;
+  }
+  &__img {
+    width: 100%;
+
+    max-width: 100%;
+    margin-bottom: 3rem;
+
+    img {
+      @extend %img-fill;
+    }
+  }
+  &__text {
+    text-align: start;
+    font-size: 2.3rem;
+    margin-bottom: 3rem;
+
+    &-trademark {
+      font-size: 2.5rem;
+      color: var(--color-main-lighter);
+    }
+    &-list {
+      list-style: disc;
+      // margin-left: 2.5rem;
+      padding: 0.75rem 2.5rem;
+      li {
+        margin-bottom: 1.2rem;
+      }
+    }
+    &-header {
+      font-size: 2.7rem;
+      color: var(--color-main-lighter);
+      margin-bottom: 1rem;
+    }
+  }
+}

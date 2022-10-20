@@ -6,4 +6,5 @@ export { default as CatSection } from './sections/CatSection';
 export { default as ProductCardSm } from './Cards/ProductCardSm';
 export { default as ProductCardLg } from './Cards/ProductCardLg';
 export { default as Ratings } from './Ratings/Ratings';
+export { default as StaticLayout } from './StaticLayout/StaticLayout';
 export { default as Footer } from './Footer/Footer';
