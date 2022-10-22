@@ -1,5 +1,5 @@
 import React from 'react';
-
+import './_UploadForm.scss';
 const LargeText = props => {
   return (
     <div className={`input-container input-text-large ${props.classes}`}>

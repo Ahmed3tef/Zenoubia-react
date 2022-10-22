@@ -21,9 +21,10 @@ const Footer = props => {
               <img src={logoImg} alt='' />
             </div>
             <div className='footer__social mb-4'>
-              {social.map(({ icon, link }) => {
+              {social.map(({ icon, link }, i) => {
                 return (
                   <a
+                    key={i}
                     href={link}
                     target='_blank'
                     rel='noreferrer'

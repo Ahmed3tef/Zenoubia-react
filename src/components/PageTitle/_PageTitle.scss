@@ -1,0 +1,17 @@
+@use '../../index';
+.page-title {
+  display: flex;
+  align-items: center;
+  padding-inline-start: 6rem;
+
+  &__text {
+    font-size: 2rem;
+  }
+  &__icon {
+    @extend %JC;
+    margin: 0 3rem;
+    svg {
+      font-size: 2.5rem;
+    }
+  }
+}

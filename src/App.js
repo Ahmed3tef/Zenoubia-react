@@ -9,7 +9,7 @@ import {
   ProductCardLg,
   ProductCardSm,
 } from './components';
-import { Terms, AboutUs, Billing, Policy } from './pages';
+import { Terms, AboutUs, Billing, Policy, ContactUs } from './pages';
 
 const App = () => {
   const [largeCards, setLargeCards] = useState(false);
@@ -22,14 +22,15 @@ const App = () => {
         {/* <AboutUs /> */}
         {/* <Terms /> */}
         {/* <Billing /> */}
-        <Policy />
+        {/* <Policy /> */}
+        {/* <ContactUs /> */}
       </main>
-      {/* <Container>
+      <Container>
         <div className='toggle-card' onClick={() => setLargeCards(!largeCards)}>
           t
         </div>
         {largeCards ? <ProductCardLg /> : <ProductCardSm />}
-      </Container> */}
+      </Container>
       <Footer />
     </>
   );

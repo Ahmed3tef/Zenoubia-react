@@ -1,0 +1,80 @@
+@use '../../index';
+
+.input-label p {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--color-main);
+}
+
+.input {
+  &-container {
+    width: 100%;
+    @extend %JSB;
+
+    input {
+      width: 80%;
+      height: 4rem;
+      border: var(--border-text-container);
+
+      border-radius: 1rem;
+      padding: 1rem 2rem;
+      outline: none;
+      font-family: inherit;
+      font-weight: 800;
+      font-size: 1.6rem;
+      margin-bottom: 2rem;
+      // &::placeholder {
+      //   color: var(--color-input-placeholder);
+      // }
+    }
+
+    // textarea::placeholder {
+    //   color: var(--color-input-placeholder);
+    // }
+  }
+}
+
+.input-text-large textarea {
+  height: 15rem;
+  width: 80%;
+  border: var(--border-text-container);
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  outline: none;
+  font-family: inherit;
+  font-weight: 800;
+  font-size: 1.6rem;
+  resize: none;
+}
+
+.text-container {
+  margin-bottom: 2rem;
+  width: 100%;
+}
+.form-btns {
+  display: flex;
+  width: 40rem;
+
+  margin: auto;
+}
+
+.form-btn {
+  @extend %JC;
+  background-color: var(--color-main);
+  border-radius: 5rem;
+  color: var(--color-btn-form-text);
+  cursor: pointer;
+  padding: 1rem 3rem;
+  margin: auto;
+  font-size: 2rem;
+
+  box-shadow: var(--shadow-btn-form);
+  transition: all 0.2s;
+}
+
+.form-btn:hover {
+  transform: scale(1.05);
+}
+.form-btn:active {
+  transform: scale(0.99);
+}
