@@ -4,4 +4,5 @@ export { default as Terms } from './Terms';
 export { default as ContactUs } from './ContactUs';
 export { default as Billing } from './Billing';
 export { default as AboutUs } from './AboutUs';
+export { default as Product } from './Product';
 export { default as Policy } from './Policy';

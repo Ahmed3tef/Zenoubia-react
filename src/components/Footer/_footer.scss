@@ -21,6 +21,7 @@
     margin-bottom: 1rem;
     font-size: 1.6rem;
     cursor: pointer;
+    color: var(--color-white);
   }
   &__logo {
     // width: 74rem;
@@ -53,6 +54,7 @@
     height: 4rem;
     font-size: 1.6rem;
     background-color: var(--color-main-darker);
+    color: var(--color-white);
     @extend %JC;
 
     span {

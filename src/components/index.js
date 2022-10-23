@@ -5,9 +5,11 @@ export { default as ProductImgWithTitle } from './ProductImg/ProductImgWithTitle
 export { default as CatSection } from './sections/CatSection';
 export { default as ProductCardSm } from './Cards/ProductCardSm';
 export { default as ProductCardLg } from './Cards/ProductCardLg';
+export { default as ProductRelated } from './Cards/ProductRelated';
 export { default as Ratings } from './Ratings/Ratings';
 export { default as PageTitle } from './PageTitle/PageTitle';
 export { default as StaticLayout } from './StaticLayout/StaticLayout';
 export { default as LargeText } from './Inputs/LargeText';
 export { default as MiniText } from './Inputs/MiniText';
+export { default as Reviews } from './Reviews/Reviews';
 export { default as Footer } from './Footer/Footer';

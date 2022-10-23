@@ -23,6 +23,7 @@
     height: 3rem;
     width: 100%;
     background-color: var(--color-main-darker);
+    color: var(--color-white);
   }
   &__icons > img:first-child {
     margin-right: 6rem;
@@ -34,6 +35,7 @@
   }
   &__links {
     @extend %JC;
+    margin-bottom: 0;
   }
   &__link {
     margin-right: 6rem;

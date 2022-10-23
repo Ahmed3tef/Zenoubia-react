@@ -8,8 +8,9 @@ import {
   Navbar,
   ProductCardLg,
   ProductCardSm,
+  Reviews,
 } from './components';
-import { Terms, AboutUs, Billing, Policy, ContactUs } from './pages';
+import { Terms, AboutUs, Billing, Policy, ContactUs, Product } from './pages';
 
 const App = () => {
   const [largeCards, setLargeCards] = useState(false);
@@ -24,13 +25,15 @@ const App = () => {
         {/* <Billing /> */}
         {/* <Policy /> */}
         {/* <ContactUs /> */}
+        <Product />
       </main>
-      <Container>
+
+      {/* <Container>
         <div className='toggle-card' onClick={() => setLargeCards(!largeCards)}>
           t
         </div>
         {largeCards ? <ProductCardLg /> : <ProductCardSm />}
-      </Container>
+      </Container> */}
       <Footer />
     </>
   );
