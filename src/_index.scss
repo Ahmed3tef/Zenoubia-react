@@ -27,12 +27,17 @@
     inset 0px 2px 2px rgba(253, 215, 243, 0.47);
   --shadow-btn-form: 0px 2px 2px rgba(0, 0, 0, 0.25),
     inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+  --shadow-badge-related: inset var(--product-img-shadow);
+  --shadow-card-related: 0 1px 1px var(--color-shadow-main);
+
   --font-family-primary: 'Courgette', sans-serif;
   --font-family-secondary: 'Berkshire Swash', sans-serif;
 
   --border-card-sm: 1px solid rgba(0, 0, 0, 0.37);
   --border-card-sm-img: 1px solid var(--color-main-darker);
   --border-card-lg-img: 2px solid var(--color-main-darker);
+  --border-card-related: 1px solid rgba(0, 0, 0, 0.12);
+  --border-text-container: 3px solid var(--color-main);
   --border-text-container: 3px solid var(--color-main);
 }
 
@@ -142,7 +147,12 @@ a:visited {
   align-items: flex-end;
   justify-content: space-between;
 }
-
+%FLEX-COL-C {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 %prod-img-container {
   border: 3px solid var(--color-main-darker);
   box-shadow: var(--product-img-shadow);

@@ -283,6 +283,53 @@
       }
     }
   }
+  &-related {
+    margin: auto;
+    font-family: var(--font-family-secondary);
+    @extend %FLEX-COL-SB;
+    height: 34rem;
+    width: 21rem;
+    border: var(--border-card-related);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: var(--shadow-card-related);
+
+    & > * {
+      width: 100%;
+      text-align: center;
+    }
+    .card {
+      &__badge {
+        @extend %JC;
+        position: absolute;
+        top: -1px;
+        right: -1px;
+        width: 3.5rem;
+        height: 3.2rem;
+        background-color: rgba(35, 31, 32, 0.5);
+        border-radius: 0 0 0 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.7);
+        box-shadow: var(--shadow-badge-related);
+        z-index: 99;
+      }
+      &__img {
+        height: 25rem;
+        border-bottom: var(--border-card-related);
+
+        position: relative;
+        img {
+          @extend %img-fill;
+        }
+      }
+      &__title {
+        font-size: 1.6rem;
+      }
+      &__price {
+        font-size: 2rem;
+        margin-bottom: 1rem;
+      }
+    }
+  }
 }
 
 .toggle-card {

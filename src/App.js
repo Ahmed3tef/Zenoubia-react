@@ -8,6 +8,7 @@ import {
   Navbar,
   ProductCardLg,
   ProductCardSm,
+  ProductRelated,
   Reviews,
 } from './components';
 import { Terms, AboutUs, Billing, Policy, ContactUs, Product } from './pages';
@@ -25,7 +26,8 @@ const App = () => {
         {/* <Billing /> */}
         {/* <Policy /> */}
         {/* <ContactUs /> */}
-        <Product />
+        {/* <Product /> */}
+        {/* <ProductRelated /> */}
       </main>
 
       {/* <Container>

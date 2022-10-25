@@ -46,8 +46,16 @@
     }
   }
   &__contact {
+    font-size: 1.6rem;
     @extend %FLEX-COL-ALIGN-C;
     color: var(--color-main-lightest);
+    a {
+      transition: transform 0.2s;
+    }
+    a:hover {
+      color: var(--color-main-lightest);
+      transform: translateY(-3px);
+    }
   }
 
   &__copyright {
