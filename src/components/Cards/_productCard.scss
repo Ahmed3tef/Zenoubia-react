@@ -283,6 +283,7 @@
       }
     }
   }
+  // PRODUCT RELATED CARD
   &-related {
     margin: auto;
     font-family: var(--font-family-secondary);
@@ -327,6 +328,95 @@
       &__price {
         font-size: 2rem;
         margin-bottom: 1rem;
+      }
+    }
+  }
+  &-wishlist {
+    @extend %JSB;
+    padding: 2rem;
+    background-color: var(--color-main-lighter);
+    margin-top: 2rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+    font-family: var(--font-family-primary);
+    box-shadow: var(--shadow-wishlist-card);
+    .card {
+      &__details {
+        @extend %AC;
+        width: 85%;
+        height: 20rem;
+      }
+      &__title {
+        color: var(--color-btn-form-text);
+        font-size: 2.2rem;
+      }
+      &__info {
+        @extend %FLEX-COL-SB;
+        height: 100%;
+        &-main {
+          margin-inline-start: 2.5rem;
+          & > div:not(:last-child) {
+            margin-bottom: 0.7rem;
+          }
+        }
+      }
+      &__name {
+        color: var(--color-white);
+      }
+      &__price {
+        font-size: 2.2rem;
+        color: var(--color-white);
+      }
+      &__size,
+      &__color {
+        color: var(--color-btn-form-text);
+        & > span {
+          color: var(--color-white);
+          margin-inline-start: 2rem;
+        }
+      }
+      &__img {
+        height: 100%;
+        width: 17rem;
+        border-radius: 1rem;
+        overflow: hidden;
+        box-shadow: var(--searchBar-shadow);
+        margin-inline-end: 2rem;
+        img {
+          @extend %img-fill;
+        }
+      }
+      &__actions {
+        @extend %FLEX-COL-ALIGN-SB;
+        height: 20rem;
+        justify-content: space-around;
+
+        & > div {
+          @extend %JC;
+          width: 6rem;
+          height: 6rem;
+          background-color: var(--color-btn-form-text);
+          cursor: pointer;
+          box-shadow: var(--product-img-shadow);
+          transition: all 0.2s;
+          border-radius: 5px;
+
+          &:active {
+            box-shadow: var(--shadow-btn-actions);
+            transform: translateY(3px);
+          }
+
+          svg {
+            font-size: 3.5rem;
+            color: var(--color-main);
+          }
+        }
+
+        &-remove {
+          img {
+            width: 3.5rem;
+          }
+        }
       }
     }
   }

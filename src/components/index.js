@@ -6,6 +6,7 @@ export { default as CatSection } from './sections/CatSection';
 export { default as ProductCardSm } from './Cards/ProductCardSm';
 export { default as ProductCardLg } from './Cards/ProductCardLg';
 export { default as ProductRelated } from './Cards/ProductRelated';
+export { default as ProductWishlist } from './Cards/ProductWishlist';
 export { default as Ratings } from './Ratings/Ratings';
 export { default as PageTitle } from './PageTitle/PageTitle';
 export { default as StaticLayout } from './StaticLayout/StaticLayout';

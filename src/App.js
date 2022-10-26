@@ -11,7 +11,15 @@ import {
   ProductRelated,
   Reviews,
 } from './components';
-import { Terms, AboutUs, Billing, Policy, ContactUs, Product } from './pages';
+import {
+  Terms,
+  AboutUs,
+  Billing,
+  Policy,
+  ContactUs,
+  Product,
+  Wishlist,
+} from './pages';
 
 const App = () => {
   const [largeCards, setLargeCards] = useState(false);
@@ -28,6 +36,7 @@ const App = () => {
         {/* <ContactUs /> */}
         {/* <Product /> */}
         {/* <ProductRelated /> */}
+        <Wishlist />
       </main>
 
       {/* <Container>

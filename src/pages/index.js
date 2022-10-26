@@ -6,3 +6,4 @@ export { default as Billing } from './Billing';
 export { default as AboutUs } from './AboutUs';
 export { default as Product } from './Product';
 export { default as Policy } from './Policy';
+export { default as Wishlist } from './Wishlist';
