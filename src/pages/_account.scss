@@ -1,0 +1,39 @@
+@use '../index';
+
+.account {
+  // padding: 5rem 0;
+  font-family: var(--font-family-secondary);
+
+  .container:last-child {
+    padding: 2rem;
+    margin-block: 2rem;
+    border-radius: 1rem;
+    border: var(--border-text-container);
+    font-family: var(--font-family-secondary);
+
+    z-index: 1;
+  }
+  &__forms {
+    margin-inline: 4rem;
+  }
+  &__title {
+    margin-bottom: 2rem;
+    color: var(--color-main);
+  }
+  &__btns {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &.container {
+      padding-inline: 3rem;
+      margin-top: 2rem;
+    }
+    img {
+      &:first-child {
+        margin-inline-end: 3.5rem;
+      }
+      width: 4rem;
+      cursor: pointer;
+    }
+  }
+}

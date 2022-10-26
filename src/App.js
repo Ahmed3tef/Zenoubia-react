@@ -20,6 +20,7 @@ import {
   ContactUs,
   Product,
   Wishlist,
+  Account,
 } from './pages';
 
 const App = () => {
@@ -37,11 +38,10 @@ const App = () => {
         {/* <ContactUs /> */}
         {/* <Product /> */}
         {/* <ProductRelated /> */}
-<<<<<<< Updated upstream
-        <Wishlist />
-=======
-        <LoginForm />
->>>>>>> Stashed changes
+
+        {/* <Wishlist /> */}
+        <Account />
+        {/* <LoginForm /> */}
       </main>
 
       {/* <Container>

@@ -7,3 +7,4 @@ export { default as AboutUs } from './AboutUs';
 export { default as Product } from './Product';
 export { default as Policy } from './Policy';
 export { default as Wishlist } from './Wishlist';
+export { default as Account } from './Account';

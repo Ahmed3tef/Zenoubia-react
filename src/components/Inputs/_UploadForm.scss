@@ -4,12 +4,14 @@
   font-size: 1.6rem;
   font-weight: 800;
   color: var(--color-main);
+  margin: 0;
 }
 
 .input {
   &-container {
     width: 100%;
     @extend %JSB;
+    margin-bottom: 2rem;
 
     input {
       width: 80%;
@@ -22,7 +24,6 @@
       font-family: inherit;
       font-weight: 800;
       font-size: 1.6rem;
-      margin-bottom: 2rem;
       // &::placeholder {
       //   color: var(--color-input-placeholder);
       // }
@@ -31,6 +32,12 @@
     // textarea::placeholder {
     //   color: var(--color-input-placeholder);
     // }
+  }
+  &-hint {
+    margin-inline-start: 25%;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+    color: var(--color-black);
   }
 }
 
