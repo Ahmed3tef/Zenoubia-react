@@ -9,7 +9,7 @@ const Account = () => {
   const [lastName, setLastName] = useState('');
   const [displayName, setDisplayName] = useState('');
   const [email, setEmail] = useState('');
-
+  const [phone, setPhone] = useState('');
   const [address1, setAddress1] = useState('');
   const [address2, setAddress2] = useState('');
   const [currentPassword, setCurrentPassword] = useState('');
@@ -59,6 +59,7 @@ const Account = () => {
               setName={setDisplayName}
             />
             <MiniText label={'E-mail'} name={email} setName={setEmail} />
+            <MiniText label={'Phone'} name={phone} setName={setPhone} />
           </ProfileForm>
           <ProfileForm title={'Adresses'}>
             <MiniText
