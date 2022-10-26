@@ -60,11 +60,11 @@
 
 .form-btn {
   @extend %JC;
-  background-color: var(--color-main);
+  background-color: var(--color-main-lighter);
   border-radius: 5rem;
   color: var(--color-btn-form-text);
   cursor: pointer;
-  padding: 1rem 3rem;
+  padding: 0.6rem 2.5rem;
   margin: auto;
   font-size: 2rem;
 

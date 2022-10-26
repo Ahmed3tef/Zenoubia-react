@@ -5,6 +5,7 @@ import {
   Banner,
   CatSection,
   Footer,
+  LoginForm,
   Navbar,
   ProductCardLg,
   ProductCardSm,
@@ -36,7 +37,11 @@ const App = () => {
         {/* <ContactUs /> */}
         {/* <Product /> */}
         {/* <ProductRelated /> */}
+<<<<<<< Updated upstream
         <Wishlist />
+=======
+        <LoginForm />
+>>>>>>> Stashed changes
       </main>
 
       {/* <Container>

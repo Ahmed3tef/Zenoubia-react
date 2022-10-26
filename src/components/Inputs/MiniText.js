@@ -18,7 +18,10 @@ const MiniText = props => {
       )}
       {props.btn && <div className='form-btn'>{props.btn}</div>}
       <input
-        style={{ direction: props.direction ? props.direction : 'ltr' }}
+        style={{
+          direction: props.direction ? props.direction : 'ltr',
+          width: !props.label ? '100%' : '80%',
+        }}
         type={props.type || 'text'}
         placeholder={props.placeholder}
         value={props.name}
