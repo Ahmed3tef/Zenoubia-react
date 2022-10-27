@@ -8,6 +8,9 @@ export default function Ratings({ value }) {
     '& .MuiRating-iconFilled': {
       color: '#3a204d',
     },
+    '& .MuiRating-iconEmpty': {
+      color: '#3a204d',
+    },
     // '& .MuiRating-iconHover': {
     //   color: '#ff3d47',
     // },

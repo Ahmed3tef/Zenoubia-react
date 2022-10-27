@@ -36,11 +36,11 @@ const App = () => {
         {/* <Billing /> */}
         {/* <Policy /> */}
         {/* <ContactUs /> */}
-        {/* <Product /> */}
+        <Product />
         {/* <ProductRelated /> */}
 
         {/* <Wishlist /> */}
-        <Account />
+        {/* <Account /> */}
         {/* <LoginForm /> */}
       </main>
 

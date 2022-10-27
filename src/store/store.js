@@ -8,6 +8,7 @@ import {
   // productsSlice,
   // reportsSlice,
   reviewsSlice,
+  productSlice,
   // subCategoriesSlice,
 } from './reducers';
 
@@ -22,5 +23,6 @@ export const store = configureStore({
     // orders: ordersSlice,
     // reports: reportsSlice,
     reviews: reviewsSlice,
+    product: productSlice,
   },
 });

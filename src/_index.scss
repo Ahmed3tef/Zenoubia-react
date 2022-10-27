@@ -10,6 +10,7 @@
   --color-shadow-main: rgba(0, 0, 0, 0.25);
   --color-like: #a70d15;
   --color-btn-form-text: #fdd7f3;
+  --color-size-bg: #fcf8ff;
 
   --color-row-even: var(--color-main-lighter);
   --color-row-odd: var(--color-main);
@@ -36,6 +37,8 @@
   --shadow-wishlist-card: 0px 2px 2px rgba(0, 0, 0, 0.25),
     inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 
+  --shadow-product-detail-img: 0px 4px 4px rgba(0, 0, 0, 0.25),
+    inset 0px 4px 4px rgba(0, 0, 0, 0.25);
   --font-family-primary: 'Courgette', sans-serif;
   --font-family-secondary: 'Berkshire Swash', sans-serif;
 
@@ -45,6 +48,7 @@
   --border-card-related: 1px solid rgba(0, 0, 0, 0.12);
   --border-text-container: 3px solid var(--color-main);
   --border-text-container: 3px solid var(--color-main);
+  --border-btn-product: 2px solid var(--color-main);
 }
 
 *,
@@ -110,7 +114,9 @@ h1,
 h2,
 h3,
 h4,
-ul {
+ul,
+ol,
+li {
   margin: 0;
   padding: 0;
 }
