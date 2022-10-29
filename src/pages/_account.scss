@@ -5,14 +5,7 @@
   font-family: var(--font-family-secondary);
 
   .container:last-child {
-    padding: 2rem;
-    margin-block: 2rem;
-    border-radius: 1rem;
-    margin-bottom: 5rem;
-    border: var(--border-text-container);
-    font-family: var(--font-family-secondary);
-
-    z-index: 1;
+    @extend %form-container;
   }
   &__forms {
     margin-inline: 4rem;

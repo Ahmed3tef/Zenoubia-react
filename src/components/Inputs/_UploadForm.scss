@@ -1,5 +1,15 @@
 @use '../../index';
 
+%form-input {
+  width: 80%;
+  height: 4rem;
+  border: var(--border-text-container);
+  border-radius: 1rem;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.6rem;
+}
+
 .input-label p {
   font-size: 1.6rem;
   font-weight: 800;
@@ -14,19 +24,15 @@
     margin-bottom: 2rem;
 
     input {
-      width: 80%;
-      height: 4rem;
-      border: var(--border-text-container);
-
-      border-radius: 1rem;
+      @extend %form-input;
       padding: 1rem 2rem;
-      outline: none;
-      font-family: inherit;
-      font-weight: 800;
-      font-size: 1.6rem;
-      // &::placeholder {
-      //   color: var(--color-input-placeholder);
-      // }
+      &::placeholder {
+        color: var(--color-input-placeholder);
+      }
+    }
+    select {
+      @extend %form-input;
+      padding-inline: 2rem;
     }
 
     // textarea::placeholder {

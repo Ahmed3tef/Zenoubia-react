@@ -21,6 +21,7 @@ import {
   Product,
   Wishlist,
   Account,
+  Verification,
 } from './pages';
 
 const App = () => {
@@ -36,9 +37,9 @@ const App = () => {
         {/* <Billing /> */}
         {/* <Policy /> */}
         {/* <ContactUs /> */}
-        <Product />
+        {/* <Product /> */}
         {/* <ProductRelated /> */}
-
+        <Verification />
         {/* <Wishlist /> */}
         {/* <Account /> */}
         {/* <LoginForm /> */}

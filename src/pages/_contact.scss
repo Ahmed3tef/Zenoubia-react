@@ -16,8 +16,7 @@
     width: 68%;
 
     &-title {
-      font-size: 2.4rem;
-      margin-bottom: 4rem;
+      @extend %form-title;
     }
     &-input {
       padding: 0 6rem;

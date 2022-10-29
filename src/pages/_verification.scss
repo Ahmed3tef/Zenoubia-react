@@ -1,0 +1,25 @@
+@use '../index';
+.verification {
+  color: var(--color-main);
+  &__title {
+  }
+  &__container {
+    margin-inline: 10rem;
+  }
+  &__form {
+    @extend %form-container;
+    width: 68%;
+    &-title {
+      @extend %form-title;
+    }
+    &-input {
+      margin-inline: 4rem;
+    }
+  }
+  &__info {
+  }
+  &__title {
+  }
+  &__title {
+  }
+}

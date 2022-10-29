@@ -7,6 +7,7 @@ import { Container, Row } from 'react-bootstrap';
 import { TiPlus, TiMinus } from 'react-icons/ti';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
 import './_product.scss';
+import { ClassNames } from '@emotion/react';
 const Product = props => {
   const dispatch = useDispatch();
   useState(() => {
@@ -23,7 +24,7 @@ const Product = props => {
   const mainImage = Images[imgValue];
   const sizes = ['M', 'L', 'XL', '2XL', '3XL', '4XL'];
   const [isLiked, setIsLiked] = useState(false);
-
+  const [activeId, setActiveId] = useState(null);
   const increaseHandler = prevState => {
     if (prevState === 10) return prevState;
     return prevState + 1;
@@ -32,7 +33,7 @@ const Product = props => {
     if (prevState === 1) return prevState;
     return prevState - 1;
   };
-
+  const addActiveClass = e => {};
   return (
     <>
       <Container fluid>
@@ -78,7 +79,12 @@ const Product = props => {
 
                     <ul className='sizes'>
                       {sizes.map((size, i) => (
-                        <li className='size' key={i}>
+                        <li
+                          className={
+                            activeId === i ? 'size active-size' : 'size'
+                          }
+                          onClick={() => setActiveId(i)}
+                          key={i}>
                           {size}
                         </li>
                       ))}
@@ -110,13 +116,14 @@ const Product = props => {
             </div>
           </Row>
         </div>
-        <div className='card__actions'>
+        <div className='product__actions'>
           <div
-            className='card__actions-like'
+            className='product__actions-like'
             onClick={() => setIsLiked(!isLiked)}>
             {isLiked ? <BsHeartFill /> : <BsHeart />}
+            Ajouter à la liste de souhaits
           </div>
-          <div className='card__actions-add'>
+          <div className='product__actions-add'>
             <BsCartPlusFill />
             Ajouter au panier
           </div>
