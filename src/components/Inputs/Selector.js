@@ -38,7 +38,7 @@ const Selector = props => {
           disabled
           defaultValue
           key={Math.round(Math.random() * 10000)}>
-          Select the main category for the subcategory ...
+          Select from these options
         </option>
         {data.map((el, i) => {
           // console.log(el);

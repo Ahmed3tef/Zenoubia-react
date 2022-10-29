@@ -5,9 +5,12 @@
   }
   &__container {
     margin-inline: 10rem;
+    display: flex;
+    justify-content: space-between;
   }
   &__form {
     @extend %form-container;
+    padding-block: 3rem;
     width: 68%;
     &-title {
       @extend %form-title;
@@ -17,6 +20,53 @@
     }
   }
   &__info {
+    @extend %form-container;
+    width: 29.5%;
+    padding-block: 3rem;
+    &-title {
+      @extend %form-title;
+      margin-bottom: 3rem;
+      // font-size: 1.7rem;
+    }
+    &-container {
+      padding-inline-start: 2.5rem;
+    }
+    &-products {
+      &--title {
+        font-size: 1.9rem;
+        margin-bottom: 2rem;
+      }
+      &--wrapper {
+        .product {
+          @extend %JSB;
+          align-items: flex-start;
+          :not(:last-child) {
+            margin-bottom: 2rem;
+          }
+          &-desc {
+            width: 68%;
+            font-size: 1.4rem;
+            color: #444;
+          }
+          &-price {
+            width: 30%;
+            font-size: 1.7rem;
+          }
+        }
+      }
+      .total {
+        @extend %JSB;
+        margin-top: 1.5rem;
+        &-title {
+          @extend %form-title;
+          margin-bottom: 0;
+        }
+        &-price {
+          font-size: 1.7rem;
+          margin-inline-end: 3rem;
+        }
+      }
+    }
   }
   &__title {
   }

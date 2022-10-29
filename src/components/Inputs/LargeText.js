@@ -13,7 +13,11 @@ const LargeText = props => {
         placeholder={props.placeholder}
         value={props.desc}
         onChange={e => props.setDesc(e.target.value)}
-        style={{ direction: props.direction ? 'rtl' : 'ltr' }}
+        style={{
+          direction: props.direction ? 'rtl' : 'ltr',
+          height: props.height ? props.height : '15rem',
+          width: props.width ? props.width : '85.5%',
+        }}
       />
     </div>
   );

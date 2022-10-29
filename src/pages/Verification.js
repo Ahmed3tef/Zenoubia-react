@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MiniText, PageTitle, Selector } from '../components';
+import { LargeText, MiniText, PageTitle, Selector } from '../components';
 import './_verification.scss';
 const Verification = props => {
   const [firstName, setFirstName] = useState('');
@@ -84,9 +84,54 @@ const Verification = props => {
               width='85.5%'
               // classes='ms-5'
             />
+            <LargeText label={'Adresse'} />
+          </div>
+          <h2 className='verification__form-title mt-5'>
+            Informations Complémentaires
+          </h2>
+          <div className='verification__form-input'>
+            <LargeText
+              label={'Notes de commande (facultatif)'}
+              height={'10rem'}
+              width={'90%'}
+            />
           </div>
         </div>
-        <div className='verification__info'></div>
+        <div className='verification__info'>
+          <h2 className='verification__info-title'>Votre commande</h2>
+          <div className='verification__info-container'>
+            <div className='verification__info-products'>
+              <h3 className='verification__info-products--title'>Products</h3>
+              <div className='verification__info-products--wrapper'>
+                <div className='product'>
+                  <div className='product-desc'>
+                    Robe pour votre occasion Henna - Majestic - Eid - Dinner
+                    Disponible en 9 couleurs et bénéficie d'une remise de 44% *1
+                  </div>
+                  <div className='product-price'>DA 38400</div>
+                </div>
+                <div className='product'>
+                  <div className='product-desc'>
+                    Robe pour votre occasion Henna - Majestic - Eid - Dinner
+                    Disponible en 9 couleurs et bénéficie d'une remise de 44% *1
+                  </div>
+                  <div className='product-price'>DA 38400</div>
+                </div>
+                <div className='product'>
+                  <div className='product-desc'>
+                    Robe pour votre occasion Henna - Majestic - Eid - Dinner
+                    Disponible en 9 couleurs et bénéficie d'une remise de 44% *1
+                  </div>
+                  <div className='product-price'>DA 38400</div>
+                </div>
+              </div>
+              <div className='total'>
+                <h3 className='total-title'>Total</h3>
+                <span className='total-price'>DA 42800</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

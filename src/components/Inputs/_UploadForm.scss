@@ -9,7 +9,9 @@
   font-family: inherit;
   font-size: 1.6rem;
 }
-
+.input-label {
+  width: 15%;
+}
 .input-label p {
   font-size: 1.6rem;
   font-weight: 800;
@@ -49,7 +51,7 @@
 
 .input-text-large textarea {
   height: 15rem;
-  width: 80%;
+  width: 85.5%;
   border: var(--border-text-container);
   border-radius: 1rem;
   padding: 1rem 2rem;
