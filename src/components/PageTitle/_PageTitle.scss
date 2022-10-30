@@ -1,5 +1,6 @@
 @use '../../index';
 .page-title {
+  font-family: var(--font-family-secondary);
   display: flex;
   align-items: center;
   padding-inline-start: 6rem;

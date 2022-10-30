@@ -22,6 +22,7 @@ import {
   Wishlist,
   Account,
   Verification,
+  Cart,
 } from './pages';
 
 const App = () => {
@@ -39,10 +40,11 @@ const App = () => {
         {/* <ContactUs /> */}
         {/* <Product /> */}
         {/* <ProductRelated /> */}
-        <Verification />
         {/* <Wishlist /> */}
         {/* <Account /> */}
         {/* <LoginForm /> */}
+        {/* <Verification /> */}
+        <Cart />
       </main>
 
       {/* <Container>

@@ -9,9 +9,8 @@ const Verification = props => {
   const [phone, setPhone] = useState('');
   const [address1, setAddress1] = useState('');
   const [address2, setAddress2] = useState('');
-  const [currentPassword, setCurrentPassword] = useState('');
-  const [newPassword, setNewPassword] = useState('');
-  const [passwordConfirm, setPasswordConfirm] = useState('');
+
+  const [paymentMethod, setPaymentMethod] = useState('cash');
 
   const submitHandler = e => {
     // what is required ??
@@ -81,10 +80,10 @@ const Verification = props => {
               label={'Ville'}
               // name={email}
               // setName={setEmail}
-              width='85.5%'
+              width='90%'
               // classes='ms-5'
             />
-            <LargeText label={'Adresse'} />
+            <LargeText label={'Adresse'} width='90%' />
           </div>
           <h2 className='verification__form-title mt-5'>
             Informations Complémentaires
@@ -93,7 +92,7 @@ const Verification = props => {
             <LargeText
               label={'Notes de commande (facultatif)'}
               height={'10rem'}
-              width={'90%'}
+              width='90%'
             />
           </div>
         </div>
@@ -129,6 +128,38 @@ const Verification = props => {
                 <h3 className='total-title'>Total</h3>
                 <span className='total-price'>DA 42800</span>
               </div>
+              <div className='payment'>
+                <h3 className='payment-title'> Mode de paiement</h3>
+                <div className='payment-options'>
+                  <div className='payment-option'>
+                    <label>
+                      <input
+                        type='radio'
+                        value='cash'
+                        checked={paymentMethod === 'cash'}
+                        onChange={() => setPaymentMethod('cash')}
+                      />
+                      Paiement à la livraison
+                    </label>
+                  </div>
+                  <div className='payment-option'>
+                    <label>
+                      <input
+                        type='radio'
+                        value='card'
+                        checked={paymentMethod === 'card'}
+                        onChange={() => setPaymentMethod('card')}
+                      />
+                      Payer avec Visa
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className='form-btns '>
+            <div className='form-btn' onClick={submitHandler}>
+              Compléter la commande
             </div>
           </div>
         </div>

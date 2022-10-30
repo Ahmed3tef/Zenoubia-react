@@ -22,7 +22,7 @@ const Selector = props => {
     <div
       className={`${props.classes} input-container custom-select`}
       style={{ direction: !props.turnText ? '' : direction }}>
-      <div className='input-label text-center'>
+      <div className='input-label '>
         <p>{props.label}</p>
       </div>
       <select

@@ -9,3 +9,4 @@ export { default as Policy } from './Policy';
 export { default as Wishlist } from './Wishlist';
 export { default as Account } from './Account';
 export { default as Verification } from './Verification';
+export { default as Cart } from './Cart';

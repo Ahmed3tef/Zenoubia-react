@@ -129,7 +129,7 @@ const Product = props => {
           </div>
         </div>
       </Container>
-      {/* <Reviews /> */}
+      <Reviews />
     </>
   );
 };
