@@ -11,7 +11,7 @@
   --color-like: #a70d15;
   --color-btn-form-text: #fdd7f3;
   --color-size-bg: #fcf8ff;
-
+  --color-table-row: #f1ddff;
   --color-row-even: var(--color-main-lighter);
   --color-row-odd: var(--color-main);
   --color-review-img-even: var(--color-main-lighter);
@@ -122,8 +122,9 @@ li {
 
 a,
 a:link,
-a:visited {
-  color: inherit;
+a:visited,
+a:hover {
+  color: inherit !important ;
   text-decoration: none;
 }
 
@@ -131,6 +132,11 @@ a:visited {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+%JSV {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
 }
 %AC {
   display: flex;
@@ -183,10 +189,15 @@ a:visited {
   margin-bottom: 5rem;
   border: var(--border-text-container);
   font-family: var(--font-family-secondary);
-
   z-index: 1;
 }
 %form-title {
   font-size: 2.4rem;
   margin-bottom: 4rem;
+}
+
+%table-img {
+  border: 2px solid var(--color-main);
+  box-shadow: var(--shadow-btn-form);
+  border-radius: 1rem;
 }

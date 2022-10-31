@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Ratings, Reviews } from '../components';
+import { ProductRelatedGroup, Ratings, Reviews } from '../components';
 import { loadProduct } from '../store/reducers/product';
 import { Images } from '../components/imagesData';
 import { Container, Row } from 'react-bootstrap';
 import { TiPlus, TiMinus } from 'react-icons/ti';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
 import './_product.scss';
-import { ClassNames } from '@emotion/react';
+import { useParams } from 'react-router-dom';
+
 const Product = props => {
+  const { prodId } = useParams();
+
   const dispatch = useDispatch();
-  useState(() => {
+  // useState(() => {
+  // dispatch(loadProduct());
+  // }, []);
+  // console.log(test);
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     dispatch(loadProduct());
-  }, []);
+  }, [dispatch, prodId]);
+
   const [count, setCount] = useState(1);
   // دي داتا البرودكت اللي هتطلع منها الصور
   const product = useSelector(state => state.product.product);
@@ -27,6 +36,7 @@ const Product = props => {
   const [activeId, setActiveId] = useState(null);
   const increaseHandler = prevState => {
     if (prevState === 10) return prevState;
+    console.log(product);
     return prevState + 1;
   };
   const decreaseHandler = prevState => {
@@ -130,6 +140,7 @@ const Product = props => {
         </div>
       </Container>
       <Reviews />
+      <ProductRelatedGroup />
     </>
   );
 };

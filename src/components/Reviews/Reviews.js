@@ -52,10 +52,10 @@ const Reviews = () => {
                         hour: '2-digit',
                         hour12: true,
                         minute: '2-digit',
-                        second: '2-digit',
+                        // second: '2-digit',
                       })}`}</span>
                     </div>
-                    <Ratings value={r.starRate} />
+                    <Ratings value={r.starRate} color='#fdd7f3' />
                   </div>
                   <div className='review-comment'>{`${r.comment}`}</div>
                 </div>

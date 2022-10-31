@@ -2,11 +2,15 @@ import React from 'react';
 import { BsCartPlusFill } from 'react-icons/bs';
 import productImg from '../../assets/prod-1.webp';
 import bin from '../../assets/bin.svg';
+import { useNavigate } from 'react-router-dom';
 const ProductWishlist = props => {
+  const navigate = useNavigate();
   return (
     <div className='card-wishlist'>
       <div className='card__details'>
-        <div className='card__img'>
+        <div
+          className='card__img'
+          onClick={() => navigate(`/product/${props.id}`)}>
           <img src={productImg} alt='product' />
         </div>
         <div className='card__info'>

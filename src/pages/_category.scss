@@ -1,0 +1,16 @@
+@use '../index';
+.switch {
+  &-btns {
+    @extend %JC;
+    width: fit-content;
+    margin-inline-start: auto;
+    margin-inline-end: 8rem;
+    margin-block: 3rem;
+  }
+  &-btn {
+    cursor: pointer;
+    &:first-child {
+      margin-inline-end: 3rem;
+    }
+  }
+}

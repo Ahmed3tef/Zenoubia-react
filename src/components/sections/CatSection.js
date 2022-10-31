@@ -12,7 +12,7 @@ const CatSection = props => {
   return (
     <section className='section__category my-3 my-md-5 py-3 py-md-5 '>
       <Container style={{ color: 'var(--color-black)' }}>
-        <CatSectionHead title="Jaba - Robes  d'hotesse" />
+        <CatSectionHead title="Jaba - Robes  d'hotesse" id={5} />
         <Row className='justify-content-center'>
           <Col md={6} className=' d-flex justify-content-center'>
             <ProductImg image={prod1} />

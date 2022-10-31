@@ -6,35 +6,46 @@ import profile from '../../assets/Account.svg';
 import cart from '../../assets/Shopping_Cart.svg';
 import arrowDown from '../../assets/arrow-down.svg';
 import { BiSearch } from 'react-icons/bi';
+
 import './_navbar.scss';
+import { Link } from 'react-router-dom';
 const Navbar = props => {
   const [searchValue, setSearchValue] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   return (
     <div className='nav sticky-top'>
-      <Container>
-        <div className='nav__main'>
-          <div className='search' onClick={e => setShowSearch(!showSearch)}>
-            <img src={searchIcon} alt='search icon' className='nav__icon' />
-          </div>
-          <a className='logo' href='/'>
-            <img src={mainLogo} alt='logo' />
-          </a>
-          <div className='nav__icons'>
-            <img src={profile} alt='logo' className='nav__icon ' />
-            <img src={cart} alt='logo' className='nav__icon' />
-          </div>
+      <div className='nav__main'>
+        <div className='search' onClick={e => setShowSearch(!showSearch)}>
+          <img src={searchIcon} alt='search icon' className='nav__icon' />
         </div>
-      </Container>
+        <a className='logo' href='/'>
+          <img src={mainLogo} alt='logo' />
+        </a>
+        <div className='nav__icons'>
+          <Link to='/account'>
+            <img src={profile} alt='logo' className='nav__icon ' />
+          </Link>
+          <Link to='/cart'>
+            <img src={cart} alt='logo' className='nav__icon' />
+          </Link>
+        </div>
+      </div>
+
       <div className='nav__secondary'>
         <ul className='nav__links'>
-          <li className='nav__link'>page d'accueil</li>
-          <li className='nav__link'>Les produits</li>
+          <li className='nav__link'>
+            <Link to='/'>page d'accueil</Link>
+          </li>
+          <li className='nav__link'>
+            <Link to='/products'>Les produits</Link>
+          </li>
           <li className='nav__link'>
             À propos de nous
             <img src={arrowDown} alt='dropdown icon' className='ms-3' />
           </li>
-          <li className='nav__link'>Contact</li>
+          <li className='nav__link'>
+            <Link to='/contact'>Contact</Link>
+          </li>
         </ul>
       </div>
       {showSearch && (

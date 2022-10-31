@@ -159,6 +159,10 @@
 
   &__img-main {
     height: 100%;
+    @media (min-width: 1920px) {
+      width: 38rem;
+      margin-inline-start: auto;
+    }
 
     @extend %img-style;
     img {

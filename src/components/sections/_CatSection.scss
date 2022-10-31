@@ -6,19 +6,22 @@
     margin-bottom: 3rem;
     &--btn {
       @extend %JC;
+      color: #fff;
       background-color: var(--color-main-darker);
-      color: var(--color-white);
       width: 10rem;
       height: 4.4rem;
       box-shadow: var(--product-img-shadow);
       border-radius: 1.5rem;
+      font-size: 1.6rem;
       cursor: pointer;
       transition: all 0.25s;
       &:hover {
+        color: var(--color-white);
         transform: scale(1.07);
         box-shadow: var(--btn-shadow-hover);
       }
       &:active {
+        color: var(--color-white);
         transform: scale(0.97);
         box-shadow: var(--btn-shadow-active);
       }

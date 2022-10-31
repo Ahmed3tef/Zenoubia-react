@@ -1,0 +1,46 @@
+@use '../index';
+
+.cart {
+  color: var(--color-main);
+  font-family: var(--font-family-secondary);
+  padding-inline: 10rem;
+
+  &__table {
+    width: 100%;
+    border: 3px solid var(--color-main-lighter);
+    border-radius: 1rem 1rem 0 0;
+    position: relative;
+    &-container {
+      width: 70%;
+    }
+    &-head {
+      @extend %JSB;
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 5rem;
+      width: 100%;
+      padding-inline: 3rem;
+      background-color: var(--color-main-lighter);
+      color: var(--color-btn-form-text);
+      font-size: 1.6rem;
+    }
+
+    &-body {
+      padding-top: 5rem;
+    }
+  }
+  &__confirm {
+  }
+  &__product {
+    height: 12rem;
+    background-color: var(--color-table-row);
+
+    &:not(:last-child) {
+      border-bottom: 1px solid var(--color-white);
+    }
+    &:not(:first-child) {
+      box-shadow: inset 0 3px 3px rgba(0, 0, 0, 0.1);
+    }
+  }
+}

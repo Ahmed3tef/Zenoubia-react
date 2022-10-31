@@ -12,28 +12,40 @@ const initialState = {
 export const loadProduct = createAsyncThunk(
   'product/loadProduct',
 
-  thunkAPI =>
-    axios
-      .get(
-        `${APIBase}/product/show`,
-        {
-          headers: {
-            Authorization:
-              'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoyLCJ1c2VySWQiOiI2MzU1MmMyMDBiY2MxYTZlNTljMDUzY2IiLCJzdGF0dXMiOjEsImlhdCI6MTY2Njg2OTA2NSwiZXhwIjoxNjY5NDYxMDY1fQ.1UiCvvjNB58m9Cmr0a4y3oginvFyS808FMMpPugK-vU',
-          },
-          params: {
-            id: '635a662959e79aeeb9cdf176',
-          },
-        },
-        thunkAPI
-      )
-      .then(res => {
-        // console.log(res.data);
-        return res.data;
-      })
-      .catch(err => {
-        return err.response.data;
-      })
+  thunkAPI => {
+    return {
+      id: 1,
+      name: 'Abaya Brodée',
+      sizes: ['M', 'L', 'XL', '2XL', '3XL'],
+      rating: 4,
+      reviews: 122,
+      description:
+        'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
+      title: 'Abaya Brodée - Code XD1254',
+      price: 'DA 2400',
+    };
+  }
+  // axios
+  //   .get(
+  //     `${APIBase}/product/show`,
+  //     {
+  //       headers: {
+  //         Authorization:
+  //           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoyLCJ1c2VySWQiOiI2MzU1MmMyMDBiY2MxYTZlNTljMDUzY2IiLCJzdGF0dXMiOjEsImlhdCI6MTY2Njg2OTA2NSwiZXhwIjoxNjY5NDYxMDY1fQ.1UiCvvjNB58m9Cmr0a4y3oginvFyS808FMMpPugK-vU',
+  //       },
+  //       params: {
+  //         id: '635a662959e79aeeb9cdf176',
+  //       },
+  //     },
+  //     thunkAPI
+  //   )
+  //   .then(res => {
+  //     // console.log(res.data);
+  //     return res.data;
+  //   })
+  //   .catch(err => {
+  //     return err.response.data;
+  //   })
 
   // loadDataWithParams(thunkAPI, 'product/review', { id }, null);
 );
@@ -78,18 +90,8 @@ export const productSlice = createSlice({
         //   };
         // });
 
-        // console.log(product);
-        state.product = {
-          id: 1,
-          name: 'Abaya Brodée',
-          sizes: ['M', 'L', 'XL', '2XL', '3XL'],
-          rating: 4,
-          reviews: 122,
-          description:
-            'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-          title: 'Abaya Brodée - Code XD1254',
-          price: 'DA 2400',
-        };
+        console.log(payload);
+        state.product = payload;
         state.error = null;
       }
     },

@@ -1,22 +1,26 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
-import { ProductWishlist } from '../components';
+import { ProductRelatedGroup, ProductWishlist } from '../components';
 
 const Wishlist = () => {
   return (
     <div className='wishlist'>
-      <Container fluid className='px-md-5'>
+      <Container
+        fluid
+        style={{
+          paddingInline: '10rem',
+        }}>
         <Row>
-          {[...new Array(4)].map((e, i) => {
+          {[...new Array(8)].map((e, i) => {
             return (
               <Col lg={6} key={i}>
-                <ProductWishlist />
+                <ProductWishlist id={i} />
               </Col>
             );
           })}
         </Row>
       </Container>
-      <Container>{/* put related products here */}</Container>
+      <ProductRelatedGroup />
     </div>
   );
 };

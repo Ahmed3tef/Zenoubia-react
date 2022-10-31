@@ -35,7 +35,12 @@ const ContactUs = props => {
               setName={setSubject}
               name={subject}
             />
-            <LargeText label='Votre message' desc={msg} setDesc={setMsg} />
+            <LargeText
+              label='Votre message'
+              desc={msg}
+              setDesc={setMsg}
+              width='80%'
+            />
             <div className='form-btns mt-5'>
               <div className='form-btn'>Envoyer le message</div>
             </div>

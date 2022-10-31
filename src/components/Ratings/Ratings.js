@@ -3,13 +3,13 @@ import Rating from '@mui/material/Rating';
 import Stack from '@mui/material/Stack';
 import styled from '@emotion/styled';
 
-export default function Ratings({ value }) {
+export default function Ratings({ value, color }) {
   const StyledRating = styled(Rating)({
     '& .MuiRating-iconFilled': {
-      color: '#3a204d',
+      color: color ? color : '#3a204d',
     },
     '& .MuiRating-iconEmpty': {
-      color: '#3a204d',
+      color: color ? color : '#3a204d',
     },
     // '& .MuiRating-iconHover': {
     //   color: '#ff3d47',

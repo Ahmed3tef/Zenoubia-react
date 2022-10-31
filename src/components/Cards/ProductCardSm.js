@@ -3,14 +3,19 @@ import './_productCard.scss';
 import productImg from '../../assets/prod-1.webp';
 import { Ratings } from '..';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
+import { Link, useNavigate } from 'react-router-dom';
 const ProductCardSm = props => {
   const sizes = ['M', 'L', 'XL'];
   const [isLiked, setIsLiked] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className='card-sm'>
-      <div className='card__img'>
+      <div
+        className='card__img'
+        onClick={() => navigate(`/product/${props.id}`)}>
         <div className='card__badge'>-44%</div>
+
         <img src={productImg} alt='product' />
       </div>
       <div className='card__title'>Abaya d'été en satin crêpe brodé</div>

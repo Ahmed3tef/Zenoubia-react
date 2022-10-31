@@ -1,5 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Container } from 'react-bootstrap';
+import { Route, Routes } from 'react-router-dom';
 // import { Container } from 'react-bootstrap';
 import {
   Banner,
@@ -23,6 +24,8 @@ import {
   Account,
   Verification,
   Cart,
+  Home,
+  Category,
 } from './pages';
 
 const App = () => {
@@ -31,8 +34,22 @@ const App = () => {
     <>
       <Navbar />
       <main>
-        {/* <Banner />
-        <CatSection /> */}
+        <Routes>
+          <Route path='/' element={<Home />} />
+          <Route path='/account' element={<Account />} />
+          <Route path='/products' element={<Category />} />
+          <Route path='/product/:prodId' element={<Product />} />
+          <Route path='/contact' element={<ContactUs />} />
+          <Route path='/account' element={<Account />} />
+          <Route path='/cart' element={<Cart />} />
+          <Route path='/wishlist' element={<Wishlist />} />
+          <Route path='/login' element={<LoginForm />} />
+          <Route path='/policy' element={<Policy />} />
+          <Route path='/about' element={<AboutUs />} />
+          <Route path='/checkout' element={<Verification />} />
+        </Routes>
+        {/* <Home /> */}
+
         {/* <AboutUs /> */}
         {/* <Terms /> */}
         {/* <Billing /> */}
@@ -44,7 +61,7 @@ const App = () => {
         {/* <Account /> */}
         {/* <LoginForm /> */}
         {/* <Verification /> */}
-        <Cart />
+        {/* <Cart /> */}
       </main>
 
       {/* <Container>

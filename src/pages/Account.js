@@ -4,7 +4,10 @@ import { MiniText, PageTitle, ProfileForm } from '../components';
 import './_account.scss';
 import likeIcon from '../assets/My_Wish_List.svg';
 import ordersIcon from '../assets/my-orders.svg';
+import { useNavigate } from 'react-router-dom';
+
 const Account = () => {
+  const navigate = useNavigate();
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [displayName, setDisplayName] = useState('');
@@ -27,7 +30,11 @@ const Account = () => {
   return (
     <div className='account'>
       <div className='account__btns container'>
-        <img src={likeIcon} alt='wishlist-icon' />
+        <img
+          src={likeIcon}
+          alt='wishlist-icon'
+          onClick={() => navigate('/wishlist')}
+        />
         <img src={ordersIcon} alt='orders-icon' />
       </div>
       <PageTitle maniTitle={"Page d'accueil"} subTitle={'Mon compte'} />
