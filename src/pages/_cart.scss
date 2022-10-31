@@ -44,13 +44,21 @@
     }
     .total {
       @extend %JSB;
-      margin-top: 3rem;
+      margin-block: 3rem;
       padding-inline: 2rem;
       &-title {
         font-size: 1.6rem;
       }
       &-price {
         font-size: 1.8rem;
+      }
+    }
+    .form {
+      &-btns {
+        width: auto;
+      }
+      &-btn {
+        font-size: 1.4rem;
       }
     }
   }

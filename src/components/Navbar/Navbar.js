@@ -13,6 +13,19 @@ const Navbar = props => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [showSearch, setShowSearch] = useState(false);
+  const subCategories = [
+    "Jaba - Roobes d'hotesse",
+    'Caftans',
+    'Djellaba',
+    'Robes Soiree',
+    'Abaya',
+    'Tenus traditionnelles',
+    'Khalidijia',
+    'Tenus de sport',
+    'Lingerie',
+    'Jabador',
+    'Sabot',
+  ];
   const navigate = useNavigate();
   return (
     <div className='nav sticky-top'>
@@ -51,19 +64,7 @@ const Navbar = props => {
         </ul>
         {showDropDown && (
           <div className='nav__dropdown'>
-            {[
-              "Jaba - Roobes d'hotesse",
-              'Caftans',
-              'Djellaba',
-              'Robes Soiree',
-              'Abaya',
-              'Tenus traditionnelles',
-              'Khalidijia',
-              'Tenus de sport',
-              'Lingerie',
-              'Jabador',
-              'Sabot',
-            ].map((e, i) => {
+            {subCategories.map((e, i) => {
               return (
                 <li
                   className='nav__dropdown-item'

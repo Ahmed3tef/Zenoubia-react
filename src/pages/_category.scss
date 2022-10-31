@@ -1,11 +1,17 @@
 @use '../index';
+
+.category {
+  &__content {
+    margin-block: 3rem;
+  }
+}
 .switch {
   &-btns {
     @extend %JC;
     width: fit-content;
     margin-inline-start: auto;
     margin-inline-end: 8rem;
-    margin-block: 3rem;
+    margin-bottom: 3rem;
   }
   &-btn {
     cursor: pointer;

@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { LargeText, MiniText, PageTitle, Selector } from '../components';
 import './_verification.scss';
 const Verification = props => {
@@ -12,6 +13,10 @@ const Verification = props => {
 
   const [paymentMethod, setPaymentMethod] = useState('cash');
 
+  const params = useParams();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [params]);
   const submitHandler = e => {
     // what is required ??
     let data;

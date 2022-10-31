@@ -18,6 +18,7 @@ export { default as LargeText } from './Inputs/LargeText';
 export { default as Selector } from './Inputs/Selector';
 export { default as MiniText } from './Inputs/MiniText';
 export { default as Reviews } from './Reviews/Reviews';
+export { default as Filter } from './Filter/Filter';
 export { default as CartTable } from './tables/CartTable';
 export { default as OrdersTable } from './tables/OrdersTable';
 export { default as Footer } from './Footer/Footer';

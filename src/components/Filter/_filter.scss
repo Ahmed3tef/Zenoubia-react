@@ -1,0 +1,41 @@
+@use '../../index';
+.filter {
+  font-family: var(--font-family-secondary);
+  border: 2px solid var(--color-main);
+  color: var(--color-main);
+  border-radius: 0 1rem 1rem 0;
+  min-height: 30rem;
+  padding-block: 2rem;
+  padding-inline-start: 2rem;
+
+  &__sub {
+    &:not(:last-child) {
+      margin-bottom: 2.5rem;
+    }
+    &-title {
+      @extend %AC;
+      margin-bottom: 2rem;
+      &--icon {
+        width: 1.8rem;
+        margin-inline-end: 1rem;
+        img {
+          @extend %img-fill;
+        }
+      }
+      &--text {
+        font-size: 2rem;
+      }
+    }
+    &-content {
+      margin-inline-start: 2rem;
+      font-size: 1.4rem;
+    }
+    &-link {
+      margin-bottom: 0.7rem;
+      cursor: pointer;
+      input {
+        margin-inline-end: 1rem;
+      }
+    }
+  }
+}

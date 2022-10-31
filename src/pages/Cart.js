@@ -1,8 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import prodImg from '../assets/prod-1.webp';
 import { CartTable, PageTitle } from '../components';
 import './_cart.scss';
 const Cart = () => {
+  const navigate = useNavigate();
   const data = [
     {
       id: 1,
@@ -29,9 +31,11 @@ const Cart = () => {
             <span className='total-title'>Le Total</span>
             <span className='total-price'>DA {85600}</span>
           </div>
-          {/* <div className='form-btns'>
-            <div className='form-btn'>Compléter la commande</div>
-          </div> */}
+          <div className='form-btns'>
+            <div className='form-btn' onClick={() => navigate('/checkout')}>
+              Compléter la commande
+            </div>
+          </div>
         </div>
       </div>
     </>
