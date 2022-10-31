@@ -18,9 +18,9 @@ const Navbar = props => {
         <div className='search' onClick={e => setShowSearch(!showSearch)}>
           <img src={searchIcon} alt='search icon' className='nav__icon' />
         </div>
-        <a className='logo' href='/'>
+        <Link className='logo' to='/'>
           <img src={mainLogo} alt='logo' />
-        </a>
+        </Link>
         <div className='nav__icons'>
           <Link to='/account'>
             <img src={profile} alt='logo' className='nav__icon ' />
@@ -37,12 +37,12 @@ const Navbar = props => {
             <Link to='/'>page d'accueil</Link>
           </li>
           <li className='nav__link'>
-            <Link to='/products'>Les produits</Link>
+            <Link to='/products'>
+              Les produits
+              <img src={arrowDown} alt='dropdown icon' className='ms-3' />
+            </Link>
           </li>
-          <li className='nav__link'>
-            À propos de nous
-            <img src={arrowDown} alt='dropdown icon' className='ms-3' />
-          </li>
+          <li className='nav__link'>À propos de nous</li>
           <li className='nav__link'>
             <Link to='/contact'>Contact</Link>
           </li>

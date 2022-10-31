@@ -166,8 +166,8 @@
         cursor: pointer;
         position: relative;
         width: 25%;
-        height: calc(100% - 2px);
-        // height: calc(100% + 2px);
+        // height: calc(100% - 2px);
+        height: calc(100% + 2px);
         // height: 100%;
         border: var(--border-card-lg-img);
         overflow: hidden;

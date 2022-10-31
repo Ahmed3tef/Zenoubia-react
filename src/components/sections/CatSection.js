@@ -19,16 +19,16 @@ const CatSection = props => {
           </Col>
           <Col md={6} className=' d-flex align-items-center'>
             <div className='products-wrapper'>
-              <ProductImgWithTitle image={prod2} text={'DA   1900'} />
-              <ProductImgWithTitle image={prod3} text={'DA   1200'} />
+              <ProductImgWithTitle image={prod2} text={'DA   1900'} id={1} />
+              <ProductImgWithTitle image={prod3} text={'DA   1200'} id={1} />
             </div>
             <div className='products-wrapper'>
-              <ProductImgWithTitle image={prod3} text={'DA   1500'} />
-              <ProductImgWithTitle image={prod4} text={'DA   1400'} />
+              <ProductImgWithTitle image={prod3} text={'DA   1500'} id={1} />
+              <ProductImgWithTitle image={prod4} text={'DA   1400'} id={1} />
             </div>
             <div className='products-wrapper'>
-              <ProductImgWithTitle image={prod3} text={'DA   1500'} />
-              <ProductImgWithTitle image={prod4} text={'DA   1400'} />
+              <ProductImgWithTitle image={prod3} text={'DA   1500'} id={1} />
+              <ProductImgWithTitle image={prod4} text={'DA   1400'} id={1} />
             </div>
           </Col>
         </Row>

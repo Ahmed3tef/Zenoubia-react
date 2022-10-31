@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
 import { PageTitle, ProductCardLg, ProductCardSm } from '../components';
 import gridIcon from '../assets/gridIcon.svg';
 import layerIcon from '../assets/layerIcon.svg';
 import './_category.scss';
+import { useParams } from 'react-router-dom';
 const Category = props => {
   const [isSmall, setIsSmall] = useState(true);
+  const params = useParams();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [params]);
+
   return (
     <>
       <PageTitle maniTitle='Les Produits' subTitle='Djellaba' />

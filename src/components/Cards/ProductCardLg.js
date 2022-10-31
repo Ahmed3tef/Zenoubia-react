@@ -48,7 +48,7 @@ const ProductCardLg = props => {
           onClick={() => setIsLiked(!isLiked)}>
           {isLiked ? <BsHeartFill /> : <BsHeart />}
         </div>
-        <div className='card__actions-add'>
+        <div className='card__actions-add' onClick={() => navigate(`/cart`)}>
           <BsCartPlusFill />
           Ajouter au panier
         </div>

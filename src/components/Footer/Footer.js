@@ -1,9 +1,11 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import logoImg from '../../assets/zenoubia logo.png';
 import { social } from './contact';
 import './_footer.scss';
 
 const Footer = props => {
+  const navigate = useNavigate();
   return (
     <div className='footer'>
       <div className='footer__main py-3 py-md-5 '>
@@ -11,7 +13,9 @@ const Footer = props => {
           <div className='footer__links'>
             <div className='footer__links-title'>À propos de nous</div>
             <ul className='footer__links-wrapper'>
-              <li className='footer__link'>Qui nous sommes?</li>
+              <li className='footer__link' onClick={() => navigate(`/about`)}>
+                Qui nous sommes?
+              </li>
               <li className='footer__link'>OurInspiration</li>
               <li className='footer__link'>Nos buts</li>
             </ul>
@@ -49,9 +53,15 @@ const Footer = props => {
           <div className='footer__links'>
             <div className='footer__links-title'>Aider</div>
             <ul className='footer__links-wrapper'>
-              <li className='footer__link'>Termes et conditions</li>
-              <li className='footer__link'>Politique de confidentialité</li>
-              <li className='footer__link'>Expédition et facturation</li>
+              <li className='footer__link' onClick={() => navigate(`/terms`)}>
+                Termes et conditions
+              </li>
+              <li className='footer__link' onClick={() => navigate(`/policy`)}>
+                Politique de confidentialité
+              </li>
+              <li className='footer__link' onClick={() => navigate(`/billing`)}>
+                Expédition et facturation
+              </li>
             </ul>
           </div>
         </div>

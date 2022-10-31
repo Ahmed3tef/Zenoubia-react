@@ -1,6 +1,11 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { StaticLayout } from '../components';
 const Policy = () => {
+  const params = useParams();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [params]);
   return (
     <StaticLayout header='Politique de confidentialité'>
       <div className='static__text'>

@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { StaticLayout } from '../components';
 
 const AboutUs = () => {
+  const params = useParams();
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [params]);
   return (
     <StaticLayout header='Qui nous sommes?'>
       <div className='static__text'>
