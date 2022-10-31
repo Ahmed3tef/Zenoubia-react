@@ -9,6 +9,7 @@ export { default as ProductRelated } from './Cards/ProductRelated';
 export { default as ProductRelatedGroup } from './ProductRelated/ProductRelatedGroup';
 export { default as ProductWishlist } from './Cards/ProductWishlist';
 export { default as Ratings } from './Ratings/Ratings';
+export { default as Counter } from './Counter/Counter';
 export { default as PageTitle } from './PageTitle/PageTitle';
 export { default as StaticLayout } from './StaticLayout/StaticLayout';
 export { default as ProfileForm } from './Forms/ProfileForm';

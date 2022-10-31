@@ -6,6 +6,7 @@
   position: -webkit-sticky;
   position: sticky;
   box-shadow: var(--product-img-shadow);
+  z-index: 5;
   &__main {
     @extend %JSB;
     height: 6rem;
@@ -78,6 +79,30 @@
       svg {
         font-size: 2.5rem;
         cursor: pointer;
+      }
+    }
+  }
+  &__dropdown {
+    position: absolute;
+    top: 100%;
+    left: 39.5%;
+    font-family: var(--font-family-primary);
+    background-color: var(--color-main-lighter);
+    padding: 0.5rem;
+    border-radius: 0 0 1rem 1rem;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25),
+      6px 8px 10px rgba(0, 0, 0, 0.25), inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+
+    // margin-top: -170%;
+    z-index: 1;
+    transition: all 0.3s;
+    &-item {
+      cursor: pointer;
+      padding: 0.7rem 2rem;
+      color: var(--color-btn-form-text);
+      font-size: 1.2rem;
+      &:not(:last-of-type) {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.25);
       }
     }
   }

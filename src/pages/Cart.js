@@ -23,7 +23,16 @@ const Cart = () => {
         <div className='cart__table-container'>
           <CartTable data={data} />
         </div>
-        <div className='cart__confirm'>sdf</div>
+        <div className='cart__confirm'>
+          <h3 className='cart__confirm-title'>Total du panier</h3>
+          <div className='total'>
+            <span className='total-title'>Le Total</span>
+            <span className='total-price'>DA {85600}</span>
+          </div>
+          {/* <div className='form-btns'>
+            <div className='form-btn'>Compléter la commande</div>
+          </div> */}
+        </div>
       </div>
     </>
   );
