@@ -4,7 +4,7 @@ import filterIcon from '../../assets/filterIcon.svg';
 import { PriceRange } from '..';
 const Filter = () => {
   const [startPrice, setStartPrice] = useState(0);
-  const [endPrice, setEndPrice] = useState(1500);
+  const [endPrice, setEndPrice] = useState(4000);
   const subCategories = [
     "Jaba - Roobes d'hotesse",
     'Caftans',
@@ -32,6 +32,7 @@ const Filter = () => {
     'Rose',
   ];
 
+  const submitHandler = e => {};
   return (
     <div className='filter'>
       <div className='filter__sub'>
@@ -121,6 +122,11 @@ const Filter = () => {
               onChange={e => setEndPrice(e.target.value)}
               className='filter__price-input'
             />
+          </div>
+          <div className='form-btns mt-5'>
+            <div className='form-btn' onClick={submitHandler}>
+              search
+            </div>
           </div>
         </div>
       </div>

@@ -32,8 +32,12 @@
     }
     &-link {
       margin-bottom: 0.7rem;
-      cursor: pointer;
+      label {
+        cursor: pointer;
+        width: 100%;
+      }
       input {
+        cursor: pointer;
         margin-inline-end: 1rem;
         accent-color: var(--color-main);
       }
@@ -50,5 +54,13 @@
       height: 3rem;
       width: 45%;
     }
+  }
+  .form-btns {
+    width: auto;
+  }
+  .form-btn {
+    color: var(--color-btn-form-text);
+    padding: 0.2rem 2rem;
+    font-size: 1.6rem;
   }
 }
