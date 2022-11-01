@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import './_filter.scss';
 import filterIcon from '../../assets/filterIcon.svg';
+import { PriceRange } from '..';
 const Filter = () => {
-  const [startPrice, setStartPrice] = useState(150);
-  const [endPrice, setEndPrice] = useState(300);
+  const [startPrice, setStartPrice] = useState(0);
+  const [endPrice, setEndPrice] = useState(1500);
   const subCategories = [
     "Jaba - Roobes d'hotesse",
     'Caftans',
@@ -91,6 +92,37 @@ const Filter = () => {
             );
           })}
         </ul>
+      </div>
+      <div className='filter__sub'>
+        <div className='filter__sub-title'>
+          <div className='filter__sub-title--icon'>
+            <img src={filterIcon} alt='' />
+          </div>
+          <h3 className='filter__sub-title--text'>Prix (DA)</h3>
+        </div>
+        <div className='filter__price'>
+          <PriceRange
+            value1={startPrice}
+            value2={endPrice}
+            setValue1={setStartPrice}
+            setValue2={setEndPrice}
+          />
+          <div className='filter__price-inputs'>
+            <input
+              type='text'
+              value={startPrice}
+              onChange={e => setStartPrice(e.target.value)}
+              className='filter__price-input'
+            />
+            -
+            <input
+              type='text'
+              value={endPrice}
+              onChange={e => setEndPrice(e.target.value)}
+              className='filter__price-input'
+            />
+          </div>
+        </div>
       </div>
     </div>
   );

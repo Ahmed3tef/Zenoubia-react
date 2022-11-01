@@ -22,10 +22,10 @@ const Category = props => {
             marginBlock: '3rem',
           }}>
           <div className='category__content'></div>
-          <Col sm={2}>
+          <Col sm={2} md={3} xl={2}>
             <Filter />
           </Col>
-          <Col sm={10} style={{ paddingInline: '4rem' }}>
+          <Col sm={10} md={9} xl={10} style={{ paddingInline: '4rem' }}>
             <div className='switch-btns'>
               <div className='switch-btn' onClick={() => setIsSmall(true)}>
                 <img src={gridIcon} alt='' />

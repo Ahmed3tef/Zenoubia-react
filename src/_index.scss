@@ -201,3 +201,12 @@ a:hover {
   box-shadow: var(--shadow-btn-form);
   border-radius: 1rem;
 }
+%form-input {
+  width: 80%;
+  height: 4rem;
+  border: var(--border-text-container);
+  border-radius: 1rem;
+  outline: none;
+  font-family: inherit;
+  font-size: 1.6rem;
+}

@@ -35,7 +35,20 @@
       cursor: pointer;
       input {
         margin-inline-end: 1rem;
+        accent-color: var(--color-main);
       }
+    }
+  }
+  &__price {
+    padding-inline-end: 2rem;
+    &-inputs {
+      @extend %JSB;
+    }
+    &-input {
+      text-align: center;
+      @extend %form-input;
+      height: 3rem;
+      width: 45%;
     }
   }
 }

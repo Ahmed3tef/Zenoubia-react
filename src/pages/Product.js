@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductRelatedGroup, Ratings, Reviews } from '../components';
-import { loadProduct } from '../store/reducers/product';
+// import { loadProduct } from '../store/reducers/product';
 import { Images } from '../components/imagesData';
 import { Container, Row } from 'react-bootstrap';
 import { TiPlus, TiMinus } from 'react-icons/ti';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
 import './_product.scss';
 import { useParams } from 'react-router-dom';
+import { loadProduct } from '../store/reducers/products/product';
 
 const Product = props => {
   const { prodId } = useParams();
