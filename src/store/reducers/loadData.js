@@ -10,7 +10,7 @@ const config = {
     authorization: token,
   },
 };
-export default async function loadData(thunkAPI, path) {
+export async function loadData(thunkAPI, path) {
   return axios
     .get(`${APIBase}${path}`, config, thunkAPI)
     .then(res => {
@@ -26,7 +26,7 @@ export async function loadDataWithId(thunkAPI, path, id) {
       authorization: token,
     },
     params: {
-      catId: id,
+      subcatId: id,
     },
   };
   return axios
