@@ -16,7 +16,8 @@ export const loadFilteredProducts = createAsyncThunk(
 );
 export const loadProducts = createAsyncThunk(
   'products/loadProducts',
-  (id, thunkAPI) => loadDataWithId(thunkAPI, 'product/categoryproducts', id)
+  (id, thunkAPI) =>
+    loadDataWithParams(thunkAPI, 'product/categoryproducts', { subcatId: id })
 );
 export const loadLatest = createAsyncThunk('products/loadLatest', thunkAPI =>
   loadData(thunkAPI, 'product/latest')
@@ -86,44 +87,44 @@ export const productsSlice = createSlice({
       state.products = null;
       state.error = action.payload.response.data.message;
     },
-    [loadProducts.pending]: (state, action) => {
-      state.products = [];
-      state.isLoading = true;
-      state.error = null;
-    },
-    [loadProducts.fulfilled]: (state, { payload }) => {
-      // console.log(payload);
-      if (payload) {
-        if (payload.status === 0) {
-          state.products = [];
-          state.isLoading = false;
-          state.error = payload.message;
-          return;
-        }
-        let data = payload.data.map((obj, i) => {
-          return {
-            id: obj.data._id,
-            catName: obj.catName,
-            key: obj.data._id,
-            englishName: obj.data.names.english,
-            arabicName: obj.data.names.arabic,
-            imgUrl: obj.data.image.imageUrl,
-            imgAlt: obj.data.image.alt,
-            category: obj.data.categoriesId,
-            position: i + 1,
-          };
-        });
-        console.log(data.id);
-        state.products = data;
-        state.isLoading = false;
-        state.error = null;
-      }
-    },
-    [loadProducts.rejected]: (state, action) => {
-      state.isLoading = false;
-      state.products = null;
-      state.error = action.payload.response.data.message;
-    },
+    // [loadProducts.pending]: (state, action) => {
+    //   state.products = [];
+    //   state.isLoading = true;
+    //   state.error = null;
+    // },
+    // [loadProducts.fulfilled]: (state, { payload }) => {
+    //   // console.log(payload);
+    //   if (payload) {
+    //     if (payload.status === 0) {
+    //       state.products = [];
+    //       state.isLoading = false;
+    //       state.error = payload.message;
+    //       return;
+    //     }
+    //     let data = payload.data.map((obj, i) => {
+    //       return {
+    //         id: obj.data._id,
+    //         catName: obj.catName,
+    //         key: obj.data._id,
+    //         englishName: obj.data.names.english,
+    //         arabicName: obj.data.names.arabic,
+    //         imgUrl: obj.data.image.imageUrl,
+    //         imgAlt: obj.data.image.alt,
+    //         category: obj.data.categoriesId,
+    //         position: i + 1,
+    //       };
+    //     });
+    //     console.log(data.id);
+    //     state.products = data;
+    //     state.isLoading = false;
+    //     state.error = null;
+    //   }
+    // },
+    // [loadProducts.rejected]: (state, action) => {
+    //   state.isLoading = false;
+    //   state.products = null;
+    //   state.error = action.payload.response.data.message;
+    // },
   },
 });
 

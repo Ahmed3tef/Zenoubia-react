@@ -54,3 +54,19 @@ export async function loadDataWithParams(thunkAPI, path, params, data) {
       return err.response.data;
     });
 }
+export async function loadDataWithParamsPost(thunkAPI, path, params, data) {
+  const config = {
+    headers: {
+      authorization: token,
+    },
+    params,
+  };
+  return axios
+    .post(`${APIBase}${path}`, config, data, thunkAPI)
+    .then(res => {
+      return res.data;
+    })
+    .catch(err => {
+      return err.response.data;
+    });
+}
