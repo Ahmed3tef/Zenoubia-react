@@ -36,19 +36,20 @@ const App = () => {
       <main>
         <Routes>
           <Route path='/' element={<Home />} />
-          <Route path='/login' element={<LoginForm />} />
-          <Route path='/account' element={<Account />} />
-          <Route path='/products' element={<Category />} />
-          <Route path='/product/:prodId' element={<Product />} />
-          <Route path='/contact' element={<ContactUs />} />
-          <Route path='/account' element={<Account />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/wishlist' element={<Wishlist />} />
-          <Route path='/terms' element={<Terms />} />
-          <Route path='/policy' element={<Policy />} />
-          <Route path='/billing' element={<Billing />} />
-          <Route path='/about' element={<AboutUs />} />
-          <Route path='/checkout' element={<Verification />} />
+          <Route path='login' element={<LoginForm />} />
+          <Route path='account' element={<Account />} />
+          {/* <Route path='products' element={<Category />} /> */}
+          <Route path='products/:id' element={<Category />} />
+          <Route path='product/:prodId' element={<Product />} />
+          <Route path='contact' element={<ContactUs />} />
+          <Route path='account' element={<Account />} />
+          <Route path='cart' element={<Cart />} />
+          <Route path='wishlist' element={<Wishlist />} />
+          <Route path='terms' element={<Terms />} />
+          <Route path='policy' element={<Policy />} />
+          <Route path='billing' element={<Billing />} />
+          <Route path='about' element={<AboutUs />} />
+          <Route path='checkout' element={<Verification />} />
         </Routes>
         {/* <Home /> */}
 

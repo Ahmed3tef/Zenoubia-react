@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, NavLink, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 import './_CatSection.scss';
 const CatSectionHead = ({ title, id }) => {
@@ -9,9 +9,8 @@ const CatSectionHead = ({ title, id }) => {
     <div className='section__category-head'>
       <h3 className='section__category-head--title'>{title}</h3>
       <div
-        to='/'
         className=' section__category-head--btn '
-        onClick={() => navigate('/products')}>
+        onClick={() => navigate(`/products/${id}`)}>
         Voir plus
       </div>
     </div>

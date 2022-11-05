@@ -1,23 +1,34 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './_filter.scss';
 import filterIcon from '../../assets/filterIcon.svg';
 import { PriceRange } from '..';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadSubCategories } from '../../store/reducers/subcategory';
+import { useNavigate } from 'react-router-dom';
 const Filter = () => {
   const [startPrice, setStartPrice] = useState(0);
   const [endPrice, setEndPrice] = useState(4000);
-  const subCategories = [
-    "Jaba - Roobes d'hotesse",
-    'Caftans',
-    'Djellaba',
-    'Robes Soiree',
-    'Abaya',
-    'Tenus traditionnelles',
-    'Khalidijia',
-    'Tenus de sport',
-    'Lingerie',
-    'Jabador',
-    'Sabot',
-  ];
+
+  const navigate = useNavigate();
+  const subCategories = useSelector(state => state.subCategories.subCategories);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadSubCategories());
+  }, [dispatch]);
+
+  // const subCategories = [
+  //   "Jaba - Roobes d'hotesse",
+  //   'Caftans',
+  //   'Djellaba',
+  //   'Robes Soiree',
+  //   'Abaya',
+  //   'Tenus traditionnelles',
+  //   'Khalidijia',
+  //   'Tenus de sport',
+  //   'Lingerie',
+  //   'Jabador',
+  //   'Sabot',
+  // ];
   const sizes = ['M', 'L', 'XL', '2XL', '3XL', '4XL'];
   const colors = [
     'Beige',
@@ -43,12 +54,18 @@ const Filter = () => {
           <h3 className='filter__sub-title--text'>Categories</h3>
         </div>
         <ul className='filter__sub-content'>
-          {subCategories.map((e, i) => {
-            return (
-              <li className='filter__sub-link' key={i}>
-                {e}
-              </li>
-            );
+          {subCategories.map((e, index) => {
+            for (let i = index; i < 10; i++) {
+              return (
+                <li
+                  className='filter__sub-link'
+                  style={{ cursor: 'pointer' }}
+                  key={e.id}
+                  onClick={() => navigate(`/products/${e.id}`)}>
+                  {e.englishName}
+                </li>
+              );
+            }
           })}
         </ul>
       </div>

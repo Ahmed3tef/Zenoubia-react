@@ -91,7 +91,7 @@ export const reviewsSlice = createSlice({
           state.error = payload.message;
           return;
         }
-        console.log(payload);
+        // console.log(payload);
         // let { rating } = payload.data;
         // const productName = payload.data.names.english;
         // // let {}

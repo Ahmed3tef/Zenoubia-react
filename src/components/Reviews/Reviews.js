@@ -18,7 +18,7 @@ const Reviews = () => {
     dispatch(loadReviews(id));
   }, [dispatch, id]);
 
-  console.log(reviews);
+  // console.log(reviews);
   return (
     <Container className='p-5 '>
       {reviews.length === 0 && (
@@ -30,9 +30,9 @@ const Reviews = () => {
             {/* {reviews && reviews[0] && reviews[0].productName} */}
             Avis sur les produits
           </div>
-          {reviews.map(r => {
+          {reviews.map((r, i) => {
             return (
-              <div className='review'>
+              <div className='review' key={i}>
                 <div className='review-img'>
                   {/* <img src={r.userImg} alt='' /> */}
                   <img src={p1} alt='userImage' />

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { APIBase } from '../api';
-// import { loadDataWithParams } from './loadData';
+import { APIBase } from './api';
+import { loadDataWithParams } from './loadData';
 
 const initialState = {
   product: [],
@@ -12,19 +12,20 @@ const initialState = {
 export const loadProduct = createAsyncThunk(
   'product/loadProduct',
 
-  thunkAPI => {
-    return {
-      id: 1,
-      name: 'Abaya Brodée',
-      sizes: ['M', 'L', 'XL', '2XL', '3XL'],
-      rating: 4,
-      reviews: 122,
-      description:
-        'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
-      title: 'Abaya Brodée - Code XD1254',
-      price: 'DA 2400',
-    };
-  }
+  (id, thunkAPI) => loadDataWithParams(thunkAPI, 'product/show', { id })
+  // {
+  //   return {
+  //     id: 1,
+  //     name: 'Abaya Brodée',
+  //     sizes: ['M', 'L', 'XL', '2XL', '3XL'],
+  //     rating: 4,
+  //     reviews: 122,
+  //     description:
+  //       'Neque porro quisquam est qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit',
+  //     title: 'Abaya Brodée - Code XD1254',
+  //     price: 'DA 2400',
+  //   };
+  // }
   // axios
   //   .get(
   //     `${APIBase}/product/show`,
@@ -66,32 +67,34 @@ export const productSlice = createSlice({
           return;
         }
         // console.log(payload);
-        // let { rating } = payload.data;
-        // const productName = payload.data.names.english;
-        // let {}
-        // const product = rating.map(rating => {
-        //   const {
-        //     personComment: comment,
-        //     starRate,
-        //     timestamp: date,
-        //     userId: { displayName: userName, imageUrl: userImg },
-        //     _id: id,
-        //   } = rating;
-        //   return {
-        //     productName,
-        //     comment,
-        //     starRate,
-        //     date,
-        //     userName,
-        //     userImg: userImg,
-        //     id,
-        //     // ? userImg
-        //     // : `${APIBase}productImage/9edd350a-966f-494a-8ce0-625ce802fbcd.jpeg`,
-        //   };
-        // });
+        const { fullData: productData } = payload;
 
-        console.log(payload);
-        state.product = payload;
+        const product = {
+          name: productData.names,
+          arabicTitle: productData.smallDescription.headText.arabic,
+          englishTitle: productData.smallDescription.headText.english,
+          englishDescription: productData.smallDescription.hintText.english,
+          arabicDescription: productData.smallDescription.hintText.arabic,
+          id: productData._id,
+          images: productData.images,
+          mainImage: productData.images[0].imageUrl,
+
+          basePrice: productData.prices[0].currentPrice,
+          discountPrice: productData.prices[0].discountPrice
+            ? productData.prices[0].discountPrice
+            : null,
+          discountPercentage: productData.prices[0].percent,
+
+          inStock: productData.inStock,
+          avgRating: 3.5,
+          colorId: productData.prices[0].color,
+          size: productData.prices[0].size,
+          reviews: 1220,
+          // ? userImg
+          // : `${APIBase}productImage/9edd350a-966f-494a-8ce0-625ce802fbcd.jpeg`,
+        };
+
+        state.product = product;
         state.error = null;
       }
     },

@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { loadDataWithParams } from '../loadData';
+import { loadDataWithParams } from './loadData';
 
 const initialState = {
   homeSections: [],

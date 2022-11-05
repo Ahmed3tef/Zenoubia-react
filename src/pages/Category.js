@@ -11,7 +11,7 @@ const Category = props => {
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [params]);
-
+  console.log(params);
   return (
     <>
       <PageTitle maniTitle='Les Produits' subTitle='Djellaba' />

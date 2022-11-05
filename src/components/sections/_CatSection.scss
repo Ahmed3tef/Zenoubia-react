@@ -33,5 +33,13 @@
   }
 }
 .products-wrapper {
-  margin-right: 3rem;
+  display: grid;
+  column-gap: 1.5rem;
+  row-gap: 1rem;
+  grid-template-columns: 1fr 1fr 1fr;
+  // justify-content: center;
+  // align-content: center;
+  // align-items: center;
+  // height: 100%;
+  // width: 100%;
 }

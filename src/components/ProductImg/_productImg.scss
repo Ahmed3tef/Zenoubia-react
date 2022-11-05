@@ -10,7 +10,7 @@
 
   &-img {
     @extend %prod-img-container;
-    height: 48;
+    min-height: 52rem;
     max-height: 58rem;
     max-width: 45rem;
 
@@ -21,6 +21,8 @@
 
     &-small {
       @extend %prod-img-container;
+      min-height: 18rem;
+      min-width: 15rem;
       max-height: 20rem;
       max-width: 18rem;
       img {

@@ -10,7 +10,7 @@ import {
   reviewsSlice,
   productSlice,
   homeSections,
-  // subCategoriesSlice,
+  subCategories,
 } from './reducers';
 
 export const store = configureStore({
@@ -19,7 +19,7 @@ export const store = configureStore({
     // ads: adsSlice,
     // admin: adminSlice,
     // categories: categoriesSlice,
-    // subCategories: subCategoriesSlice,
+    subCategories,
     // products: productsSlice,
     // orders: ordersSlice,
     // reports: reportsSlice,

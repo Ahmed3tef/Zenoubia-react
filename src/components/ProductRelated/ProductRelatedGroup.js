@@ -20,7 +20,7 @@ const ProductRelatedGroup = props => {
         <Row>
           {[...new Array(12)].map((e, i) => {
             return (
-              <Col sm={4} md={2}>
+              <Col sm={4} md={2} key={i}>
                 <ProductRelated id={i} />
               </Col>
             );

@@ -8,7 +8,8 @@ import { TiPlus, TiMinus } from 'react-icons/ti';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
 import './_product.scss';
 import { useParams } from 'react-router-dom';
-import { loadProduct } from '../store/reducers/products/product';
+import { loadProduct } from '../store/reducers/product';
+import { APIBase } from '../store/reducers/api';
 
 const Product = props => {
   const { prodId } = useParams();
@@ -20,7 +21,10 @@ const Product = props => {
   // console.log(test);
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-    dispatch(loadProduct());
+  }, [prodId]);
+
+  useEffect(() => {
+    dispatch(loadProduct(prodId));
   }, [dispatch, prodId]);
 
   const [count, setCount] = useState(1);
@@ -29,22 +33,26 @@ const Product = props => {
   // بعدين هتعمل ستيت للاندكس بتاع الصورة عشان تغيره كل ما تضغط علي الصورة تحت
   const [imgValue, setImgValue] = useState(0);
   // بعد كدا هتطلع الصورة اللي ليها الاندكس اللي هتاخده من الفاليو اللي فوق دي و هتديه لصور المنتج و هتجيب منها كدا الصورة الرئيسية اللي هتتعرض
-  // const { mainImg } = product.images[imgValue];
+  let mainImg;
 
-  const mainImage = Images[imgValue];
+  // const mainImage = Images[imgValue];
   const sizes = ['M', 'L', 'XL', '2XL', '3XL', '4XL'];
   const [isLiked, setIsLiked] = useState(false);
   const [activeId, setActiveId] = useState(null);
   const increaseHandler = prevState => {
     if (prevState === 10) return prevState;
-    console.log(product);
+
     return prevState + 1;
   };
   const decreaseHandler = prevState => {
     if (prevState === 1) return prevState;
     return prevState - 1;
   };
-  const addActiveClass = e => {};
+  const handleMainImage = index => {
+    // setImgValue(index);
+    // set image preview
+    mainImg = product.images[imgValue]?.imageUrl;
+  };
   return (
     <>
       <Container fluid>
@@ -52,16 +60,16 @@ const Product = props => {
           <Row>
             <div className='col-3 h-100'>
               <div className='product__img-main '>
-                <img src={mainImage} alt='product-img' />
+                <img src={`${APIBase}${product.mainImage}`} alt='product-img' />
               </div>
             </div>
             <div className='col-9 h-100'>
               <div className='product__info'>
-                <h2 className='product__title'>{product.title}</h2>
+                <h2 className='product__title'>{product.englishTitle}</h2>
                 <div className='product__info-main'>
                   <div className='product__info-main--prices'>
                     <div className='rating'>
-                      <Ratings value={product.rating} />
+                      <Ratings value={product.avgRating} />
                       <span className='reviews-number'>{`(${product.reviews} reseñas)`}</span>
                     </div>
                     <div className='price-count-container'>
@@ -107,18 +115,20 @@ const Product = props => {
                     Description Du Produit
                   </h3>
                   <div className='product__desc-main'>
-                    Neque porro quisquam est qui dolorem ipsum quia dolor sit
-                    amet, consectetur, adipisci velit...
+                    {product.englishDescription}
                   </div>
                 </div>
                 <div className='product__preview'>
                   <ul className='product__preview-menu'>
-                    {Images.map((image, index) => (
+                    {product.images?.map((image, index) => (
                       <li
                         key={index}
-                        onClick={() => setImgValue(index)}
+                        onClick={() => handleMainImage(index)}
                         className='product__preview-item'>
-                        <img src={image} alt='product-img' />
+                        <img
+                          src={`${APIBase}${image.imageUrl}`}
+                          alt='product-img'
+                        />
                       </li>
                     ))}
                   </ul>

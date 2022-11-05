@@ -9,29 +9,32 @@ import { BiSearch } from 'react-icons/bi';
 
 import './_navbar.scss';
 import { Link, useNavigate } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadSubCategories } from '../../store/reducers/subcategory';
 const Navbar = props => {
-  /*
-  موضوع انك تلغي الدروب داون 
-  1- انك تعمل اوفر لاي اب ليها ولو ضغطت عليه الدروبداون دي هتتشال 
-  2- انك تعمل ايفنت بيشوف انت ضغطت فين ف الشاشة ولو مكانش الضغطة علي الدروب داون مش هيلغيها  بس لو ف اي مكان تاني ف الشاشة هتتلغي 
-
-  */
   const [showDropDown, setShowDropDown] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [showSearch, setShowSearch] = useState(false);
-  const subCategories = [
-    "Jaba - Roobes d'hotesse",
-    'Caftans',
-    'Djellaba',
-    'Robes Soiree',
-    'Abaya',
-    'Tenus traditionnelles',
-    'Khalidijia',
-    'Tenus de sport',
-    'Lingerie',
-    'Jabador',
-    'Sabot',
-  ];
+  const navigate = useNavigate();
+  const subCategories = useSelector(state => state.subCategories.subCategories);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(loadSubCategories());
+  }, [dispatch]);
+
+  // const subCategories = [
+  //   "Jaba - Roobes d'hotesse",
+  //   'Caftans',
+  //   'Djellaba',
+  //   'Robes Soiree',
+  //   'Abaya',
+  //   'Tenus traditionnelles',
+  //   'Khalidijia',
+  //   'Tenus de sport',
+  //   'Lingerie',
+  //   'Jabador',
+  //   'Sabot',
+  // ];
   function useOutsideAlerter(ref) {
     useEffect(() => {
       /**
@@ -53,7 +56,7 @@ const Navbar = props => {
   const dropdownRef = useRef(null);
   useOutsideAlerter(dropdownRef);
   // document.addEventListener('mousedown', () => setShowDropDown(false));
-  const navigate = useNavigate();
+
   return (
     <div className='nav sticky-top'>
       <div className='nav__main'>
@@ -99,15 +102,17 @@ const Navbar = props => {
               // onClick={() => setShowDropDown(false)}
             ></div>
             <ul className='nav__dropdown' ref={dropdownRef}>
-              {subCategories.map((e, i) => {
-                return (
-                  <li
-                    className='nav__dropdown-item'
-                    key={i}
-                    onClick={() => navigate('/products')}>
-                    {e}
-                  </li>
-                );
+              {subCategories.map((e, index) => {
+                for (let i = index; i < 10; i++) {
+                  return (
+                    <li
+                      className='nav__dropdown-item'
+                      key={e.id}
+                      onClick={() => navigate(`products/${e.id}`)}>
+                      {e.englishName}
+                    </li>
+                  );
+                }
               })}
             </ul>
           </div>

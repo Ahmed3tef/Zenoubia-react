@@ -129,6 +129,11 @@
     &-main {
       margin-inline-start: 2rem;
       font-size: 1.3rem;
+      -webkit-line-clamp: 3;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
     }
   }
   &__preview {
