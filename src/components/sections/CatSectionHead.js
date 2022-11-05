@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import './_CatSection.scss';
-const CatSectionHead = ({ title }) => {
+const CatSectionHead = ({ title, id }) => {
   const navigate = useNavigate();
 
   return (

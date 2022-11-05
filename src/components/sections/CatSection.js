@@ -8,14 +8,18 @@ import prod3 from '../../assets/prod-3.webp';
 import prod4 from '../../assets/prod-4.webp';
 import ProductImgWithTitle from '../ProductImg/ProductImgWithTitle';
 import CatSectionHead from './CatSectionHead';
-const CatSection = props => {
+import { APIBase } from '../../store/reducers/api';
+const CatSection = ({ title, id, data }) => {
   return (
     <section className='section__category my-3 my-md-5 py-3 py-md-5 '>
       <Container style={{ color: 'var(--color-black)' }}>
-        <CatSectionHead title="Jaba - Robes  d'hotesse" id={5} />
+        <CatSectionHead title={title} id={5} />
         <Row className='justify-content-center'>
           <Col md={6} className=' d-flex justify-content-center'>
-            <ProductImg image={prod1} />
+            <ProductImg
+              image={`${APIBase}${data.mainImg}`}
+              id={data.subCategoryId}
+            />
           </Col>
           <Col md={6} className=' d-flex align-items-center'>
             <div className='products-wrapper'>

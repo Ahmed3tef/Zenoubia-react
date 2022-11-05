@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import searchIcon from '../../assets/Search.svg';
 import mainLogo from '../../assets/zenoubia logo.png';
@@ -14,7 +14,7 @@ const Navbar = props => {
   موضوع انك تلغي الدروب داون 
   1- انك تعمل اوفر لاي اب ليها ولو ضغطت عليه الدروبداون دي هتتشال 
   2- انك تعمل ايفنت بيشوف انت ضغطت فين ف الشاشة ولو مكانش الضغطة علي الدروب داون مش هيلغيها  بس لو ف اي مكان تاني ف الشاشة هتتلغي 
-  
+
   */
   const [showDropDown, setShowDropDown] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -32,6 +32,27 @@ const Navbar = props => {
     'Jabador',
     'Sabot',
   ];
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      /**
+       * Alert if clicked on outside of element
+       */
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShowDropDown(false);
+        }
+      }
+      // Bind the event listener
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => {
+        // Unbind the event listener on clean up
+        document.removeEventListener('mousedown', handleClickOutside);
+      };
+    }, [ref]);
+  }
+  const dropdownRef = useRef(null);
+  useOutsideAlerter(dropdownRef);
+  // document.addEventListener('mousedown', () => setShowDropDown(false));
   const navigate = useNavigate();
   return (
     <div className='nav sticky-top'>
@@ -72,17 +93,23 @@ const Navbar = props => {
         </ul>
 
         {showDropDown && (
-          <div className='nav__dropdown'>
-            {subCategories.map((e, i) => {
-              return (
-                <li
-                  className='nav__dropdown-item'
-                  key={i}
-                  onClick={() => navigate('/products')}>
-                  {e}
-                </li>
-              );
-            })}
+          <div className='nav__dropdown-container'>
+            <div
+              className='overlay'
+              // onClick={() => setShowDropDown(false)}
+            ></div>
+            <ul className='nav__dropdown' ref={dropdownRef}>
+              {subCategories.map((e, i) => {
+                return (
+                  <li
+                    className='nav__dropdown-item'
+                    key={i}
+                    onClick={() => navigate('/products')}>
+                    {e}
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         )}
       </div>
