@@ -5,13 +5,17 @@ import gridIcon from '../assets/gridIcon.svg';
 import layerIcon from '../assets/layerIcon.svg';
 import './_category.scss';
 import { useParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loadProducts } from '../store/reducers/products';
 const Category = props => {
   const [isSmall, setIsSmall] = useState(true);
   const params = useParams();
+  const dispatch = useDispatch();
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [params]);
-  console.log(params);
+    dispatch(loadProducts(params.id));
+  }, [dispatch, params]);
+
   return (
     <>
       <PageTitle maniTitle='Les Produits' subTitle='Djellaba' />

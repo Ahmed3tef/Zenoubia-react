@@ -38,7 +38,7 @@ export async function loadDataWithId(thunkAPI, path, id) {
       return err.response.data;
     });
 }
-export async function loadDataWithParams(thunkAPI, path, params, data) {
+export async function loadDataWithParams(thunkAPI, path, params) {
   const config = {
     headers: {
       authorization: token,
