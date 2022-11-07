@@ -4,24 +4,42 @@ import productImg from '../../assets/prod-1.webp';
 import { Ratings } from '..';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
+import { APIBase } from '../../store/reducers/api';
 const ProductCardSm = props => {
   const sizes = ['M', 'L', 'XL'];
   const [isLiked, setIsLiked] = useState(false);
   const navigate = useNavigate();
+  const {
+    id,
+    name,
+    mainImg,
+    images,
+    alt,
+    prices,
+    count,
+    avgRating,
+    inStock,
+    currentPrice,
+    discountPrice,
+    percent,
+  } = props.data;
 
   return (
     <div className='card-sm'>
-      <div
-        className='card__img'
-        onClick={() => navigate(`/product/${props.id}`)}>
-        <div className='card__badge'>-44%</div>
+      <div className='card__img' onClick={() => navigate(`/product/${id}`)}>
+        {percent && <div className='card__badge'>{`- ${percent}%`}</div>}
 
-        <img src={productImg} alt='product' />
+        <img src={`${APIBase}${mainImg}`} alt='product' />
       </div>
-      <div className='card__title'>Abaya d'été en satin crêpe brodé</div>
+      <div className='card__title'>{name}</div>
       <div className='card__prices'>
-        <span className='card__price'>DA 3400</span>
-        <Ratings />
+        {discountPrice && (
+          <span className='card__price'>{`DA ${discountPrice}`}</span>
+        )}
+        {!discountPrice && (
+          <span className='card__price'>{`DA ${currentPrice}`}</span>
+        )}
+        <Ratings value={avgRating} />
       </div>
       <div className='card__info'>
         <div className='card__sizes'>

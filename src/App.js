@@ -2,17 +2,7 @@ import React, { Fragment, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
 // import { Container } from 'react-bootstrap';
-import {
-  Banner,
-  CatSection,
-  Footer,
-  LoginForm,
-  Navbar,
-  ProductCardLg,
-  ProductCardSm,
-  ProductRelated,
-  Reviews,
-} from './components';
+import { Footer, LoginForm, Navbar } from './components';
 import {
   Terms,
   AboutUs,
@@ -29,7 +19,6 @@ import {
 } from './pages';
 
 const App = () => {
-  const [largeCards, setLargeCards] = useState(false);
   return (
     <>
       <Navbar />
@@ -38,8 +27,17 @@ const App = () => {
           <Route path='/' element={<Home />} />
           <Route path='login' element={<LoginForm />} />
           <Route path='account' element={<Account />} />
-          {/* <Route path='products' element={<Category />} /> */}
-          <Route path='products/:id' element={<Category />} />
+          <Route path='products'>
+            <Route path=':id' element={<Category />} />
+            <Route path='latest' element={<Category path='latest' />} />
+            <Route
+              path='latestoffers'
+              element={<Category path='latestoffers' />}
+            />
+            <Route path='topselling' element={<Category path='topselling' />} />
+            <Route path='bestoffer' element={<Category path='bestoffer' />} />
+            <Route path='toprating' element={<Category path='toprating' />} />
+          </Route>
           <Route path='product/:prodId' element={<Product />} />
           <Route path='contact' element={<ContactUs />} />
           <Route path='account' element={<Account />} />

@@ -5,13 +5,47 @@ import gridIcon from '../assets/gridIcon.svg';
 import layerIcon from '../assets/layerIcon.svg';
 import './_category.scss';
 import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import {
+  loadBestOffers,
+  loadLatest,
+  loadLatestOffers,
+  loadProducts,
+  loadTopRating,
+  loadTopSelling,
+} from '../store/reducers/products';
 const Category = props => {
   const [isSmall, setIsSmall] = useState(true);
   const params = useParams();
+  const dispatch = useDispatch();
+  const products = useSelector(state => state.products.products);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [params]);
-  console.log(params);
+  }, []);
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    if (params.id) {
+      dispatch(loadProducts(params.id));
+    }
+
+    if (props.path === 'latest') {
+      dispatch(loadLatest());
+    }
+    if (props.path === 'latestoffers') {
+      dispatch(loadLatestOffers());
+    }
+    if (props.path === 'topselling') {
+      dispatch(loadTopSelling());
+    }
+    if (props.path === 'bestoffer') {
+      dispatch(loadBestOffers());
+    }
+    if (props.path === 'toprating') {
+      dispatch(loadTopRating());
+    }
+  }, [dispatch, params.id, props.path]);
+
   return (
     <>
       <PageTitle maniTitle='Les Produits' subTitle='Djellaba' />
@@ -35,17 +69,17 @@ const Category = props => {
               </div>
             </div>
             <Row>
-              {[...new Array(15)].map((e, i) => {
+              {products.map((p, i) => {
                 return (
                   <>
                     {isSmall && (
-                      <Col xs={12} sm={6} lg={4} xl={3}>
-                        <ProductCardSm id={i} data={e} />
+                      <Col xs={12} sm={6} lg={4} xl={3} key={i}>
+                        <ProductCardSm data={p} />
                       </Col>
                     )}
                     {!isSmall && (
-                      <Col sm={12}>
-                        <ProductCardLg id={i} data={e} />
+                      <Col sm={12} key={i}>
+                        <ProductCardLg data={p} />
                       </Col>
                     )}
                   </>
