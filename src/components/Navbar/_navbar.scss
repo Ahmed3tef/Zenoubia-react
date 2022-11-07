@@ -7,14 +7,34 @@
   position: sticky;
   box-shadow: var(--product-img-shadow);
   z-index: 5;
+  @media (max-width: 765px) {
+    height: 8rem;
+  }
+  @media (max-width: 567px) {
+    height: 6.5rem;
+  }
+
   &__main {
     @extend %JSB;
-    height: 6rem;
+    height: 66.667%;
     width: 100%;
+
     margin-inline: 10rem;
+    @media (max-width: 765px) {
+      margin-inline: 7rem;
+    }
+    @media (max-width: 567px) {
+      margin-inline: 4rem;
+    }
     .logo {
       // width: 28rem;
       height: 5rem;
+      @media (max-width: 765px) {
+        height: 4.2rem;
+      }
+      @media (max-width: 567px) {
+        height: 3.2rem;
+      }
       img {
         @extend %img-fill;
       }
@@ -22,18 +42,29 @@
   }
   &__secondary {
     @extend %JC;
-    height: 3rem;
+    height: 33.333%;
     width: 100%;
     background-color: var(--color-main-darker);
     color: var(--color-white);
   }
   &__icons > a:first-child {
     margin-right: 6rem;
+    @media (max-width: 765px) {
+      margin-right: 3rem;
+    }
   }
   &__icon {
     width: 3rem;
     height: 3.3rem;
     cursor: pointer;
+    @media (max-width: 765px) {
+      width: 2.7rem;
+      height: 3rem;
+    }
+    @media (max-width: 567px) {
+      width: 2.3rem;
+      height: 2.4rem;
+    }
   }
   &__links {
     @extend %JC;
@@ -46,8 +77,19 @@
     font-size: 1.4rem;
     line-height: 2.5rem;
     cursor: pointer;
+    @media (max-width: 765px) {
+      margin-right: 4rem;
+      font-size: 1.4rem;
+    }
+    @media (max-width: 567px) {
+      margin-right: 3rem;
+      font-size: 1rem;
+    }
     img {
       width: 1rem;
+      @media (max-width: 567px) {
+        width: 0.6rem;
+      }
     }
   }
   &__search {

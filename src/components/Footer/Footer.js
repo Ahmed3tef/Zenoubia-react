@@ -9,7 +9,7 @@ const Footer = props => {
   return (
     <div className='footer'>
       <div className='footer__main py-3 py-md-5 '>
-        <div className='container footer__main-wrapper'>
+        <div className='container-fluid P-0 footer__main-wrapper '>
           <div className='footer__links'>
             <div className='footer__links-title'>À propos de nous</div>
             <ul className='footer__links-wrapper'>

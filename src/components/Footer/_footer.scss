@@ -3,6 +3,16 @@
   font-family: var(--font-family-primary);
   background-color: var(--color-main);
   &__main {
+    margin-inline: 15rem;
+    @media (max-width: 990px) {
+      margin-inline: 7rem;
+    }
+    @media (max-width: 765px) {
+      margin-inline: 4rem;
+    }
+    @media (max-width: 567px) {
+      margin-inline: 1rem;
+    }
     &-wrapper {
       @extend %JSB;
     }
@@ -12,9 +22,22 @@
       color: var(--color-main-lightest);
       margin-bottom: 1rem;
       font-size: 2rem;
+      @media (max-width: 765px) {
+        font-size: 1.7rem;
+      }
+      @media (max-width: 567px) {
+        font-size: 1.5rem;
+      }
     }
     &-wrapper {
       margin-left: 1.5rem;
+      margin-bottom: 0;
+      padding-left: 0;
+      @media (max-width: 765px) {
+      }
+      @media (max-width: 567px) {
+        margin-left: 0.5rem;
+      }
     }
   }
   &__link {
@@ -22,10 +45,22 @@
     font-size: 1.6rem;
     cursor: pointer;
     color: var(--color-white);
+    @media (max-width: 765px) {
+      font-size: 1.5rem;
+    }
+    @media (max-width: 567px) {
+      font-size: 1.3rem;
+    }
   }
   &__logo {
     // width: 74rem;
     height: 9rem;
+    @media (max-width: 765px) {
+      height: 7rem;
+    }
+    @media (max-width: 567px) {
+      height: 5rem;
+    }
     img {
       @extend %img-fill;
     }
@@ -39,9 +74,21 @@
         width: 4rem;
         height: 4rem;
         padding: 0;
+        @media (max-width: 765px) {
+          height: 3.2rem;
+          width: 3.2rem;
+        }
+        @media (max-width: 567px) {
+          width: 2.5rem;
+          height: 2.5rem;
+        }
       }
       &:not(:last-child) {
         margin-right: 4rem;
+
+        @media (max-width: 567px) {
+          margin-right: 2rem;
+        }
       }
     }
   }
@@ -49,6 +96,12 @@
     font-size: 1.6rem;
     @extend %FLEX-COL-ALIGN-C;
     color: var(--color-main-lightest);
+    @media (max-width: 765px) {
+      font-size: 1.4rem;
+    }
+    @media (max-width: 567px) {
+      font-size: 1.2rem;
+    }
     a {
       transition: transform 0.2s;
     }
@@ -64,7 +117,12 @@
     background-color: var(--color-main-darker);
     color: var(--color-white);
     @extend %JC;
-
+    @media (max-width: 765px) {
+      font-size: 1.4rem;
+    }
+    @media (max-width: 567px) {
+      font-size: 1.2rem;
+    }
     span {
       margin-left: -5.5rem;
     }
