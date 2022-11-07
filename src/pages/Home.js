@@ -11,7 +11,7 @@ const Home = () => {
   useEffect(() => {
     dispatch(loadHomeProducts());
   }, [dispatch]);
-  console.log(sections);
+
   return (
     <>
       <Banner />

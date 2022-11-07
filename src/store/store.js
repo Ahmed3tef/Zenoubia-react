@@ -11,6 +11,7 @@ import {
   productSlice,
   homeSections,
   subCategories,
+  relatedProducts,
 } from './reducers';
 
 export const store = configureStore({
@@ -26,5 +27,6 @@ export const store = configureStore({
     reviews: reviewsSlice,
     product: productSlice,
     homeSections,
+    relatedProducts,
   },
 });

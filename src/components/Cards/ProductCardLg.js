@@ -13,12 +13,8 @@ const ProductCardLg = props => {
     id,
     name,
     mainImg,
-    images,
     alt,
-    prices,
-    count,
     avgRating,
-    inStock,
     currentPrice,
     discountPrice,
     percent,
@@ -30,7 +26,7 @@ const ProductCardLg = props => {
         <div className='card__img' onClick={() => navigate(`/product/${id}`)}>
           {percent && <div className='card__badge'>{`- ${percent}%`}</div>}
 
-          <img src={`${APIBase}${mainImg}`} alt='product' />
+          <img src={`${APIBase}${mainImg}`} alt={alt} />
         </div>
         <div className='card__info-text'>
           <div className='card__title'>{name}</div>

@@ -23,7 +23,6 @@ export const homeSectionsSlice = createSlice({
       state.error = null;
     },
     [loadHomeProducts.fulfilled]: (state, { payload }) => {
-      console.log(payload);
       if (payload) {
         if (payload.status === 0) {
           state.homeSections = [];

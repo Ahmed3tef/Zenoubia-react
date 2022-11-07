@@ -53,6 +53,7 @@ const Product = props => {
     // set image preview
     mainImg = product.images[imgValue]?.imageUrl;
   };
+  console.log(product);
   return (
     <>
       <Container fluid>
@@ -150,8 +151,8 @@ const Product = props => {
           </div>
         </div>
       </Container>
-      <Reviews />
-      <ProductRelatedGroup />
+      <Reviews id={prodId} />
+      <ProductRelatedGroup id={product.subCatId} />
     </>
   );
 };

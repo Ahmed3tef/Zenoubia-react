@@ -22,9 +22,6 @@ export async function loadData(thunkAPI, path) {
 }
 export async function loadDataWithId(thunkAPI, path, id) {
   const configId = {
-    headers: {
-      authorization: token,
-    },
     params: {
       subcatId: id,
     },
@@ -40,9 +37,6 @@ export async function loadDataWithId(thunkAPI, path, id) {
 }
 export async function loadDataWithParams(thunkAPI, path, params) {
   const config = {
-    headers: {
-      authorization: token,
-    },
     params,
   };
   return axios

@@ -70,12 +70,18 @@ export const productSlice = createSlice({
         const { fullData: productData } = payload;
 
         const product = {
+          id: productData._id,
+          subCatId:
+            productData.subcatId && productData.subcatId._id
+              ? productData.subcatId._id
+              : null,
           name: productData.names,
+          arabicName: productData.names.arabic,
+          englishName: productData.names.english,
           arabicTitle: productData.smallDescription.headText.arabic,
           englishTitle: productData.smallDescription.headText.english,
           englishDescription: productData.smallDescription.hintText.english,
           arabicDescription: productData.smallDescription.hintText.arabic,
-          id: productData._id,
           images: productData.images,
           mainImage: productData.images[0].imageUrl,
 
@@ -83,18 +89,22 @@ export const productSlice = createSlice({
           discountPrice: productData.prices[0].discountPrice
             ? productData.prices[0].discountPrice
             : null,
-          discountPercentage: productData.prices[0].percent,
+          discountPercentage: productData.prices[0].percent
+            ? productData.prices[0].percent
+            : null,
 
           inStock: productData.inStock,
-          avgRating: 3.5,
-          colorId: productData.prices[0].color,
-          size: productData.prices[0].size,
+          avgRating: productData.avgRating,
+          // colorId: productData.prices[0].color,
+          // size: productData.prices[0].size,
           reviews: 1220,
           // ? userImg
           // : `${APIBase}productImage/9edd350a-966f-494a-8ce0-625ce802fbcd.jpeg`,
         };
 
         state.product = product;
+        state.isLoading = false;
+
         state.error = null;
       }
     },

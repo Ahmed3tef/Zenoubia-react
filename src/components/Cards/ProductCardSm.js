@@ -29,7 +29,7 @@ const ProductCardSm = props => {
       <div className='card__img' onClick={() => navigate(`/product/${id}`)}>
         {percent && <div className='card__badge'>{`- ${percent}%`}</div>}
 
-        <img src={`${APIBase}${mainImg}`} alt='product' />
+        <img src={`${APIBase}${mainImg}`} alt={alt} />
       </div>
       <div className='card__title'>{name}</div>
       <div className='card__prices'>
