@@ -1,7 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import axios from 'axios';
 import { APIBase } from './api';
+
 import {
   loadData,
   loadDataWithId,
@@ -18,6 +20,7 @@ const initialState = {
 
 export const loadProducts = createAsyncThunk(
   'products/loadProducts',
+
   async (id, thunkAPI) => {
     return axios
       .post(

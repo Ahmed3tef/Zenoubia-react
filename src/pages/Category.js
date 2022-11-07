@@ -5,6 +5,7 @@ import gridIcon from '../assets/gridIcon.svg';
 import layerIcon from '../assets/layerIcon.svg';
 import './_category.scss';
 import { useParams } from 'react-router-dom';
+
 import { useDispatch, useSelector } from 'react-redux';
 import {
   loadBestOffers,
@@ -14,10 +15,12 @@ import {
   loadTopRating,
   loadTopSelling,
 } from '../store/reducers/products';
+
 const Category = props => {
   const [isSmall, setIsSmall] = useState(true);
   const params = useParams();
   const dispatch = useDispatch();
+
   const products = useSelector(state => state.products.products);
 
   useEffect(() => {
