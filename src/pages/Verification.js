@@ -19,10 +19,35 @@ const Verification = props => {
   }, [params]);
   const submitHandler = e => {
     // what is required ??
-    let data;
+
     const address = [];
     if (address1) address.append(address1);
     if (address2) address.append(address2);
+    const data = {
+      firstName,
+      lastName,
+      phone,
+      email,
+      countryId: '633817656113737d6e1f810a',
+      governomentId: '63381a086113737d6e1f8110',
+      cityId: '63381a3d6113737d6e1f8114',
+      address: 'hhhhh',
+      products: [
+        {
+          productId: '6332e8f18dadd857244e5839',
+          priceId: '6332e8f18dadd857244e583b',
+          quantity: 3,
+        },
+        {
+          productId: '6335adb86113737d6e1f755e',
+          priceId: '6335adb86113737d6e1f7560',
+          quantity: 2,
+        },
+      ],
+      additionalInformation: '',
+      userId: '',
+      couponId: '',
+    };
   };
   return (
     <div className='verification'>

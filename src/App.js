@@ -1,6 +1,9 @@
 import React, { Fragment, useState } from 'react';
 import { Container } from 'react-bootstrap';
 import { Route, Routes } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 // import { Container } from 'react-bootstrap';
 import { Footer, LoginForm, Navbar } from './components';
 import {
@@ -63,6 +66,20 @@ const App = () => {
         {/* <LoginForm /> */}
         {/* <Verification /> */}
         {/* <Cart /> */}
+
+        <ToastContainer
+          position='top-right'
+          autoClose={2500}
+          limit={4}
+          hideProgressBar
+          newestOnTop
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme='light'
+        />
       </main>
 
       {/* <Container>

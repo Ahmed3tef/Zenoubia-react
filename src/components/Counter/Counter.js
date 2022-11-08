@@ -1,7 +1,7 @@
 import React from 'react';
 import { TiMinus, TiPlus } from 'react-icons/ti';
 import './_counter.scss';
-const Counter = ({ count, setCount }) => {
+const Counter = props => {
   const increaseHandler = prevState => {
     if (prevState === 10) return prevState;
 
@@ -15,13 +15,13 @@ const Counter = ({ count, setCount }) => {
     <div className='actions'>
       <span
         className='decrease'
-        onClick={() => setCount(prevState => decreaseHandler(prevState))}>
+        onClick={() => props.setCount(prevState => decreaseHandler(prevState))}>
         <TiMinus />
       </span>
-      <span className='number'>{count}</span>
+      <span className='number'>{props.count}</span>
       <span
         className='add'
-        onClick={() => setCount(prevState => increaseHandler(prevState))}>
+        onClick={() => props.setCount(prevState => increaseHandler(prevState))}>
         <TiPlus />
       </span>
     </div>

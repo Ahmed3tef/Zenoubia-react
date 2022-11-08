@@ -7,6 +7,7 @@
   font-family: var(--font-family-secondary);
   padding-inline: 10rem;
   margin-block: 3rem;
+  min-height: 50vh;
   &__table {
     width: 100%;
     border: 3px solid var(--color-main-lighter);
@@ -78,6 +79,11 @@
     }
     &-desc {
       max-width: 23rem;
+      -webkit-line-clamp: 4;
+      text-overflow: ellipsis;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
     }
     &-img {
       width: 9rem;

@@ -5,25 +5,17 @@ import { CartTable, PageTitle } from '../components';
 import './_cart.scss';
 const Cart = () => {
   const navigate = useNavigate();
-  const data = [
-    {
-      id: 1,
-      image: prodImg,
-      name: 'Robes Soiress',
-      description:
-        "Robe pour votre occasion Henna - Majestic - Eid - Dinner Disponible en 9 couleurs et bénéficie d'une remise de 44%",
-      quantity: 3,
-      itemPrice: 38400,
-      totalPrice: 38400 * 3,
-    },
-  ];
+  const cart = JSON.parse(localStorage.getItem('cart'))
+    ? JSON.parse(localStorage.getItem('cart'))
+    : null;
 
   return (
     <>
       <PageTitle maniTitle={'Mon compte'} subTitle={'Panier'} />
       <div className='cart'>
         <div className='cart__table-container'>
-          <CartTable data={data} />
+          {!cart && <h2>No products added yet!</h2>}
+          {cart && <CartTable data={cart} />}
         </div>
         <div className='cart__confirm'>
           <h3 className='cart__confirm-title'>Total du panier</h3>

@@ -6,10 +6,11 @@ import { Images } from '../components/imagesData';
 import { Container, Row } from 'react-bootstrap';
 import { TiPlus, TiMinus } from 'react-icons/ti';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
-import './_product.scss';
 import { useParams } from 'react-router-dom';
 import { loadProduct } from '../store/reducers/product';
 import { APIBase } from '../store/reducers/api';
+import { toast } from 'react-toastify';
+import './_product.scss';
 
 const Product = props => {
   const { prodId } = useParams();
@@ -53,7 +54,26 @@ const Product = props => {
     // set image preview
     mainImg = product.images[imgValue]?.imageUrl;
   };
-  console.log(product);
+  //add to cart
+  const handleAddToCart = (product, count) => {
+    const oldCart = JSON.parse(localStorage.getItem('cart'))
+      ? JSON.parse(localStorage.getItem('cart'))
+      : [];
+    console.log(oldCart);
+    const newCart = [{ product, count }, ...oldCart];
+    // oldCart.push({ product, count });
+    localStorage.setItem('cart', JSON.stringify(newCart));
+    toast.success('Product added successfully.', {
+      position: 'top-right',
+      autoClose: 2500,
+      hideProgressBar: true,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+
+      theme: 'light',
+    });
+  };
   return (
     <>
       <Container fluid>
@@ -145,7 +165,9 @@ const Product = props => {
             {isLiked ? <BsHeartFill /> : <BsHeart />}
             Ajouter à la liste de souhaits
           </div>
-          <div className='product__actions-add'>
+          <div
+            className='product__actions-add'
+            onClick={e => handleAddToCart(product, count)}>
             <BsCartPlusFill />
             Ajouter au panier
           </div>

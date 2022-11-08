@@ -84,7 +84,7 @@ export const productSlice = createSlice({
           arabicDescription: productData.smallDescription.hintText.arabic,
           images: productData.images,
           mainImage: productData.images[0].imageUrl,
-
+          alt: productData.alt,
           basePrice: productData.prices[0].currentPrice,
           discountPrice: productData.prices[0].discountPrice
             ? productData.prices[0].discountPrice

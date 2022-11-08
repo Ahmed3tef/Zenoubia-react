@@ -21,9 +21,10 @@ const CartTable = ({ data }) => {
         <div className='cart__table-head--element'>Prix ​Total</div>
       </div>
       <div className='cart__table-body'>
-        {[1, 2, 3, 4].map((e, i) => (
-          <CartTableRow key={i} />
-        ))}
+        {data &&
+          data.map((e, i) => (
+            <CartTableRow key={i} product={e.product} countNumber={e.count} />
+          ))}
       </div>
     </div>
   );

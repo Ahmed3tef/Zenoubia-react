@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
 import { Counter } from '..';
 import prodImg from '../../assets/prod-1.webp';
-const CartTableRow = props => {
-  const [count, setCount] = useState(2);
+import { APIBase } from '../../store/reducers/api';
+const CartTableRow = ({ product, countNumber }) => {
+  const [count, setCount] = useState(countNumber);
+
+  const price = product.discountPrice
+    ? product.discountPrice
+    : product.basePrice;
+
+  const [totalPrice, setTotalPrice] = useState(count * price);
+
   return (
     <div className='cart__product'>
       <div className='cart__product-img'>
-        <img src={prodImg} alt='' />
+        <img src={`${APIBase}${product.mainImage}`} alt={product.alt} />
       </div>
 
-      <div className='cart__product-title'>Robes Soiress</div>
-      <div className='cart__product-desc'>
-        Robe pour votre occasion Henna - Majestic - Eid - Dinner Disponible en 9
-        couleurs et bénéficie d'une remise de 44%
-      </div>
+      <div className='cart__product-title'>{product.englishName}</div>
+      <div className='cart__product-desc'>{product.englishDescription}</div>
       <div className='cart__product-count'>
-        <Counter count={count} setCount={setCount} />
+        <Counter
+          count={count}
+          setCount={setCount}
+          totalPrice={totalPrice}
+          setTotalPrice={setTotalPrice}
+        />
       </div>
-      <div className='cart__product-price'>DA 38400</div>
-      <div className='cart__product-total'>DA {count * 38400}</div>
+      <div className='cart__product-price'>DA {price}</div>
+      <div className='cart__product-total'>DA {count * price}</div>
     </div>
   );
 };
