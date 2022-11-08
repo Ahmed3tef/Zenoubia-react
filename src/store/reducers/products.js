@@ -120,44 +120,246 @@ export const productsSlice = createSlice({
       state.products = null;
       state.error = action.payload.response.data.message;
     },
-    // [loadProducts.pending]: (state, action) => {
-    //   state.products = [];
-    //   state.isLoading = true;
-    //   state.error = null;
-    // },
-    // [loadProducts.fulfilled]: (state, { payload }) => {
-    //   // console.log(payload);
-    //   if (payload) {
-    //     if (payload.status === 0) {
-    //       state.products = [];
-    //       state.isLoading = false;
-    //       state.error = payload.message;
-    //       return;
-    //     }
-    //     let data = payload.data.map((obj, i) => {
-    //       return {
-    //         id: obj.data._id,
-    //         catName: obj.catName,
-    //         key: obj.data._id,
-    //         englishName: obj.data.names.english,
-    //         arabicName: obj.data.names.arabic,
-    //         imgUrl: obj.data.image.imageUrl,
-    //         imgAlt: obj.data.image.alt,
-    //         category: obj.data.categoriesId,
-    //         position: i + 1,
-    //       };
-    //     });
-    //     console.log(data.id);
-    //     state.products = data;
-    //     state.isLoading = false;
-    //     state.error = null;
-    //   }
-    // },
-    // [loadProducts.rejected]: (state, action) => {
-    //   state.isLoading = false;
-    //   state.products = null;
-    //   state.error = action.payload.response.data.message;
-    // },
+    [loadLatest.pending]: (state, action) => {
+      state.products = [];
+      state.isLoading = true;
+      state.error = null;
+    },
+    [loadLatest.fulfilled]: (state, { payload }) => {
+      // console.log(payload);
+      if (payload) {
+        // console.log(payload);
+        if (payload.status === 0) {
+          state.products = [];
+          state.isLoading = false;
+          state.error = payload.message;
+          return;
+        }
+        let data = payload.data.map((obj, i) => {
+          const { id, name, images, alt, prices, avgRating, count, inStock } =
+            obj;
+          const mainImg = images[0].imageUrl;
+
+          return {
+            id,
+            name,
+            mainImg,
+            images,
+            alt,
+            prices,
+            count,
+            avgRating,
+            inStock,
+            currentPrice: prices[0].currentPrice,
+            discountPrice: prices[0].discountPrice
+              ? prices[0].discountPrice
+              : null,
+            percent: prices[0].percent ? prices[0].percent : null,
+          };
+        });
+        console.log(data);
+        state.products = data;
+        state.isLoading = false;
+        state.error = null;
+      }
+    },
+    [loadLatest.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.products = null;
+      state.error = action.payload.response.data.message;
+    },
+    [loadLatestOffers.pending]: (state, action) => {
+      state.products = [];
+      state.isLoading = true;
+      state.error = null;
+    },
+    [loadLatestOffers.fulfilled]: (state, { payload }) => {
+      // console.log(payload);
+      if (payload) {
+        // console.log(payload);
+        if (payload.status === 0) {
+          state.products = [];
+          state.isLoading = false;
+          state.error = payload.message;
+          return;
+        }
+        let data = payload.data.map((obj, i) => {
+          const { id, name, images, alt, prices, avgRating, count, inStock } =
+            obj;
+          const mainImg = images[0].imageUrl;
+
+          return {
+            id,
+            name,
+            mainImg,
+            images,
+            alt,
+            prices,
+            count,
+            avgRating,
+            inStock,
+            currentPrice: prices[0].currentPrice,
+            discountPrice: prices[0].discountPrice
+              ? prices[0].discountPrice
+              : null,
+            percent: prices[0].percent ? prices[0].percent : null,
+          };
+        });
+        console.log(data);
+        state.products = data;
+        state.isLoading = false;
+        state.error = null;
+      }
+    },
+    [loadLatestOffers.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.products = null;
+      state.error = action.payload.response.data.message;
+    },
+    [loadBestOffers.pending]: (state, action) => {
+      state.products = [];
+      state.isLoading = true;
+      state.error = null;
+    },
+    [loadBestOffers.fulfilled]: (state, { payload }) => {
+      // console.log(payload);
+      if (payload) {
+        // console.log(payload);
+        if (payload.status === 0) {
+          state.products = [];
+          state.isLoading = false;
+          state.error = payload.message;
+          return;
+        }
+        let data = payload.data.map((obj, i) => {
+          const { id, name, images, alt, prices, avgRating, count, inStock } =
+            obj;
+          const mainImg = images[0].imageUrl;
+
+          return {
+            id,
+            name,
+            mainImg,
+            images,
+            alt,
+            prices,
+            count,
+            avgRating,
+            inStock,
+            currentPrice: prices[0].currentPrice,
+            discountPrice: prices[0].discountPrice
+              ? prices[0].discountPrice
+              : null,
+            percent: prices[0].percent ? prices[0].percent : null,
+          };
+        });
+        console.log(data);
+        state.products = data;
+        state.isLoading = false;
+        state.error = null;
+      }
+    },
+    [loadBestOffers.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.products = null;
+      state.error = action.payload.response.data.message;
+    },
+    [loadTopRating.pending]: (state, action) => {
+      state.products = [];
+      state.isLoading = true;
+      state.error = null;
+    },
+    [loadTopRating.fulfilled]: (state, { payload }) => {
+      // console.log(payload);
+      if (payload) {
+        // console.log(payload);
+        if (payload.status === 0) {
+          state.products = [];
+          state.isLoading = false;
+          state.error = payload.message;
+          return;
+        }
+        let data = payload.data.map((obj, i) => {
+          const { id, name, images, alt, prices, avgRating, count, inStock } =
+            obj;
+          const mainImg = images[0].imageUrl;
+
+          return {
+            id,
+            name,
+            mainImg,
+            images,
+            alt,
+            prices,
+            count,
+            avgRating,
+            inStock,
+            currentPrice: prices[0].currentPrice,
+            discountPrice: prices[0].discountPrice
+              ? prices[0].discountPrice
+              : null,
+            percent: prices[0].percent ? prices[0].percent : null,
+          };
+        });
+        console.log(data);
+        state.products = data;
+        state.isLoading = false;
+        state.error = null;
+      }
+    },
+    [loadTopRating.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.products = null;
+      state.error = action.payload.response.data.message;
+    },
+    [loadTopSelling.pending]: (state, action) => {
+      state.products = [];
+      state.isLoading = true;
+      state.error = null;
+    },
+    [loadTopSelling.fulfilled]: (state, { payload }) => {
+      // console.log(payload);
+      if (payload) {
+        // console.log(payload);
+        if (payload.status === 0) {
+          state.products = [];
+          state.isLoading = false;
+          state.error = payload.message;
+          return;
+        }
+        let data = payload.data.map((obj, i) => {
+          const { id, name, images, alt, prices, avgRating, count, inStock } =
+            obj;
+          const mainImg = images[0].imageUrl;
+
+          return {
+            id,
+            name,
+            mainImg,
+            images,
+            alt,
+            prices,
+            count,
+            avgRating,
+            inStock,
+            currentPrice: prices[0].currentPrice,
+            discountPrice: prices[0].discountPrice
+              ? prices[0].discountPrice
+              : null,
+            percent: prices[0].percent ? prices[0].percent : null,
+          };
+        });
+        console.log(data);
+        state.products = data;
+        state.isLoading = false;
+        state.error = null;
+      }
+    },
+    [loadTopSelling.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.products = null;
+      state.error = action.payload.response.data.message;
+    },
   },
 });
 

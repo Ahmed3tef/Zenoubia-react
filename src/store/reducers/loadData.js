@@ -12,7 +12,7 @@ const config = {
 };
 export async function loadData(thunkAPI, path) {
   return axios
-    .get(`${APIBase}${path}`, config, thunkAPI)
+    .get(`${APIBase}${path}`, thunkAPI)
     .then(res => {
       return res.data;
     })
