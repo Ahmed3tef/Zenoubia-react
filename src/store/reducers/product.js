@@ -92,7 +92,7 @@ export const productSlice = createSlice({
           discountPercentage: productData.prices[0].percent
             ? productData.prices[0].percent
             : null,
-
+          priceId: productData.prices[0]._id ? productData.prices[0]._id : null,
           inStock: productData.inStock,
           avgRating: productData.avgRating,
           // colorId: productData.prices[0].color,

@@ -1,53 +1,102 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { LargeText, MiniText, PageTitle, Selector } from '../components';
+import { APIBase } from '../store/reducers/api';
+import { loadCities } from '../store/reducers/cities';
+import { loadCountries } from '../store/reducers/countries';
+import { loadGovernments } from '../store/reducers/governments';
 import './_verification.scss';
 const Verification = props => {
+  const params = useParams();
+  const dispatch = useDispatch();
+  const countries = useSelector(state => state.countries.countries);
+  const governments = useSelector(state => state.governments.governments);
+  const cities = useSelector(state => state.cities.cities);
+
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
 
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [address1, setAddress1] = useState('');
-  const [address2, setAddress2] = useState('');
+  const [address, setAddress] = useState('');
+
+  const [countryId, setCountryId] = useState('');
+  const [governomentId, setGovernomentId] = useState('');
+  const [cityId, setCityId] = useState('');
 
   const [paymentMethod, setPaymentMethod] = useState('cash');
 
-  const params = useParams();
+  useEffect(() => {
+    dispatch(loadCountries());
+    dispatch(loadGovernments());
+    dispatch(loadCities());
+  }, [dispatch]);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [params]);
+
+  const cartItems = JSON.parse(localStorage.getItem('cart'))
+    ? JSON.parse(localStorage.getItem('cart'))
+    : null;
   const submitHandler = e => {
     // what is required ??
+    const products = cartItems.map(item => {
+      return {
+        productId: item.product.id,
+        priceId: item.product.priceId,
+        quantity: item.count,
+      };
+    });
 
-    const address = [];
-    if (address1) address.append(address1);
-    if (address2) address.append(address2);
     const data = {
       firstName,
       lastName,
       phone,
       email,
-      countryId: '633817656113737d6e1f810a',
-      governomentId: '63381a086113737d6e1f8110',
-      cityId: '63381a3d6113737d6e1f8114',
-      address: 'hhhhh',
-      products: [
-        {
-          productId: '6332e8f18dadd857244e5839',
-          priceId: '6332e8f18dadd857244e583b',
-          quantity: 3,
-        },
-        {
-          productId: '6335adb86113737d6e1f755e',
-          priceId: '6335adb86113737d6e1f7560',
-          quantity: 2,
-        },
-      ],
-      additionalInformation: '',
-      userId: '',
-      couponId: '',
+      countryId,
+      governomentId,
+      cityId,
+      address,
+      products,
     };
+
+    const id = toast.loading('please wait a second...');
+
+    axios
+      .post(`${APIBase}order`, data)
+      .then(res => {
+        toast.update(id, {
+          render: `Order done successfully 👌`,
+          type: 'success',
+          isLoading: false,
+          position: 'top-right',
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      })
+      .catch(err => {
+        const errMsg = err.response.data.message;
+        toast.update(id, {
+          render: `${errMsg} ⛔`,
+          type: 'error',
+          isLoading: false,
+          position: 'top-right',
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      });
+    // additionalInformation: '',
+    // userId: '',
+    // couponId: '',
   };
   return (
     <div className='verification'>
@@ -93,14 +142,16 @@ const Verification = props => {
             <div className='d-flex'>
               <Selector
                 label={'Pays'}
-                // name={phone}
-                // setName={setPhone}
+                id={countryId}
+                setId={setCountryId}
+                data={countries}
                 width='70%'
               />
               <Selector
                 label={'Gouvernorat'}
-                // name={email}
-                // setName={setEmail}
+                id={governomentId}
+                setId={setGovernomentId}
+                data={governments}
                 width='70%'
                 classes='ms-5'
               />
@@ -108,8 +159,9 @@ const Verification = props => {
 
             <Selector
               label={'Ville'}
-              // name={email}
-              // setName={setEmail}
+              id={cityId}
+              setId={setCityId}
+              data={cities}
               width='90%'
               // classes='ms-5'
             />

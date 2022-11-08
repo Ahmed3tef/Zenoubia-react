@@ -12,6 +12,9 @@ import {
   homeSections,
   subCategories,
   relatedProducts,
+  cities,
+  governments,
+  countries,
 } from './reducers';
 
 export const store = configureStore({
@@ -28,5 +31,8 @@ export const store = configureStore({
     product: productSlice,
     homeSections,
     relatedProducts,
+    cities,
+    governments,
+    countries,
   },
 });
