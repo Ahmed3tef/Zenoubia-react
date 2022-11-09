@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import { LargeText, MiniText, PageTitle, Selector } from '../components';
 import { APIBase } from '../store/reducers/api';
@@ -12,6 +12,8 @@ import './_verification.scss';
 const Verification = props => {
   const params = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const countries = useSelector(state => state.countries.countries);
   const governments = useSelector(state => state.governments.governments);
   const cities = useSelector(state => state.cities.cities);
@@ -27,6 +29,7 @@ const Verification = props => {
   const [governomentId, setGovernomentId] = useState('');
   const [cityId, setCityId] = useState('');
 
+  const [additionalInfo, setAdditionalInfo] = useState('');
   const [paymentMethod, setPaymentMethod] = useState('cash');
 
   useEffect(() => {
@@ -50,6 +53,7 @@ const Verification = props => {
         quantity: item.count,
       };
     });
+    // console.log(products);
 
     const data = {
       firstName,
@@ -61,7 +65,11 @@ const Verification = props => {
       cityId,
       address,
       products,
+      additionalInformation: additionalInfo ? additionalInfo : '',
+      userId: '',
+      couponId: '',
     };
+    // console.log(data);
 
     const id = toast.loading('please wait a second...');
 
@@ -75,10 +83,11 @@ const Verification = props => {
           position: 'top-right',
           autoClose: 2500,
           hideProgressBar: true,
-          closeOnClick: false,
+          closeOnClick: true,
           pauseOnHover: true,
           draggable: true,
         });
+        // navigate('/');
       })
       .catch(err => {
         const errMsg = err.response.data.message;
@@ -94,9 +103,6 @@ const Verification = props => {
           draggable: true,
         });
       });
-    // additionalInformation: '',
-    // userId: '',
-    // couponId: '',
   };
   return (
     <div className='verification'>
@@ -165,7 +171,12 @@ const Verification = props => {
               width='90%'
               // classes='ms-5'
             />
-            <LargeText label={'Adresse'} width='90%' />
+            <LargeText
+              label={'Adresse'}
+              width='90%'
+              desc={address}
+              setDesc={setAddress}
+            />
           </div>
           <h2 className='verification__form-title mt-5'>
             Informations Complémentaires
@@ -175,6 +186,8 @@ const Verification = props => {
               label={'Notes de commande (facultatif)'}
               height={'10rem'}
               width='90%'
+              desc={additionalInfo}
+              setDesc={setAdditionalInfo}
             />
           </div>
         </div>
@@ -184,27 +197,21 @@ const Verification = props => {
             <div className='verification__info-products'>
               <h3 className='verification__info-products--title'>Products</h3>
               <div className='verification__info-products--wrapper'>
-                <div className='product'>
-                  <div className='product-desc'>
-                    Robe pour votre occasion Henna - Majestic - Eid - Dinner
-                    Disponible en 9 couleurs et bénéficie d'une remise de 44% *1
-                  </div>
-                  <div className='product-price'>DA 38400</div>
-                </div>
-                <div className='product'>
-                  <div className='product-desc'>
-                    Robe pour votre occasion Henna - Majestic - Eid - Dinner
-                    Disponible en 9 couleurs et bénéficie d'une remise de 44% *1
-                  </div>
-                  <div className='product-price'>DA 38400</div>
-                </div>
-                <div className='product'>
-                  <div className='product-desc'>
-                    Robe pour votre occasion Henna - Majestic - Eid - Dinner
-                    Disponible en 9 couleurs et bénéficie d'une remise de 44% *1
-                  </div>
-                  <div className='product-price'>DA 38400</div>
-                </div>
+                {cartItems.map((e, i) => {
+                  return (
+                    <div className='product'>
+                      <div className='product-desc'>
+                        <div className='product-desc-main'>
+                          {e.product.englishDescription}
+                        </div>
+                        <div className='product-count'>
+                          number of items: {e.count}
+                        </div>
+                      </div>
+                      <div className='product-price'>DA 38400</div>
+                    </div>
+                  );
+                })}
               </div>
               <div className='total'>
                 <h3 className='total-title'>Total</h3>

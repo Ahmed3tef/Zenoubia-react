@@ -42,13 +42,21 @@
         .product {
           @extend %JSB;
           align-items: flex-start;
-          :not(:last-child) {
+          &:not(:last-child) {
             margin-bottom: 2rem;
           }
           &-desc {
             width: 68%;
             font-size: 1.4rem;
             color: #444;
+            &-main {
+              margin-bottom: 0.7rem;
+              -webkit-line-clamp: 4;
+              text-overflow: ellipsis;
+              overflow: hidden;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+            }
           }
           &-price {
             width: 30%;
