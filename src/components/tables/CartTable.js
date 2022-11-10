@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Counter } from '..';
 import prodImg from '../../assets/prod-1.webp';
 import CartTableRow from './CartTableRow';
-const CartTable = ({ data, addHandler }) => {
+const CartTable = ({ data, addHandler, decreaseHandler }) => {
   return (
     <div className='cart__table'>
       <div className='cart__table-head'>
@@ -26,7 +26,8 @@ const CartTable = ({ data, addHandler }) => {
             <CartTableRow
               itemIndex={i}
               addHandler={addHandler}
-              key={e.product.id}
+              decreaseHandler={decreaseHandler}
+              key={i}
               product={e.product}
               countNumber={e.count}
             />

@@ -6,7 +6,6 @@ import { APIBase } from './api';
 
 import {
   loadData,
-  loadDataWithId,
   loadDataWithParams,
   loadDataWithParamsPost,
 } from './loadData';
@@ -44,7 +43,7 @@ export const loadProducts = createAsyncThunk(
 export const loadFilteredProducts = createAsyncThunk(
   'products/loadFilteredProducts',
   (params, data, thunkAPI) =>
-    loadDataWithParams(thunkAPI, 'product/categoryproducts', params, data)
+    loadDataWithParamsPost(thunkAPI, 'product/categoryproducts', params, data)
 );
 
 export const loadLatest = createAsyncThunk('products/loadLatest', thunkAPI =>
@@ -88,8 +87,17 @@ export const productsSlice = createSlice({
           return;
         }
         let data = payload.data.map((obj, i) => {
-          const { id, name, images, alt, prices, avgRating, count, inStock } =
-            obj;
+          const {
+            id,
+            name,
+            images,
+            alt,
+            prices,
+            avgRating,
+            count,
+            inStock,
+            subcat,
+          } = obj;
           const mainImg = images[0].imageUrl;
 
           return {
@@ -102,6 +110,7 @@ export const productsSlice = createSlice({
             count,
             avgRating,
             inStock,
+            subCatId: subcat.id,
             currentPrice: prices[0].currentPrice,
             discountPrice: prices[0].discountPrice
               ? prices[0].discountPrice
@@ -109,7 +118,7 @@ export const productsSlice = createSlice({
             percent: prices[0].percent ? prices[0].percent : null,
           };
         });
-        console.log(data);
+
         state.products = data;
         state.isLoading = false;
         state.error = null;
@@ -126,7 +135,6 @@ export const productsSlice = createSlice({
       state.error = null;
     },
     [loadLatest.fulfilled]: (state, { payload }) => {
-      // console.log(payload);
       if (payload) {
         // console.log(payload);
         if (payload.status === 0) {
@@ -136,8 +144,17 @@ export const productsSlice = createSlice({
           return;
         }
         let data = payload.data.map((obj, i) => {
-          const { id, name, images, alt, prices, avgRating, count, inStock } =
-            obj;
+          const {
+            id,
+            name,
+            images,
+            alt,
+            prices,
+            avgRating,
+            count,
+            inStock,
+            subcat,
+          } = obj;
           const mainImg = images[0].imageUrl;
 
           return {
@@ -150,6 +167,7 @@ export const productsSlice = createSlice({
             count,
             avgRating,
             inStock,
+            subCatId: subcat.id,
             currentPrice: prices[0].currentPrice,
             discountPrice: prices[0].discountPrice
               ? prices[0].discountPrice
@@ -157,7 +175,7 @@ export const productsSlice = createSlice({
             percent: prices[0].percent ? prices[0].percent : null,
           };
         });
-        console.log(data);
+
         state.products = data;
         state.isLoading = false;
         state.error = null;
@@ -174,7 +192,6 @@ export const productsSlice = createSlice({
       state.error = null;
     },
     [loadLatestOffers.fulfilled]: (state, { payload }) => {
-      // console.log(payload);
       if (payload) {
         // console.log(payload);
         if (payload.status === 0) {
@@ -184,8 +201,17 @@ export const productsSlice = createSlice({
           return;
         }
         let data = payload.data.map((obj, i) => {
-          const { id, name, images, alt, prices, avgRating, count, inStock } =
-            obj;
+          const {
+            id,
+            name,
+            images,
+            alt,
+            prices,
+            avgRating,
+            count,
+            inStock,
+            subcat,
+          } = obj;
           const mainImg = images[0].imageUrl;
 
           return {
@@ -198,6 +224,7 @@ export const productsSlice = createSlice({
             count,
             avgRating,
             inStock,
+            subCatId: subcat.id,
             currentPrice: prices[0].currentPrice,
             discountPrice: prices[0].discountPrice
               ? prices[0].discountPrice
@@ -205,7 +232,7 @@ export const productsSlice = createSlice({
             percent: prices[0].percent ? prices[0].percent : null,
           };
         });
-        console.log(data);
+
         state.products = data;
         state.isLoading = false;
         state.error = null;
@@ -222,7 +249,6 @@ export const productsSlice = createSlice({
       state.error = null;
     },
     [loadBestOffers.fulfilled]: (state, { payload }) => {
-      // console.log(payload);
       if (payload) {
         // console.log(payload);
         if (payload.status === 0) {
@@ -232,8 +258,17 @@ export const productsSlice = createSlice({
           return;
         }
         let data = payload.data.map((obj, i) => {
-          const { id, name, images, alt, prices, avgRating, count, inStock } =
-            obj;
+          const {
+            id,
+            name,
+            images,
+            alt,
+            prices,
+            avgRating,
+            count,
+            inStock,
+            subcat,
+          } = obj;
           const mainImg = images[0].imageUrl;
 
           return {
@@ -246,6 +281,7 @@ export const productsSlice = createSlice({
             count,
             avgRating,
             inStock,
+            subCatId: subcat.id,
             currentPrice: prices[0].currentPrice,
             discountPrice: prices[0].discountPrice
               ? prices[0].discountPrice
@@ -253,7 +289,7 @@ export const productsSlice = createSlice({
             percent: prices[0].percent ? prices[0].percent : null,
           };
         });
-        console.log(data);
+
         state.products = data;
         state.isLoading = false;
         state.error = null;
@@ -270,7 +306,6 @@ export const productsSlice = createSlice({
       state.error = null;
     },
     [loadTopRating.fulfilled]: (state, { payload }) => {
-      // console.log(payload);
       if (payload) {
         // console.log(payload);
         if (payload.status === 0) {
@@ -280,8 +315,17 @@ export const productsSlice = createSlice({
           return;
         }
         let data = payload.data.map((obj, i) => {
-          const { id, name, images, alt, prices, avgRating, count, inStock } =
-            obj;
+          const {
+            id,
+            name,
+            images,
+            alt,
+            prices,
+            avgRating,
+            count,
+            inStock,
+            subcat,
+          } = obj;
           const mainImg = images[0].imageUrl;
 
           return {
@@ -294,6 +338,7 @@ export const productsSlice = createSlice({
             count,
             avgRating,
             inStock,
+            subCatId: subcat.id,
             currentPrice: prices[0].currentPrice,
             discountPrice: prices[0].discountPrice
               ? prices[0].discountPrice
@@ -301,7 +346,7 @@ export const productsSlice = createSlice({
             percent: prices[0].percent ? prices[0].percent : null,
           };
         });
-        console.log(data);
+
         state.products = data;
         state.isLoading = false;
         state.error = null;
@@ -318,7 +363,6 @@ export const productsSlice = createSlice({
       state.error = null;
     },
     [loadTopSelling.fulfilled]: (state, { payload }) => {
-      // console.log(payload);
       if (payload) {
         // console.log(payload);
         if (payload.status === 0) {
@@ -328,8 +372,17 @@ export const productsSlice = createSlice({
           return;
         }
         let data = payload.data.map((obj, i) => {
-          const { id, name, images, alt, prices, avgRating, count, inStock } =
-            obj;
+          const {
+            id,
+            name,
+            images,
+            alt,
+            prices,
+            avgRating,
+            count,
+            inStock,
+            subcat,
+          } = obj;
           const mainImg = images[0].imageUrl;
 
           return {
@@ -342,6 +395,7 @@ export const productsSlice = createSlice({
             count,
             avgRating,
             inStock,
+            subCatId: subcat.id,
             currentPrice: prices[0].currentPrice,
             discountPrice: prices[0].discountPrice
               ? prices[0].discountPrice
@@ -349,7 +403,7 @@ export const productsSlice = createSlice({
             percent: prices[0].percent ? prices[0].percent : null,
           };
         });
-        console.log(data);
+
         state.products = data;
         state.isLoading = false;
         state.error = null;

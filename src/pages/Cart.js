@@ -22,8 +22,16 @@ const Cart = () => {
       }
       return item;
     });
-
-    console.log(testCart);
+    setOldCart(testCart);
+  };
+  const decreaseHandler = itemIndex => {
+    let testCart = oldCart.map((item, i) => {
+      if (i === itemIndex) {
+        item.count--;
+      }
+      return item;
+    });
+    setOldCart(testCart);
   };
 
   let cart;
@@ -56,6 +64,7 @@ const Cart = () => {
               countNum={count}
               setCountNum={setCount}
               addHandler={addHandler}
+              decreaseHandler={decreaseHandler}
             />
           </div>
           <div className='cart__confirm'>

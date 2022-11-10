@@ -19,6 +19,7 @@ const Home = () => {
       {sections.map(section => {
         return (
           <CatSection
+            key={section.subCategoryId}
             data={section}
             title={section.subCategoryName}
             id={section.subCategoryId}

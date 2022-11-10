@@ -10,7 +10,7 @@ const initialState = {
 export const loadHomeProducts = createAsyncThunk(
   'homeSections/loadHomeProducts',
   thunkAPI =>
-    loadDataWithParams(thunkAPI, 'product/subcategoryproduct', { limit: 0 })
+    loadDataWithParams(thunkAPI, 'product/subcategoryproduct', { limit: 6 })
 );
 
 export const homeSectionsSlice = createSlice({

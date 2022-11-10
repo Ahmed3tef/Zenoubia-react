@@ -5,7 +5,16 @@ import { PriceRange } from '..';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSubCategories } from '../../store/reducers/subcategory';
 import { useNavigate } from 'react-router-dom';
-const Filter = () => {
+import { loadFilteredProducts } from '../../store/reducers/products';
+const Filter = ({
+  colors,
+  sizes,
+  setColorFilter,
+  setSizeFilter,
+  colorFilter,
+  sizeFilter,
+  subCatId,
+}) => {
   const [startPrice, setStartPrice] = useState(0);
   const [endPrice, setEndPrice] = useState(4000);
 
@@ -16,34 +25,40 @@ const Filter = () => {
     dispatch(loadSubCategories());
   }, [dispatch]);
 
-  // const subCategories = [
-  //   "Jaba - Roobes d'hotesse",
-  //   'Caftans',
-  //   'Djellaba',
-  //   'Robes Soiree',
-  //   'Abaya',
-  //   'Tenus traditionnelles',
-  //   'Khalidijia',
-  //   'Tenus de sport',
-  //   'Lingerie',
-  //   'Jabador',
-  //   'Sabot',
-  // ];
-  const sizes = ['M', 'L', 'XL', '2XL', '3XL', '4XL'];
-  const colors = [
-    'Beige',
-    'Le noir',
-    'Bleu',
-    'Marron',
-    'Fuchsia',
-    'Dorado',
-    'Vert',
-    'Gris',
-    'Orange',
-    'Rose',
-  ];
+  const addColorHandler = (e, id) => {
+    let resultArray = [];
+    if (e.target.checked) {
+      resultArray = colorFilter.filter(CheckedId => CheckedId !== id);
+      resultArray.push(id);
+    } else {
+      resultArray = colorFilter.filter(CheckedId => CheckedId !== id);
+    }
+    setColorFilter(resultArray);
+  };
+  const addSizeHandler = (e, id) => {
+    let resultArray = [];
+    if (e.target.checked) {
+      resultArray = sizeFilter.filter(CheckedId => CheckedId !== id);
+      resultArray.push(id);
+    } else {
+      resultArray = sizeFilter.filter(CheckedId => CheckedId !== id);
+    }
+    setSizeFilter(resultArray);
+  };
 
-  const submitHandler = e => {};
+  const submitHandler = e => {
+    dispatch(
+      loadFilteredProducts(
+        { subcatId: subCatId },
+        {
+          sizeFillter: sizeFilter ? sizeFilter : [],
+          colorFillter: colorFilter ? colorFilter : [],
+          lowPrice: startPrice ? startPrice : '',
+          highPrice: endPrice ? endPrice : '',
+        }
+      )
+    );
+  };
   return (
     <div className='filter'>
       <div className='filter__sub'>
@@ -77,17 +92,24 @@ const Filter = () => {
           <h3 className='filter__sub-title--text'>Taille</h3>
         </div>
         <ul className='filter__sub-content'>
-          {sizes.map((e, i) => {
-            return (
-              <li className='filter__sub-link' key={i}>
-                <label>
-                  <input type='checkbox' name={e} id='i' value={i} />
+          {sizes &&
+            sizes.map((e, i) => {
+              return (
+                <li className='filter__sub-link' key={i}>
+                  <label>
+                    <input
+                      type='checkbox'
+                      name={e.name}
+                      id={e.id}
+                      value={e.id}
+                      onChange={event => addSizeHandler(event, e.id)}
+                    />
 
-                  {e}
-                </label>
-              </li>
-            );
-          })}
+                    {e.name}
+                  </label>
+                </li>
+              );
+            })}
         </ul>
       </div>
       <div className='filter__sub'>
@@ -98,17 +120,24 @@ const Filter = () => {
           <h3 className='filter__sub-title--text'>Couleur</h3>
         </div>
         <ul className='filter__sub-content'>
-          {colors.map((e, i) => {
-            return (
-              <li className='filter__sub-link' key={i}>
-                <label>
-                  <input type='checkbox' name={e} id='i' value={i} />
+          {colors &&
+            colors.map((e, i) => {
+              return (
+                <li className='filter__sub-link' key={i}>
+                  <label>
+                    <input
+                      type='checkbox'
+                      name={e.name}
+                      id={e.id}
+                      value={e.id}
+                      onChange={event => addColorHandler(event, e.id)}
+                    />
 
-                  {e}
-                </label>
-              </li>
-            );
-          })}
+                    {e.name}
+                  </label>
+                </li>
+              );
+            })}
         </ul>
       </div>
       <div className='filter__sub'>

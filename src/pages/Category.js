@@ -15,13 +15,17 @@ import {
   loadTopRating,
   loadTopSelling,
 } from '../store/reducers/products';
+import { loadFilterData } from '../store/reducers/filterData';
 
 const Category = props => {
   const [isSmall, setIsSmall] = useState(true);
   const params = useParams();
   const dispatch = useDispatch();
-
+  const [sizeFilter, setSizeFilter] = useState([]);
+  const [colorFilter, setColorFilter] = useState([]);
+  const [subCatId, setSubCatId] = useState('');
   const products = useSelector(state => state.products.products);
+  const filterData = useSelector(state => state.filterData.filterData);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -30,6 +34,8 @@ const Category = props => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
     if (params.id) {
       dispatch(loadProducts(params.id));
+      setSubCatId(params.id);
+      return;
     }
 
     if (props.path === 'latest') {
@@ -47,7 +53,17 @@ const Category = props => {
     if (props.path === 'toprating') {
       dispatch(loadTopRating());
     }
+    setSubCatId(
+      products && products[0] && products[0].subCatId
+        ? products[0].subCatId
+        : ''
+    );
   }, [dispatch, params.id, props.path]);
+  useEffect(() => {
+    if (subCatId) dispatch(loadFilterData(subCatId));
+  }, [dispatch, subCatId]);
+
+  // console.log(colorFilter, sizeFilter);
 
   return (
     <>
@@ -60,7 +76,15 @@ const Category = props => {
           }}>
           <div className='category__content'></div>
           <Col sm={2} md={3} xl={2}>
-            <Filter />
+            <Filter
+              colors={filterData.colors}
+              sizes={filterData.sizes}
+              setColorFilter={setColorFilter}
+              setSizeFilter={setSizeFilter}
+              sizeFilter={sizeFilter}
+              colorFilter={colorFilter}
+              subCatId={subCatId}
+            />
           </Col>
           <Col sm={10} md={9} xl={10} style={{ paddingInline: '4rem' }}>
             <div className='switch-btns'>

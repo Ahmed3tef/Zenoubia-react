@@ -15,6 +15,7 @@ import {
   cities,
   governments,
   countries,
+  filterData,
 } from './reducers';
 
 export const store = configureStore({
@@ -34,5 +35,6 @@ export const store = configureStore({
     cities,
     governments,
     countries,
+    filterData,
   },
 });

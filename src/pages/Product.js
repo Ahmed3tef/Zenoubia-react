@@ -59,10 +59,10 @@ const Product = props => {
     const oldCart = JSON.parse(localStorage.getItem('cart'))
       ? JSON.parse(localStorage.getItem('cart'))
       : [];
-    console.log(oldCart);
     const newCart = [{ product, count }, ...oldCart];
     // oldCart.push({ product, count });
     localStorage.setItem('cart', JSON.stringify(newCart));
+    console.log(newCart);
     toast.success('Product added successfully.', {
       position: 'top-right',
       autoClose: 2500,

@@ -15,7 +15,7 @@ const ProductRelatedGroup = ({ id }) => {
   const relatedProducts = useSelector(
     state => state.relatedProducts.relatedProducts
   );
-  console.log(relatedProducts);
+
   return (
     <>
       {relatedProducts.length > 0 && (

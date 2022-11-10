@@ -2,7 +2,13 @@ import React, { useState } from 'react';
 import { Counter } from '..';
 import prodImg from '../../assets/prod-1.webp';
 import { APIBase } from '../../store/reducers/api';
-const CartTableRow = ({ product, countNumber, addHandler, itemIndex }) => {
+const CartTableRow = ({
+  product,
+  countNumber,
+  addHandler,
+  decreaseHandler,
+  itemIndex,
+}) => {
   const [count, setCount] = useState(countNumber);
 
   // const oldCart = JSON.parse(localStorage.getItem('cart'))
@@ -30,8 +36,6 @@ const CartTableRow = ({ product, countNumber, addHandler, itemIndex }) => {
     ? product.discountPrice
     : product.basePrice;
 
-  const [totalPrice, setTotalPrice] = useState(count * price);
-
   return (
     <div className='cart__product'>
       <div className='cart__product-img'>
@@ -44,10 +48,10 @@ const CartTableRow = ({ product, countNumber, addHandler, itemIndex }) => {
         <Counter
           itemIndex={itemIndex}
           addHandler={addHandler}
+          decreaseHandler={decreaseHandler}
           count={count}
           setCount={setCount}
-          totalPrice={totalPrice}
-          setTotalPrice={setTotalPrice}
+          path='cart'
         />
       </div>
       <div className='cart__product-price'>DA {price}</div>

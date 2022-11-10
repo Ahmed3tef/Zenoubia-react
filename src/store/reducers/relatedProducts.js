@@ -29,8 +29,17 @@ export const relatedProductsSlice = createSlice({
         return;
       }
       let data = payload.data.map((obj, i) => {
-        const { id, name, images, alt, prices, avgRating, count, inStock } =
-          obj;
+        const {
+          id,
+          name,
+          images,
+          alt,
+          prices,
+          avgRating,
+          count,
+          inStock,
+          subcat,
+        } = obj;
         const mainImg = images[0].imageUrl;
 
         return {
@@ -42,6 +51,7 @@ export const relatedProductsSlice = createSlice({
           prices,
           count,
           avgRating,
+          subCatId: subcat.id,
           inStock,
           currentPrice: prices[0].currentPrice,
           discountPrice: prices[0].discountPrice
