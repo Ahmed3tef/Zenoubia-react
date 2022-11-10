@@ -199,7 +199,7 @@ const Verification = props => {
               <div className='verification__info-products--wrapper'>
                 {cartItems.map((e, i) => {
                   return (
-                    <div className='product'>
+                    <div className='product' key={i}>
                       <div className='product-desc'>
                         <div className='product-desc-main'>
                           {e.product.englishDescription}

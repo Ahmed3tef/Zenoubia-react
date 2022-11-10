@@ -23,4 +23,5 @@ export { default as Filter } from './Filter/Filter';
 export { default as PriceRange } from './PriceRange/PriceRange';
 export { default as CartTable } from './tables/CartTable';
 export { default as OrdersTable } from './tables/OrdersTable';
+export { default as OrdersTableRow } from './tables/OrdersTableRow';
 export { default as Footer } from './Footer/Footer';

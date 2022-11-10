@@ -19,6 +19,7 @@ import {
   Cart,
   Home,
   Category,
+  Orders,
 } from './pages';
 
 const App = () => {
@@ -51,6 +52,7 @@ const App = () => {
           <Route path='billing' element={<Billing />} />
           <Route path='about' element={<AboutUs />} />
           <Route path='checkout' element={<Verification />} />
+          <Route path='orders' element={<Orders />} />
         </Routes>
         {/* <Home /> */}
 

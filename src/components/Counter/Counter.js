@@ -4,7 +4,7 @@ import './_counter.scss';
 const Counter = props => {
   const increaseHandler = prevState => {
     if (prevState === 10) return prevState;
-
+    props.addHandler(props.itemIndex);
     return prevState + 1;
   };
   const decreaseHandler = prevState => {

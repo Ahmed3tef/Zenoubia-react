@@ -35,7 +35,11 @@ const Account = () => {
           alt='wishlist-icon'
           onClick={() => navigate('/wishlist')}
         />
-        <img src={ordersIcon} alt='orders-icon' />
+        <img
+          src={ordersIcon}
+          alt='orders-icon'
+          onClick={() => navigate('/orders')}
+        />
       </div>
       <PageTitle maniTitle={"Page d'accueil"} subTitle={'Mon compte'} />
       <Container>
