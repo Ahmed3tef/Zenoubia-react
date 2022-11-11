@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { CartTable, OrdersTable, PageTitle } from '../components';
 import './_orders.scss';
 import prodImg from '../assets/prod-1.webp';
+import { useDispatch, useSelector } from 'react-redux';
+import { loadOrders } from '../store/reducers/orders';
 const Orders = () => {
+  const ordersDatabase = useSelector(state => state.orders.orders);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      loadOrders(
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoyLCJ1c2VySWQiOiI2MzU1MmJmNDBiY2MxYTZlNTljMDUzYzgiLCJzdGF0dXMiOjEsImlhdCI6MTY2ODE4MTYxOCwiZXhwIjoxNjcwNzczNjE4fQ.diatsfiyWSO0Q5eHHgnWKV2SwzLchuzJBsoyv4AXUig'
+      )
+    );
+  }, [dispatch]);
+
   const orders = [
     {
       id: '123456789',
@@ -60,12 +74,12 @@ const Orders = () => {
   return (
     <>
       <PageTitle maniTitle={'Mon compte'} subTitle={'Panier'} />
-      {!orders && <h2>No products added yet!</h2>}
-      {orders && (
+      {!ordersDatabase && <h2>No products added yet!</h2>}
+      {ordersDatabase && (
         <div className='orders'>
           <div className='orders__table-container'>
             {/* <OrdersTable data={orders} path={'orders'} /> */}
-            {orders.map((order, index) => {
+            {ordersDatabase.map((order, index) => {
               return (
                 <div className='order' key={index}>
                   <div className='order__header'>
@@ -81,7 +95,7 @@ const Orders = () => {
                     </div>
                     <div className='order__number'>
                       <span>Order</span>
-                      <span> {order.orderNumber}</span>
+                      <span># {order.orderNumber}</span>
                     </div>
                   </div>
                   <div className='order__body'>
@@ -91,7 +105,7 @@ const Orders = () => {
                         return (
                           <div className='order__product'>
                             <div className='order__product-img'>
-                              <img src={p.image} alt={p.name} />
+                              <img src={prodImg} alt={p.name} />
                             </div>
                             <div className='order__product-info'>
                               <h3 className='order__product-name'>{p.name}</h3>

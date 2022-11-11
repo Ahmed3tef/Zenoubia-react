@@ -17,7 +17,12 @@ const Filter = ({
 }) => {
   const [startPrice, setStartPrice] = useState(0);
   const [endPrice, setEndPrice] = useState(4000);
-
+  const [filterData, setFilterData] = useState({
+    sizeFillter: [],
+    colorFillter: [],
+    lowPrice: '',
+    highPrice: '',
+  });
   const navigate = useNavigate();
   const subCategories = useSelector(state => state.subCategories.subCategories);
   const dispatch = useDispatch();
@@ -45,19 +50,17 @@ const Filter = ({
     }
     setSizeFilter(resultArray);
   };
+  useEffect(() => {
+    setFilterData({
+      sizeFillter: sizeFilter ? sizeFilter : [],
+      colorFillter: colorFilter ? colorFilter : [],
+      lowPrice: startPrice ? startPrice : '',
+      highPrice: endPrice ? endPrice : '',
+    });
+  }, [sizeFilter, colorFilter, startPrice, endPrice]);
 
   const submitHandler = e => {
-    dispatch(
-      loadFilteredProducts(
-        { subcatId: subCatId },
-        {
-          sizeFillter: sizeFilter ? sizeFilter : [],
-          colorFillter: colorFilter ? colorFilter : [],
-          lowPrice: startPrice ? startPrice : '',
-          highPrice: endPrice ? endPrice : '',
-        }
-      )
-    );
+    dispatch(loadFilteredProducts({ id: subCatId, data: filterData }));
   };
   return (
     <div className='filter'>

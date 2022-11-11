@@ -42,8 +42,19 @@ export const loadProducts = createAsyncThunk(
 );
 export const loadFilteredProducts = createAsyncThunk(
   'products/loadFilteredProducts',
-  (params, data, thunkAPI) =>
-    loadDataWithParamsPost(thunkAPI, 'product/categoryproducts', params, data)
+  async (dataObj, thunkAPI) =>
+    axios
+      .post(
+        `${APIBase}product/categoryproducts?subcatId=${dataObj.id}`,
+        dataObj.data,
+        thunkAPI
+      )
+      .then(res => {
+        return res.data;
+      })
+      .catch(err => {
+        return err.response.data;
+      })
 );
 
 export const loadLatest = createAsyncThunk('products/loadLatest', thunkAPI =>
@@ -410,6 +421,64 @@ export const productsSlice = createSlice({
       }
     },
     [loadTopSelling.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.products = null;
+      state.error = action.payload.response.data.message;
+    },
+
+    [loadFilteredProducts.pending]: (state, action) => {
+      state.products = [];
+      state.isLoading = true;
+      state.error = null;
+    },
+    [loadFilteredProducts.fulfilled]: (state, { payload }) => {
+      if (payload) {
+        // console.log(payload);
+        if (payload.status === 0) {
+          state.products = [];
+          state.isLoading = false;
+          state.error = payload.message;
+          return;
+        }
+        let data = payload.data.map((obj, i) => {
+          const {
+            id,
+            name,
+            images,
+            alt,
+            prices,
+            avgRating,
+            count,
+            inStock,
+            subcat,
+          } = obj;
+          const mainImg = images[0].imageUrl;
+
+          return {
+            id,
+            name,
+            mainImg,
+            images,
+            alt,
+            prices,
+            count,
+            avgRating,
+            inStock,
+            subCatId: subcat.id,
+            currentPrice: prices[0].currentPrice,
+            discountPrice: prices[0].discountPrice
+              ? prices[0].discountPrice
+              : null,
+            percent: prices[0].percent ? prices[0].percent : null,
+          };
+        });
+
+        state.products = data;
+        state.isLoading = false;
+        state.error = null;
+      }
+    },
+    [loadFilteredProducts.rejected]: (state, action) => {
       state.isLoading = false;
       state.products = null;
       state.error = action.payload.response.data.message;

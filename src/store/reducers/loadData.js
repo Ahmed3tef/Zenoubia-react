@@ -56,7 +56,7 @@ export async function loadDataWithParamsPost(thunkAPI, path, params, data) {
     params,
   };
   return axios
-    .post(`${APIBase}${path}`, params, data, thunkAPI)
+    .post(`${APIBase}${path}`, { params: params }, data, thunkAPI)
     .then(res => {
       return res.data;
     })

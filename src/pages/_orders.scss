@@ -180,7 +180,7 @@
       margin-inline-end: 2rem;
       border-radius: 0.5rem;
       overflow: hidden;
-
+      border: 2px solid var(--color-main-lighter);
       img {
         @extend %img-fill;
       }
