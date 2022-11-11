@@ -60,7 +60,7 @@ export const relatedProductsSlice = createSlice({
           percent: prices[0].percent ? prices[0].percent : null,
         };
       });
-      console.log(data);
+
       state.relatedProducts = data;
       state.isLoading = false;
       state.error = null;

@@ -87,7 +87,7 @@ export const ordersSlice = createSlice({
             products: mappedProducts,
           };
         });
-        console.log(data);
+
         state.orders = data;
         state.isLoading = false;
         state.error = null;

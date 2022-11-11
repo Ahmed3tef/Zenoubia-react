@@ -48,7 +48,7 @@ const Cart = () => {
       };
     });
   }
-  console.log(cart);
+  // console.log(cart);
 
   // oldCart.push({ product, count });
   localStorage.setItem('cart', JSON.stringify(cart));

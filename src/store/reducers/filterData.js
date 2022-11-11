@@ -23,7 +23,6 @@ export const filterDataSlice = createSlice({
     },
     [loadFilterData.fulfilled]: (state, { payload }) => {
       if (payload) {
-        console.log(payload);
         if (payload.status === 0) {
           state.filterData = [];
           state.isLoading = false;
@@ -42,7 +41,7 @@ export const filterDataSlice = createSlice({
           colors,
           sizes,
         };
-        // console.log(data);
+
         state.filterData = data;
         state.isLoading = false;
         state.error = null;
