@@ -98,7 +98,7 @@ const Category = props => {
             <Row>
               {products.map((p, i) => {
                 return (
-                  <>
+                  <React.Fragment key={i}>
                     {isSmall && (
                       <Col xs={12} sm={6} lg={4} xl={3} key={i}>
                         <ProductCardSm data={p} />
@@ -109,7 +109,7 @@ const Category = props => {
                         <ProductCardLg data={p} />
                       </Col>
                     )}
-                  </>
+                  </React.Fragment>
                 );
               })}
             </Row>

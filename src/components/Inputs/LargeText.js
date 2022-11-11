@@ -12,6 +12,7 @@ const LargeText = props => {
       <textarea
         placeholder={props.placeholder}
         value={props.desc}
+        required={props.required ? props.required : false}
         onChange={e => props.setDesc(e.target.value)}
         style={{
           direction: props.direction ? 'rtl' : 'ltr',

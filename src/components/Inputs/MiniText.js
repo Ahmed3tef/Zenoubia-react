@@ -28,6 +28,7 @@ const MiniText = props => {
           type={props.type || 'text'}
           placeholder={props.placeholder}
           value={props.name}
+          required={props.required ? props.required : false}
           onChange={event => {
             props.setName(event.target.value);
           }}

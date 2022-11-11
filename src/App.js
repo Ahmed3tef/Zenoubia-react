@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from 'react';
 import { Container } from 'react-bootstrap';
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -53,6 +53,8 @@ const App = () => {
           <Route path='about' element={<AboutUs />} />
           <Route path='checkout' element={<Verification />} />
           <Route path='orders' element={<Orders />} />
+          <Route path='login' element={<LoginForm />} />
+          <Route path='/*' element={<Navigate to={'/'} />} />
         </Routes>
         {/* <Home /> */}
 

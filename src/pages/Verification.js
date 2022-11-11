@@ -87,7 +87,7 @@ const Verification = props => {
           pauseOnHover: true,
           draggable: true,
         });
-        // navigate('/');
+        navigate('/');
       })
       .catch(err => {
         const errMsg = err.response.data.message;
