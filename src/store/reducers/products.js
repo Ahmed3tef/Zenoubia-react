@@ -6,8 +6,7 @@ import { APIBase } from './api';
 
 import {
   loadData,
-  loadDataWithParams,
-  loadDataWithParamsPost,
+  
 } from './loadData';
 
 const initialState = {

@@ -20,6 +20,7 @@ import {
   Home,
   Category,
   Orders,
+  SearchProducts,
 } from './pages';
 
 const App = () => {
@@ -42,6 +43,7 @@ const App = () => {
             <Route path='bestoffer' element={<Category path='bestoffer' />} />
             <Route path='toprating' element={<Category path='toprating' />} />
           </Route>
+          <Route path='product/search/:text' element={<SearchProducts />} />
           <Route path='product/:prodId' element={<Product />} />
           <Route path='contact' element={<ContactUs />} />
           <Route path='account' element={<Account />} />

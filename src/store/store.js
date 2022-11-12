@@ -17,6 +17,7 @@ import {
   countries,
   filterData,
   orders,
+  wishlist,
 } from './reducers';
 
 export const store = configureStore({
@@ -38,5 +39,6 @@ export const store = configureStore({
     countries,
     filterData,
     orders,
+    wishlist,
   },
 });

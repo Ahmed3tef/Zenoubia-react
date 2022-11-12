@@ -8,7 +8,7 @@ import { TiPlus, TiMinus } from 'react-icons/ti';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
 import { useParams } from 'react-router-dom';
 import { loadProduct } from '../store/reducers/product';
-import { APIBase } from '../store/reducers/api';
+import { addToWishlist, APIBase } from '../store/reducers/api';
 import { toast } from 'react-toastify';
 import './_product.scss';
 
@@ -161,7 +161,10 @@ const Product = props => {
         <div className='product__actions'>
           <div
             className='product__actions-like'
-            onClick={() => setIsLiked(!isLiked)}>
+            onClick={() => {
+              addToWishlist(product.id);
+              setIsLiked(!isLiked);
+            }}>
             {isLiked ? <BsHeartFill /> : <BsHeart />}
             Ajouter à la liste de souhaits
           </div>

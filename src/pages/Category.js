@@ -70,6 +70,7 @@ const Category = props => {
       <PageTitle maniTitle='Les Produits' subTitle='Djellaba' />
       <Container fluid className='p-0'>
         <Row
+          className='cat'
           style={{
             marginInlineEnd: '6rem',
             marginBlock: '3rem',

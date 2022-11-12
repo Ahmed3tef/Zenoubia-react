@@ -63,7 +63,7 @@ export const ordersSlice = createSlice({
             return {
               id: p.productId,
 
-              // image: p.images[0].imageUrl,
+              image: p.imageUrl,
               itemPrice:
                 p.priceId.price && p.priceId.price.discountPrice
                   ? p.priceId.price.discountPrice

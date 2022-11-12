@@ -4,7 +4,7 @@ import productImg from '../../assets/prod-1.webp';
 import { Ratings } from '..';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
 import { useNavigate } from 'react-router-dom';
-import { APIBase } from '../../store/reducers/api';
+import { addToWishlist, APIBase } from '../../store/reducers/api';
 const ProductCardSm = props => {
   const sizes = ['M', 'L', 'XL'];
   const [isLiked, setIsLiked] = useState(false);
@@ -59,7 +59,10 @@ const ProductCardSm = props => {
       <div className='card__actions'>
         <div
           className='card__actions-like'
-          onClick={() => setIsLiked(!isLiked)}>
+          onClick={() => {
+            addToWishlist(id);
+            setIsLiked(!isLiked);
+          }}>
           {isLiked ? <BsHeartFill /> : <BsHeart />}
         </div>
         <div className='card__actions-add' onClick={() => navigate(`/cart`)}>

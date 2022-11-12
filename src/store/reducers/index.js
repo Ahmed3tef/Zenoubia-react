@@ -9,3 +9,4 @@ export { default as cities } from './cities';
 export { default as countries } from './countries';
 export { default as filterData } from './filterData';
 export { default as orders } from './orders';
+export { default as wishlist } from './wishlist';

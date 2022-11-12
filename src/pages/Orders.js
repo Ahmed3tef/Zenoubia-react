@@ -4,73 +4,71 @@ import './_orders.scss';
 import prodImg from '../assets/prod-1.webp';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadOrders } from '../store/reducers/orders';
+import { APIBase, token } from '../store/reducers/api';
 const Orders = () => {
   const ordersDatabase = useSelector(state => state.orders.orders);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(
-      loadOrders(
-        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoyLCJ1c2VySWQiOiI2MzU1MmJmNDBiY2MxYTZlNTljMDUzYzgiLCJzdGF0dXMiOjEsImlhdCI6MTY2ODE4MTYxOCwiZXhwIjoxNjcwNzczNjE4fQ.diatsfiyWSO0Q5eHHgnWKV2SwzLchuzJBsoyv4AXUig'
-      )
-    );
+    dispatch(loadOrders(token));
   }, [dispatch]);
 
-  const orders = [
-    {
-      id: '123456789',
-      orderNumber: '# 123456789',
-      date: '22.09.2022',
-      status: 'Livré',
-      totalPrice: 42800,
-      products: [
-        {
-          image: prodImg,
-          quantity: 3,
-          itemPrice: 3000,
-          totalPrice: 9000,
-          name: 'Jaba- Robe d’hotesse',
-          description: `Un repas d'été, des modèles modernes et nouveaux - une innovation - de haute qualité et de qualité garantie, disponible dans des couleurs distinctives`,
-        },
-        {
-          image: prodImg,
-          quantity: 3,
-          itemPrice: 3000,
-          totalPrice: 9000,
-          name: 'Jaba- Robe d’hotesse',
-          description:
-            "Un repas d'été, des modèles modernes et nouveaux - une innovation - de haute qualité et de qualité garantie, disponible dans des couleurs distinctives",
-        },
-      ],
-    },
-    {
-      id: '123456789',
-      orderNumber: '# 123456789',
-      date: '22.09.2022',
-      status: 'Livré',
-      totalPrice: 42800,
-      products: [
-        {
-          image: prodImg,
-          quantity: 3,
-          itemPrice: 3000,
-          totalPrice: 9000,
-          name: 'Jaba- Robe d’hotesse',
-          description: `Un repas d'été, des modèles modernes et nouveaux - une innovation - de haute qualité et de qualité garantie, disponible dans des couleurs distinctives`,
-        },
-        {
-          image: prodImg,
-          quantity: 3,
-          itemPrice: 3000,
-          totalPrice: 9000,
-          name: 'Jaba- Robe d’hotesse',
-          description:
-            "Un repas d'été, des modèles modernes et nouveaux - une innovation - de haute qualité et de qualité garantie, disponible dans des couleurs distinctives",
-        },
-      ],
-    },
-  ];
+  // const orders = [
+  //   {
+  //     id: '123456789',
+  //     orderNumber: '# 123456789',
+  //     date: '22.09.2022',
+  //     status: 'Livré',
+  //     totalPrice: 42800,
+  //     products: [
+  //       {
+  //         image: prodImg,
+  //         quantity: 3,
+  //         itemPrice: 3000,
+  //         totalPrice: 9000,
+  //         name: 'Jaba- Robe d’hotesse',
+  //         description: `Un repas d'été, des modèles modernes et nouveaux - une innovation - de haute qualité et de qualité garantie, disponible dans des couleurs distinctives`,
+  //       },
+  //       {
+  //         image: prodImg,
+  //         quantity: 3,
+  //         itemPrice: 3000,
+  //         totalPrice: 9000,
+  //         name: 'Jaba- Robe d’hotesse',
+  //         description:
+  //           "Un repas d'été, des modèles modernes et nouveaux - une innovation - de haute qualité et de qualité garantie, disponible dans des couleurs distinctives",
+  //       },
+  //     ],
+  //   },
+  //   {
+  //     id: '123456789',
+  //     orderNumber: '# 123456789',
+  //     date: '22.09.2022',
+  //     status: 'Livré',
+  //     totalPrice: 42800,
+  //     products: [
+  //       {
+  //         image: prodImg,
+  //         quantity: 3,
+  //         itemPrice: 3000,
+  //         totalPrice: 9000,
+  //         name: 'Jaba- Robe d’hotesse',
+  //         description: `Un repas d'été, des modèles modernes et nouveaux - une innovation - de haute qualité et de qualité garantie, disponible dans des couleurs distinctives`,
+  //       },
+  //       {
+  //         image: prodImg,
+  //         quantity: 3,
+  //         itemPrice: 3000,
+  //         totalPrice: 9000,
+  //         name: 'Jaba- Robe d’hotesse',
+  //         description:
+  //           "Un repas d'été, des modèles modernes et nouveaux - une innovation - de haute qualité et de qualité garantie, disponible dans des couleurs distinctives",
+  //       },
+  //     ],
+  //   },
+  // ];
+
   return (
     <>
       <PageTitle maniTitle={'Mon compte'} subTitle={'Panier'} />
@@ -80,12 +78,19 @@ const Orders = () => {
           <div className='orders__table-container'>
             {/* <OrdersTable data={orders} path={'orders'} /> */}
             {ordersDatabase.map((order, index) => {
+              const options = {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+              };
+              const day = new Date(order.date);
+              const orderDate = day.toLocaleDateString('de-DE', options);
               return (
                 <div className='order' key={index}>
                   <div className='order__header'>
                     <div className='order__date'>
                       <span>Order Placed At</span>
-                      <span className='order__date-time'>{order.date}</span>
+                      <span className='order__date-time'>{orderDate}</span>
                     </div>
                     <div className='order__total'>
                       <span>Total</span>
@@ -105,7 +110,7 @@ const Orders = () => {
                         return (
                           <div className='order__product'>
                             <div className='order__product-img'>
-                              <img src={prodImg} alt={p.name} />
+                              <img src={`${APIBase}${p.image}`} alt={p.name} />
                             </div>
                             <div className='order__product-info'>
                               <h3 className='order__product-name'>{p.name}</h3>

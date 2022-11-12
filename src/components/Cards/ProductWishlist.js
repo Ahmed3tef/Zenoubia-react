@@ -3,32 +3,38 @@ import { BsCartPlusFill } from 'react-icons/bs';
 import productImg from '../../assets/prod-1.webp';
 import bin from '../../assets/bin.svg';
 import { useNavigate } from 'react-router-dom';
-const ProductWishlist = props => {
+import { addToWishlist, APIBase } from '../../store/reducers/api';
+const ProductWishlist = ({ product }) => {
   const navigate = useNavigate();
   return (
     <div className='card-wishlist'>
       <div className='card__details'>
         <div
           className='card__img'
-          onClick={() => navigate(`/product/${props.id}`)}>
-          <img src={productImg} alt='product' />
+          onClick={() => navigate(`/product/${product.id}`)}>
+          <img src={`${APIBase}${product.mainImg}`} alt={product.name} />
         </div>
         <div className='card__info'>
-          <div className='card__title'>Abaya d'été en satin crêpe brodé</div>
+          <div className='card__title'>{product.title}</div>
           <div className='card__info-main'>
-            <div className='card__name'>Abaya d'été en satin crêpe brodé</div>
+            <div className='card__name'>{product.name}</div>
 
             <div className='card__size'>
               Traille:
-              <span className='card__size-wrapper'>large</span>
+              <span className='card__size-wrapper'>{product.size}</span>
             </div>
             <div className='card__color'>
               Couleur:
-              <span className='card__color-wrapper'>red</span>
+              <span className='card__color-wrapper'>{product.color}</span>
             </div>
           </div>
           <div className='card__prices'>
-            <span className='card__price'>DA 3400</span>
+            <span className='card__price'>
+              DA{' '}
+              {product.discountPrice
+                ? product.discountPrice
+                : product.currentPrice}
+            </span>
           </div>
         </div>
       </div>
@@ -36,7 +42,12 @@ const ProductWishlist = props => {
         <div className='card__actions-remove'>
           <img src={bin} alt='' />
         </div>
-        <div className='card__actions-add'>
+        <div
+          className='card__actions-add'
+          // onClick={() => {
+          //   addToWishlist(product.id)
+          // }}
+        >
           <BsCartPlusFill />
         </div>
       </div>

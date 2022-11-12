@@ -5,10 +5,11 @@
     margin-block: 3rem;
   }
 }
-.cat {
+.search-products {
   .switch {
     &-btns {
-      @extend %JC;
+      display: flex;
+
       width: fit-content;
       margin-inline-start: auto;
       // margin-inline-end: 8rem;

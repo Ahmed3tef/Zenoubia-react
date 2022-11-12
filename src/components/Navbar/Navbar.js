@@ -11,6 +11,10 @@ import './_navbar.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { loadSubCategories } from '../../store/reducers/subcategory';
+import axios from 'axios';
+import { toast } from 'react-toastify';
+import { APIBase } from '../../store/reducers/api';
+
 const Navbar = props => {
   const [showDropDown, setShowDropDown] = useState(false);
   const [searchValue, setSearchValue] = useState('');
@@ -35,14 +39,14 @@ const Navbar = props => {
   //   'Jabador',
   //   'Sabot',
   // ];
-  function useOutsideAlerter(ref) {
+  function useOutsideAlerter(ref, setter) {
     useEffect(() => {
       /**
        * Alert if clicked on outside of element
        */
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
-          setShowDropDown(false);
+          setter(false);
         }
       }
       // Bind the event listener
@@ -51,11 +55,18 @@ const Navbar = props => {
         // Unbind the event listener on clean up
         document.removeEventListener('mousedown', handleClickOutside);
       };
-    }, [ref]);
+    }, [ref, setter]);
   }
+  const searchRef = useRef(null);
   const dropdownRef = useRef(null);
-  useOutsideAlerter(dropdownRef);
+  useOutsideAlerter(dropdownRef, setShowDropDown);
+  useOutsideAlerter(searchRef, setShowSearch);
   // document.addEventListener('mousedown', () => setShowDropDown(false));
+  const handleSearchOnEnter = e => {
+    if (e.keyCode === 13 && searchValue) {
+      navigate(`product/search/${searchValue}`);
+    }
+  };
 
   return (
     <div className='nav sticky-top'>
@@ -119,7 +130,7 @@ const Navbar = props => {
         )}
       </div>
       {showSearch && (
-        <div className='nav__search'>
+        <div className='nav__search' ref={searchRef}>
           <input
             type='text'
             name='searchbar'
@@ -128,6 +139,8 @@ const Navbar = props => {
             placeholder='Rechercher un produit...'
             value={searchValue}
             onChange={e => setSearchValue(e.target.value)}
+            onKeyDown={handleSearchOnEnter}
+            tabIndex='0'
           />
           <span className='nav__search-icon'>
             <BiSearch />

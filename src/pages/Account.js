@@ -5,6 +5,9 @@ import './_account.scss';
 import likeIcon from '../assets/My_Wish_List.svg';
 import ordersIcon from '../assets/my-orders.svg';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import { APIBase, token } from '../store/reducers/api';
+import { toast } from 'react-toastify';
 
 const Account = () => {
   const navigate = useNavigate();
@@ -23,8 +26,53 @@ const Account = () => {
     // what is required ??
     let data;
     const address = [];
-    if (address1) address.append(address1);
-    if (address2) address.append(address2);
+    const id = toast.loading('please wait a second...');
+    if (address1) address.push(address1);
+    if (address2) address.push(address2);
+    data = {
+      firstName,
+      lastName,
+      displayName,
+      address,
+      password:
+        newPassword === passwordConfirm && currentPassword !== newPassword
+          ? newPassword
+          : '',
+      phone,
+    };
+    axios
+      .patch(`${APIBase}user`, data, {
+        headers: {
+          Authorization: token,
+        },
+      })
+      .then(res => {
+        toast.update(id, {
+          render: `Your information have been updated`,
+          type: 'success',
+          isLoading: false,
+          position: 'top-right',
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      })
+      .catch(err => {
+        const errMsg = err.response.data.message;
+        toast.update(id, {
+          render: `${errMsg} ⛔`,
+          type: 'error',
+          isLoading: false,
+          position: 'top-right',
+          autoClose: 2500,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      });
   };
 
   return (
