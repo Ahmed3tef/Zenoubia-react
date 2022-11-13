@@ -9,6 +9,30 @@
     margin-block: 5rem;
     font-family: var(--font-family-secondary);
     color: var(--color-main);
+
+    .remember {
+      @extend %JSB;
+      margin-bottom: 0.7rem;
+
+      label {
+        @extend %AC;
+        cursor: pointer;
+        // width: 100%;
+        font-size: 1.4rem;
+      }
+      input {
+        // width: ;
+        cursor: pointer;
+        margin-inline-end: 1rem;
+        accent-color: var(--color-main);
+      }
+      .signup {
+        font-size: 1.5rem;
+        cursor: pointer;
+        color: var(--color-main-lighter);
+        text-decoration: underline;
+      }
+    }
   }
   &__title {
     margin-bottom: 4rem;

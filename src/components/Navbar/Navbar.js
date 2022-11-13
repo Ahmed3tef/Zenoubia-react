@@ -142,7 +142,9 @@ const Navbar = props => {
             onKeyDown={handleSearchOnEnter}
             tabIndex='0'
           />
-          <span className='nav__search-icon'>
+          <span
+            className='nav__search-icon'
+            onClick={() => navigate(`product/search/${searchValue}`)}>
             <BiSearch />
           </span>
         </div>

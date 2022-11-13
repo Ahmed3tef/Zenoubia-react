@@ -5,7 +5,7 @@ import { ToastContainer } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 // import { Container } from 'react-bootstrap';
-import { Footer, LoginForm, Navbar } from './components';
+import { Footer, LoginForm, Navbar, SignUpForm } from './components';
 import {
   Terms,
   AboutUs,
@@ -56,6 +56,7 @@ const App = () => {
           <Route path='checkout' element={<Verification />} />
           <Route path='orders' element={<Orders />} />
           <Route path='login' element={<LoginForm />} />
+          <Route path='signup' element={<SignUpForm />} />
           <Route path='/*' element={<Navigate to={'/'} />} />
         </Routes>
         {/* <Home /> */}

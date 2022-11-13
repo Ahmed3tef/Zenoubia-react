@@ -1,9 +1,38 @@
-import React, { useState } from 'react';
+import { unwrapResult } from '@reduxjs/toolkit';
+import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { loginUser } from '../../store/reducers/auth';
 import MiniText from '../Inputs/MiniText';
 import './_forms.scss';
 const LoginForm = props => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const rememberMeRef = useRef();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const userCreated = useSelector(state => state.user.userCreated);
+  const loginUserHandler = () => {
+    const rememberMe = rememberMeRef.current.checked;
+
+    dispatch(
+      loginUser({
+        email,
+        password,
+      })
+    )
+      .then(unwrapResult)
+      .then(promiseResponse => {
+        if (promiseResponse.status === 1) {
+          if (rememberMe) {
+            localStorage.setItem('token', promiseResponse.token.token);
+          }
+        }
+      });
+  };
+  useEffect(() => {
+    if (userCreated) navigate('/login');
+  }, [userCreated, navigate]);
 
   return (
     <div className='form__container'>
@@ -24,9 +53,22 @@ const LoginForm = props => {
             d'autres fins décrites dans notre politique de confidentialité.
           </p>
         )}
+        {!props.title && (
+          <div className='remember'>
+            <label>
+              <input type='checkbox' name='remember me' ref={rememberMeRef} />
+              Souviens-toi de moi.
+            </label>
+            <div className='signup' onClick={() => navigate('/signup')}>
+              Créer un compte ?
+            </div>
+          </div>
+        )}
       </div>
       <div className='form-btns mt-5'>
-        <div className='form-btn'>Connexion</div>
+        <div className='form-btn' onClick={loginUserHandler}>
+          Connexion
+        </div>
       </div>
     </div>
   );

@@ -15,6 +15,7 @@ export { default as PageTitle } from './PageTitle/PageTitle';
 export { default as StaticLayout } from './StaticLayout/StaticLayout';
 export { default as ProfileForm } from './Forms/ProfileForm';
 export { default as LoginForm } from './Forms/LoginForm';
+export { default as SignUpForm } from './Forms/SignUp';
 export { default as LargeText } from './Inputs/LargeText';
 export { default as Selector } from './Inputs/Selector';
 export { default as MiniText } from './Inputs/MiniText';

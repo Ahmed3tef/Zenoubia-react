@@ -4,8 +4,9 @@ import { toast } from 'react-toastify';
 export const APIBase = 'https://api-zenobyah.worldproductsae.com/';
 // export const APIBase = 'http://192.168.1.243:3010';
 
-export const token =
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoyLCJ1c2VySWQiOiI2MzU1MmJmNDBiY2MxYTZlNTljMDUzYzgiLCJzdGF0dXMiOjEsImlhdCI6MTY2ODE4MTYxOCwiZXhwIjoxNjcwNzczNjE4fQ.diatsfiyWSO0Q5eHHgnWKV2SwzLchuzJBsoyv4AXUig';
+export const token = sessionStorage.getItem('token');
+
+// 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoyLCJ1c2VySWQiOiI2MzU1MmJmNDBiY2MxYTZlNTljMDUzYzgiLCJzdGF0dXMiOjEsImlhdCI6MTY2ODE4MTYxOCwiZXhwIjoxNjcwNzczNjE4fQ.diatsfiyWSO0Q5eHHgnWKV2SwzLchuzJBsoyv4AXUig';
 
 export const addToWishlist = id => {
   axios
