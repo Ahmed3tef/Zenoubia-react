@@ -12,68 +12,63 @@ export const loadReviews = createAsyncThunk(
   'reviews/loadReviews',
 
   (id, thunkAPI) => {
-    return [
-      {
-        productName: 'some product name',
-        comment: 'comment comment comment',
-        starRate: 4,
-        date: '2022-10-30T20:48:59.319Z',
-        userName: 'Memo Kaka',
-        userImg,
-        id: 1,
-      },
-      {
-        productName: 'some product name',
-        comment: 'comment comment comment',
-        starRate: 4,
-        date: '2022-10-30T20:48:59.319Z',
-        userName: 'Memo Kaka',
-        userImg,
-        id: 1,
-      },
-      {
-        productName: 'some product name',
-        comment: 'comment comment comment',
-        starRate: 4,
-        date: '2022-10-30T20:48:59.319Z',
-        userName: 'Memo Kaka',
-        userImg,
-        id: 1,
-      },
-      {
-        productName: 'some product name',
-        comment: 'comment comment comment',
-        starRate: 4,
-        date: '2022-10-30T20:48:59.319Z',
-        userName: 'Memo Kaka',
-        userImg,
-        id: 1,
-      },
-    ];
+    //   return [
+    //     {
+    //       productName: 'some product name',
+    //       comment: 'comment comment comment',
+    //       starRate: 4,
+    //       date: '2022-10-30T20:48:59.319Z',
+    //       userName: 'Memo Kaka',
+    //       userImg,
+    //       id: 1,
+    //     },
+    //     {
+    //       productName: 'some product name',
+    //       comment: 'comment comment comment',
+    //       starRate: 4,
+    //       date: '2022-10-30T20:48:59.319Z',
+    //       userName: 'Memo Kaka',
+    //       userImg,
+    //       id: 1,
+    //     },
+    //     {
+    //       productName: 'some product name',
+    //       comment: 'comment comment comment',
+    //       starRate: 4,
+    //       date: '2022-10-30T20:48:59.319Z',
+    //       userName: 'Memo Kaka',
+    //       userImg,
+    //       id: 1,
+    //     },
+    //     {
+    //       productName: 'some product name',
+    //       comment: 'comment comment comment',
+    //       starRate: 4,
+    //       date: '2022-10-30T20:48:59.319Z',
+    //       userName: 'Memo Kaka',
+    //       userImg,
+    //       id: 1,
+    //     },
+    //   ];
+    // }
+    axios
+      .get(
+        `${APIBase}product/review`,
+        {
+          params: {
+            id,
+          },
+        },
+        thunkAPI
+      )
+      .then(res => {
+        console.log(res.data);
+        return res.data;
+      })
+      .catch(err => {
+        return err.response.data;
+      });
   }
-  // axios
-  //   .get(
-  //     `${APIBase}/product/review`,
-  //     {
-  //       headers: {
-  //         Authorization:
-  //           'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0eXBlIjoyLCJ1c2VySWQiOiI2MzM0MmM2NjhkYWRkODU3MjQ0ZTVjNzUiLCJzdGF0dXMiOjEsImlhdCI6MTY2NDM2MzYyNiwiZXhwIjoxNjY2OTU1NjI2fQ.SUIdVlaNzg7RswRKpyEtFrjrHYTtMmDk_vrDTEFEADU',
-  //       },
-  //       params: {
-  //         id,
-  //       },
-  //     },
-  //     thunkAPI
-  //   )
-  //   .then(res => {
-  //     console.log(res.data);
-  //     return res.data;
-  //   })
-  //   .catch(err => {
-  //     return err.response.data;
-  //   })
-
-  // loadDataWithParams(thunkAPI, 'product/review', { id }, null);
 );
 
 export const reviewsSlice = createSlice({

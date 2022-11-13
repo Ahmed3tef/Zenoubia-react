@@ -91,10 +91,15 @@ const Product = props => {
                   <div className='product__info-main--prices'>
                     <div className='rating'>
                       <Ratings value={product.avgRating} />
-                      <span className='reviews-number'>{`(${product.reviews} reseñas)`}</span>
+                      <span className='reviews-number'>{`(${product.avgRating} reseñas)`}</span>
                     </div>
                     <div className='price-count-container'>
-                      <span className='price'>{product.price}</span>
+                      <span className='price'>
+                        DA{' '}
+                        {product.discountPrice
+                          ? product.discountPrice
+                          : product.basePrice}{' '}
+                      </span>
                       <div className='actions'>
                         <span
                           className='decrease'
@@ -177,7 +182,7 @@ const Product = props => {
         </div>
       </Container>
       <Reviews id={prodId} />
-      <ProductRelatedGroup id={product.subCatId} />
+      {product.subCatId && <ProductRelatedGroup id={product.subCatId} />}
     </>
   );
 };

@@ -9,14 +9,14 @@ import { Ratings } from '..';
 import { loadReviews } from '../../store/reducers/reviews';
 import axios from 'axios';
 import { APIBase } from '../../store/reducers/api';
-const Reviews = () => {
+const Reviews = props => {
   const dispatch = useDispatch();
   const reviews = useSelector(state => state.reviews.reviews);
-  const id = '63501511700aa4c8c3a637e9';
 
   useEffect(() => {
-    dispatch(loadReviews(id));
-  }, [dispatch, id]);
+    dispatch(loadReviews(props.id));
+    console.log(props.id);
+  }, [dispatch, props.id]);
 
   // console.log(reviews);
   return (

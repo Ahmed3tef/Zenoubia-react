@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { BsCartPlusFill } from 'react-icons/bs';
-import productImg from '../../assets/prod-1.webp';
+
 import bin from '../../assets/bin.svg';
 import { useNavigate } from 'react-router-dom';
-import { addToWishlist, APIBase } from '../../store/reducers/api';
-const ProductWishlist = ({ product }) => {
+import { APIBase } from '../../store/reducers/api';
+
+const ProductWishlist = ({ product, setId, setOverlay }) => {
   const navigate = useNavigate();
+
   return (
     <div className='card-wishlist'>
       <div className='card__details'>
@@ -39,7 +41,12 @@ const ProductWishlist = ({ product }) => {
         </div>
       </div>
       <div className='card__actions'>
-        <div className='card__actions-remove'>
+        <div
+          className='card__actions-remove'
+          onClick={() => {
+            setOverlay(true);
+            setId(product.id);
+          }}>
           <img src={bin} alt='' />
         </div>
         <div
