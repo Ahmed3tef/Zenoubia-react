@@ -7,7 +7,14 @@ const CartTable = ({ data, addHandler, decreaseHandler }) => {
     <div className='cart__table'>
       <div className='cart__table-head'>
         <div className='cart__table-head--element'>Photo</div>
-        <div className='cart__table-head--element'>Titre du produit</div>
+        <div
+          className='cart__table-head--element'
+          style={{
+            width: '20rem',
+            textAlign: 'center',
+          }}>
+          Titre du produit
+        </div>
         <div
           className='cart__table-head--element'
           style={{

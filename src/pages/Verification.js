@@ -66,7 +66,6 @@ const Verification = props => {
       address,
       products,
       additionalInformation: additionalInfo ? additionalInfo : '',
-      userId: '',
       couponId: '',
     };
     // console.log(data);
@@ -231,7 +230,7 @@ const Verification = props => {
                       Paiement à la livraison
                     </label>
                   </div>
-                  <div className='payment-option'>
+                  {/* <div className='payment-option'>
                     <label>
                       <input
                         type='radio'
@@ -241,7 +240,7 @@ const Verification = props => {
                       />
                       Payer avec Visa
                     </label>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </div>

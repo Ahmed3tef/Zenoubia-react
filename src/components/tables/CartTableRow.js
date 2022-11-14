@@ -43,7 +43,10 @@ const CartTableRow = ({
       </div>
 
       <div className='cart__product-title'>{product.englishName}</div>
-      <div className='cart__product-desc'>{product.englishDescription}</div>
+      <div className='cart__product-desc'>
+        <div className='desc'>{product.englishDescription}</div>
+        <div className='cart__product-size'>Product Size: {product.size}</div>
+      </div>
       <div className='cart__product-count'>
         <Counter
           itemIndex={itemIndex}

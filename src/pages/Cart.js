@@ -10,9 +10,7 @@ const Cart = () => {
   //   : null;
   const [count, setCount] = useState();
   const [oldCart, setOldCart] = useState(
-    JSON.parse(localStorage.getItem('cart'))
-      ? JSON.parse(localStorage.getItem('cart'))
-      : []
+    localStorage.getItem('cart') ? JSON.parse(localStorage.getItem('cart')) : []
   );
 
   const addHandler = itemIndex => {

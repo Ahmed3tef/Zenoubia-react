@@ -60,9 +60,18 @@ const Wishlist = () => {
           paddingBlock: '5rem',
           minHeight: '60vh',
         }}>
-        <Row>
+        <Row
+          style={{
+            height: '60vh',
+          }}>
           {products.length === 0 && (
-            <h1>No products added yet, please add some!</h1>
+            <h1
+              style={{
+                alignSelf: 'center',
+                textAlign: 'center',
+              }}>
+              No products added yet.
+            </h1>
           )}
           {products.length > 0 &&
             products.map((p, i) => {

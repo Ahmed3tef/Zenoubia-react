@@ -31,7 +31,7 @@ const LoginForm = props => {
       });
   };
   useEffect(() => {
-    if (userCreated) navigate('/login');
+    if (!userCreated) navigate('/signup');
   }, [userCreated, navigate]);
 
   return (
