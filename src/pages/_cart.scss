@@ -1,5 +1,10 @@
 @use '../index';
-
+.cart-notfound {
+  color: var(--color-main);
+  padding-inline: 10rem;
+  margin-block: 8rem;
+  min-height: 50vh;
+}
 .cart {
   @extend %JSB;
   align-items: start;

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { ProductRelatedGroup, Ratings, Reviews } from '../components';
 // import { loadProduct } from '../store/reducers/product';
-import { Images } from '../components/imagesData';
+// import { Images } from '../components/imagesData';
 import { Container, Row } from 'react-bootstrap';
 import { TiPlus, TiMinus } from 'react-icons/ti';
 import { BsHeart, BsHeartFill, BsCartPlusFill } from 'react-icons/bs';
@@ -16,10 +16,7 @@ const Product = props => {
   const { prodId } = useParams();
 
   const dispatch = useDispatch();
-  // useState(() => {
-  // dispatch(loadProduct());
-  // }, []);
-  // console.log(test);
+
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   }, [prodId]);
@@ -34,12 +31,20 @@ const Product = props => {
   // بعدين هتعمل ستيت للاندكس بتاع الصورة عشان تغيره كل ما تضغط علي الصورة تحت
   const [imgValue, setImgValue] = useState(0);
   // بعد كدا هتطلع الصورة اللي ليها الاندكس اللي هتاخده من الفاليو اللي فوق دي و هتديه لصور المنتج و هتجيب منها كدا الصورة الرئيسية اللي هتتعرض
-  let mainImg;
+  const [mainImg, setMainImg] = useState('');
 
+  useEffect(() => {
+    setMainImg(
+      product && product.images ? product.images[imgValue].imageUrl : ''
+    );
+  }, [imgValue, product]);
   // const mainImage = Images[imgValue];
   const sizes = ['M', 'L', 'XL', '2XL', '3XL', '4XL'];
   const [isLiked, setIsLiked] = useState(false);
   const [activeId, setActiveId] = useState(null);
+
+  const localCart = localStorage.getItem('cart');
+
   const increaseHandler = prevState => {
     if (prevState === 10) return prevState;
 
@@ -49,16 +54,17 @@ const Product = props => {
     if (prevState === 1) return prevState;
     return prevState - 1;
   };
-  const handleMainImage = index => {
-    // setImgValue(index);
-    // set image preview
-    mainImg = product.images[imgValue]?.imageUrl;
-  };
+  // const handleMainImage = index => {
+  //   // setImgValue(index);
+  //   console.log(imgValue);
+  //   // set image preview
+  //   mainImg = product.images[imgValue].imageUrl;
+  //   console.log(mainImg);
+  // };
   //add to cart
   const handleAddToCart = (product, count) => {
-    const oldCart = JSON.parse(localStorage.getItem('cart'))
-      ? JSON.parse(localStorage.getItem('cart'))
-      : [];
+    const oldCart =
+      localCart && localCart !== undefined ? JSON.parse(localCart) : [];
     const newCart = [{ product, count }, ...oldCart];
     // oldCart.push({ product, count });
     localStorage.setItem('cart', JSON.stringify(newCart));
@@ -81,7 +87,7 @@ const Product = props => {
           <Row>
             <div className='col-3 h-100'>
               <div className='product__img-main '>
-                <img src={`${APIBase}${product.mainImage}`} alt='product-img' />
+                <img src={`${APIBase}${mainImg}`} alt='product-img' />
               </div>
             </div>
             <div className='col-9 h-100'>
@@ -149,7 +155,10 @@ const Product = props => {
                     {product.images?.map((image, index) => (
                       <li
                         key={index}
-                        onClick={() => handleMainImage(index)}
+                        onClick={() => {
+                          setImgValue(index);
+                          // handleMainImage(index);
+                        }}
                         className='product__preview-item'>
                         <img
                           src={`${APIBase}${image.imageUrl}`}

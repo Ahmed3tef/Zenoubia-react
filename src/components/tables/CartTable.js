@@ -31,6 +31,7 @@ const CartTable = ({ data, addHandler, decreaseHandler }) => {
         {data &&
           data.map((e, i) => (
             <CartTableRow
+              cart={data}
               itemIndex={i}
               addHandler={addHandler}
               decreaseHandler={decreaseHandler}

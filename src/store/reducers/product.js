@@ -30,9 +30,7 @@ export const productSlice = createSlice({
           state.error = payload.message;
           return;
         }
-        console.log(payload);
         const { fullData: productData } = payload;
-        // console.log(productData);
         const product = {
           id: productData._id,
           subCatId:
@@ -74,7 +72,6 @@ export const productSlice = createSlice({
     },
   },
   [loadProduct.rejected]: (state, action) => {
-    // console.log(action);
     state.product = null;
     state.error = action.error;
   },

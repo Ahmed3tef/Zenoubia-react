@@ -15,7 +15,6 @@ const Reviews = props => {
 
   useEffect(() => {
     dispatch(loadReviews(props.id));
-    console.log(props.id);
   }, [dispatch, props.id]);
 
   // console.log(reviews);

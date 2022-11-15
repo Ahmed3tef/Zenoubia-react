@@ -34,9 +34,13 @@ const Verification = props => {
 
   useEffect(() => {
     dispatch(loadCountries());
-    dispatch(loadGovernments());
-    dispatch(loadCities());
   }, [dispatch]);
+  useEffect(() => {
+    dispatch(loadGovernments(countryId));
+  }, [dispatch, countryId]);
+  useEffect(() => {
+    dispatch(loadCities(governomentId));
+  }, [dispatch, governomentId]);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [params]);

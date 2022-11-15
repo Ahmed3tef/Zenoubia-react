@@ -1,4 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import axios from 'axios';
+import { APIBase } from './api';
 import { loadData } from './loadData';
 
 const initialState = {
@@ -7,8 +9,16 @@ const initialState = {
   error: null,
 };
 
-export const loadCities = createAsyncThunk('cities/loadCities', thunkAPI =>
-  loadData(thunkAPI, 'city')
+export const loadCities = createAsyncThunk(
+  'cities/loadCities',
+  async (id, thunkAPI) => {
+    return axios
+      .get(`${APIBase}city/cityfromgov`, {
+        params: { govId: id },
+      })
+      .then(res => res.data)
+      .catch(err => err.response.data);
+  }
 );
 
 export const citiesSlice = createSlice({
