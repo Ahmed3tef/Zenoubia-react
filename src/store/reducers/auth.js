@@ -149,8 +149,6 @@ export const authSlice = createSlice({
       }
     },
     [createUser.rejected]: (state, { payload }) => {
-      // console.log(action);
-
       state.isLoading = false;
       state.userCreated = false;
 

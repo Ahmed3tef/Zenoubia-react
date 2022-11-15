@@ -11,7 +11,7 @@ const LoginForm = props => {
   const rememberMeRef = useRef();
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const userCreated = useSelector(state => state.user.userCreated);
+  // const userCreated = useSelector(state => state.user.userCreated);
   const loginUserHandler = () => {
     const rememberMe = rememberMeRef.current.checked;
 
@@ -27,12 +27,13 @@ const LoginForm = props => {
           if (rememberMe) {
             localStorage.setItem('token', promiseResponse.token.token);
           }
+          navigate('/');
         }
       });
   };
-  useEffect(() => {
-    if (!userCreated) navigate('/signup');
-  }, [userCreated, navigate]);
+  // useEffect(() => {
+  //   if (!userCreated) navigate('/signup');
+  // }, [userCreated]);
 
   return (
     <div className='form__container'>
