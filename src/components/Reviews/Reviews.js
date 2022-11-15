@@ -16,7 +16,6 @@ const Reviews = props => {
   useEffect(() => {
     dispatch(loadReviews(props.id));
   }, [dispatch, props.id]);
-  console.log(reviews);
 
   return (
     <Container className='p-5 '>

@@ -107,7 +107,6 @@ export const reviewsSlice = createSlice({
           };
         });
 
-        console.log(newReviews);
         state.reviews = newReviews;
 
         state.error = null;

@@ -190,7 +190,7 @@ const Product = props => {
           </div>
         </div>
       </Container>
-      <Reviews id={'635a662959e79aeeb9cdf176'} />
+      <Reviews id={prodId} />
       {product.subCatId && <ProductRelatedGroup id={product.subCatId} />}
     </>
   );
