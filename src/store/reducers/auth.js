@@ -21,15 +21,15 @@ export const loginUser = createAsyncThunk(
         return res.data;
       })
       .catch(err => {
-        const errMsg = err.response.data.message;
-        toast.error(`${errMsg}`, {
-          position: 'top-right',
-          autoClose: 4500,
-          hideProgressBar: true,
-          closeOnClick: false,
-          pauseOnHover: true,
-          draggable: true,
-        });
+        // const errMsg = err.response.data.message;
+        // toast.error(`${errMsg}`, {
+        //   position: 'top-right',
+        //   autoClose: 4500,
+        //   hideProgressBar: true,
+        //   closeOnClick: false,
+        //   pauseOnHover: true,
+        //   draggable: true,
+        // });
         return err.response.data;
       });
   }
