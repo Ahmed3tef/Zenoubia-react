@@ -6,8 +6,9 @@ import likeIcon from '../assets/My_Wish_List.svg';
 import ordersIcon from '../assets/my-orders.svg';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { APIBase, token } from '../store/reducers/api';
+import { APIBase } from '../store/reducers/api';
 import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
 
 const Account = () => {
   const navigate = useNavigate();
@@ -21,9 +22,8 @@ const Account = () => {
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-
+  const token = useSelector(state => state.user.token);
   const submitHandler = e => {
-
     let data;
     const address = [];
     const id = toast.loading('please wait a second...');
@@ -76,7 +76,7 @@ const Account = () => {
   };
   useEffect(() => {
     if (!token) navigate('/login');
-  }, [navigate]);
+  }, [token, navigate]);
 
   return (
     <div className='account'>

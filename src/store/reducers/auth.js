@@ -100,6 +100,7 @@ export const authSlice = createSlice({
           state.isLoggedIn = false;
           return;
         }
+
         state.token = payload.token.token;
         state.isLoading = false;
         state.error = null;
