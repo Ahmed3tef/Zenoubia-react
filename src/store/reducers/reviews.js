@@ -1,8 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { APIBase } from './api';
-import { loadDataWithParams } from './loadData';
-import userImg from '../../assets/prod-2.webp';
+
 const initialState = {
   reviews: [],
   error: null,
@@ -10,48 +9,8 @@ const initialState = {
 
 export const loadReviews = createAsyncThunk(
   'reviews/loadReviews',
-
-  (id, thunkAPI) => {
-    //   return [
-    //     {
-    //       productName: 'some product name',
-    //       comment: 'comment comment comment',
-    //       starRate: 4,
-    //       date: '2022-10-30T20:48:59.319Z',
-    //       userName: 'Memo Kaka',
-    //       userImg,
-    //       id: 1,
-    //     },
-    //     {
-    //       productName: 'some product name',
-    //       comment: 'comment comment comment',
-    //       starRate: 4,
-    //       date: '2022-10-30T20:48:59.319Z',
-    //       userName: 'Memo Kaka',
-    //       userImg,
-    //       id: 1,
-    //     },
-    //     {
-    //       productName: 'some product name',
-    //       comment: 'comment comment comment',
-    //       starRate: 4,
-    //       date: '2022-10-30T20:48:59.319Z',
-    //       userName: 'Memo Kaka',
-    //       userImg,
-    //       id: 1,
-    //     },
-    //     {
-    //       productName: 'some product name',
-    //       comment: 'comment comment comment',
-    //       starRate: 4,
-    //       date: '2022-10-30T20:48:59.319Z',
-    //       userName: 'Memo Kaka',
-    //       userImg,
-    //       id: 1,
-    //     },
-    //   ];
-    // }
-    axios
+  async (id, thunkAPI) => {
+    return axios
       .get(
         `${APIBase}product/review`,
         {
@@ -69,6 +28,45 @@ export const loadReviews = createAsyncThunk(
       });
   }
 );
+//   return [
+//     {
+//       productName: 'some product name',
+//       comment: 'comment comment comment',
+//       starRate: 4,
+//       date: '2022-10-30T20:48:59.319Z',
+//       userName: 'Memo Kaka',
+//       userImg,
+//       id: 1,
+//     },
+//     {
+//       productName: 'some product name',
+//       comment: 'comment comment comment',
+//       starRate: 4,
+//       date: '2022-10-30T20:48:59.319Z',
+//       userName: 'Memo Kaka',
+//       userImg,
+//       id: 1,
+//     },
+//     {
+//       productName: 'some product name',
+//       comment: 'comment comment comment',
+//       starRate: 4,
+//       date: '2022-10-30T20:48:59.319Z',
+//       userName: 'Memo Kaka',
+//       userImg,
+//       id: 1,
+//     },
+//     {
+//       productName: 'some product name',
+//       comment: 'comment comment comment',
+//       starRate: 4,
+//       date: '2022-10-30T20:48:59.319Z',
+//       userName: 'Memo Kaka',
+//       userImg,
+//       id: 1,
+//     },
+//   ];
+// }
 
 export const reviewsSlice = createSlice({
   name: 'reviews',
@@ -86,33 +84,32 @@ export const reviewsSlice = createSlice({
           return;
         }
         // console.log(payload);
-        // let { rating } = payload.data;
-        // const productName = payload.data.names.english;
-        // // let {}
-        // const reviews = rating.map(rating => {
-        //   const {
-        //     personComment: comment,
-        //     starRate,
-        //     timestamp: date,
-        //     userId: { displayName: userName, imageUrl: userImg },
-        //     _id: id,
-        //   } = rating;
-        //   return {
-        //     productName,
-        //     comment,
-        //     starRate,
-        //     date,
-        //     userName,
-        //     userImg: userImg,
-        //     id,
-        //     // ? userImg
-        //     // : `${APIBase}productImage/9edd350a-966f-494a-8ce0-625ce802fbcd.jpeg`,
-        //   };
-        // });
+        let { rating } = payload.data;
+        // console.log(rating);
+        const productName = payload.data.names.english;
+        // let {}
+        const newReviews = rating.map(rating => {
+          const {
+            personComment: comment,
+            starRate,
+            timestamp: date,
+            userId: { displayName: userName, imageUrl: userImg },
+            _id: id,
+          } = rating;
+          return {
+            productName,
+            comment,
+            starRate,
+            date,
+            userName,
+            userImg: userImg,
+            id,
+          };
+        });
 
-        // console.log(reviews);
-        // state.reviews = reviews;
-        state.reviews = payload;
+        console.log(newReviews);
+        state.reviews = newReviews;
+
         state.error = null;
       }
     },

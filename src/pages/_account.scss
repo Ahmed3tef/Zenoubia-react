@@ -21,11 +21,21 @@
     &.container {
       padding-inline: 3rem;
       margin-top: 2rem;
+
+      .logout {
+        @extend %JC;
+        font-size: 3rem;
+        background-color: var(--color-main-lighter);
+        // width: 3rem;
+        // height: 4.5rem;
+        padding: 0.8rem 0.5rem;
+        border-radius: 3px;
+        cursor: pointer;
+      }
     }
     img {
-      &:first-child {
-        margin-inline-end: 3.5rem;
-      }
+      margin-inline-end: 3.5rem;
+
       width: 4rem;
       cursor: pointer;
     }

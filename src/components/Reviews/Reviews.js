@@ -5,10 +5,10 @@ import { useDispatch, useSelector } from 'react-redux';
 // import { APIBase } from '../store/reducers/api';
 import p1 from '../../assets/p-1.jpg';
 import './_reviews.scss';
-import { Ratings } from '..';
+
 import { loadReviews } from '../../store/reducers/reviews';
-import axios from 'axios';
-import { APIBase } from '../../store/reducers/api';
+import Ratings from '../Ratings/Ratings';
+
 const Reviews = props => {
   const dispatch = useDispatch();
   const reviews = useSelector(state => state.reviews.reviews);
@@ -16,25 +16,24 @@ const Reviews = props => {
   useEffect(() => {
     dispatch(loadReviews(props.id));
   }, [dispatch, props.id]);
+  console.log(reviews);
 
-  // console.log(reviews);
   return (
     <Container className='p-5 '>
       {reviews.length === 0 && (
-        <h1 className='reviews-notfound'> No Reviews Yet!!</h1>
+        <h1 className='reviews-notfound'>pas encore d'avis!!</h1>
       )}
       {reviews && (
         <div className='reviews'>
-          <div className='reviews-title container-title'>
-            {/* {reviews && reviews[0] && reviews[0].productName} */}
+          {/* <div className='reviews-title container-title'>
+            {reviews && reviews[0] && reviews[0].productName}
             Avis sur les produits
-          </div>
+          </div> */}
           {reviews.map((r, i) => {
             return (
               <div className='review' key={i}>
                 <div className='review-img'>
-                  {/* <img src={r.userImg} alt='' /> */}
-                  <img src={p1} alt='userImage' />
+                  <img src={r.userImg ? r.userImg : p1} alt='userImage' />
                 </div>
                 <div className='review-content'>
                   <div className='review-info'>
@@ -51,7 +50,6 @@ const Reviews = props => {
                         hour: '2-digit',
                         hour12: true,
                         minute: '2-digit',
-                        // second: '2-digit',
                       })}`}</span>
                     </div>
                     <Ratings value={r.starRate} color='#fdd7f3' />

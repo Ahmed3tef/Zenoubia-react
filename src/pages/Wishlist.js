@@ -62,7 +62,7 @@ const Wishlist = () => {
         }}>
         <Row
           style={{
-            height: '60vh',
+            minHeight: '60vh',
           }}>
           {products.length === 0 && (
             <h1

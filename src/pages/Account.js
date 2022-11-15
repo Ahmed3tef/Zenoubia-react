@@ -8,7 +8,9 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { APIBase } from '../store/reducers/api';
 import { toast } from 'react-toastify';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../store/reducers/auth';
+import { TbLogout } from 'react-icons/tb';
 
 const Account = () => {
   const navigate = useNavigate();
@@ -23,6 +25,12 @@ const Account = () => {
   const [newPassword, setNewPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
   const token = useSelector(state => state.user.token);
+  const dispatch = useDispatch();
+  const logoutHandler = () => {
+    dispatch(logout());
+    navigate('/');
+  };
+
   const submitHandler = e => {
     let data;
     const address = [];
@@ -93,6 +101,9 @@ const Account = () => {
               alt='orders-icon'
               onClick={() => navigate('/orders')}
             />
+            <span className='logout' onClick={logoutHandler}>
+              <TbLogout />
+            </span>
           </div>
           <PageTitle maniTitle={"Page d'accueil"} subTitle={'Mon compte'} />
           <Container>

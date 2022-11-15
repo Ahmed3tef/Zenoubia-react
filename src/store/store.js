@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
   products,
-  reviewsSlice,
+  reviews,
   productSlice,
   homeSections,
   subCategories,
@@ -19,7 +19,7 @@ export const store = configureStore({
   reducer: {
     subCategories,
     products,
-    reviews: reviewsSlice,
+    reviews,
     product: productSlice,
     homeSections,
     relatedProducts,

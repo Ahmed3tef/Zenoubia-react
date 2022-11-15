@@ -90,7 +90,16 @@ const SearchProducts = props => {
           minHeight: '65vh',
           width: '100%',
         }}>
-        {!products && <h1>No products found!!</h1>}
+        {!products && (
+          <h1
+            style={{
+              alignSelf: 'center',
+              textAlign: 'center',
+              color: 'var(--color-main)',
+            }}>
+            pas de produits trouvés!!
+          </h1>
+        )}
         {products && (
           <div className='switch-btns'>
             <div className='switch-btn' onClick={() => setIsSmall(true)}>
