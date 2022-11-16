@@ -94,6 +94,19 @@ const Account = () => {
   useEffect(() => {
     if (token) dispatch(getUserData(token));
   }, [token, dispatch]);
+  useEffect(() => {
+    if (user) {
+      setFirstName(user ? user.firstName : '');
+      setLastName(user ? user.lastName : '');
+      setDisplayName(user ? user.displayName : '');
+      setEmail(user ? user.email : '');
+      setPhone(user ? user.phone : '');
+      setAddress1(user && user.address ? user.address[0] : '');
+      setAddress2(
+        user && user.address && user.address[1] ? user.address[1] : ''
+      );
+    }
+  }, [user]);
 
   console.log(user);
   return (
