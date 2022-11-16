@@ -26,6 +26,7 @@ const LoginForm = props => {
         if (promiseResponse.status === 1) {
           sessionStorage.setItem('token', promiseResponse.token.token);
           if (rememberMe) {
+            sessionStorage.setItem('token', promiseResponse.token.token);
             localStorage.setItem('token', promiseResponse.token.token);
           }
           navigate('/');

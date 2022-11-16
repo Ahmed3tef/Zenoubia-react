@@ -1,10 +1,10 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { toast } from 'react-toastify';
-import { APIBase } from './api';
+import { APIBase, localToken } from './api';
 
 const initialState = {
-  token: '',
+  token: localToken ? localToken : '',
   userData: {},
   isLoading: false,
   error: null,
