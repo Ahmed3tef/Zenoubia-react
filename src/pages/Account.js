@@ -9,22 +9,27 @@ import axios from 'axios';
 import { APIBase } from '../store/reducers/api';
 import { toast } from 'react-toastify';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../store/reducers/auth';
+import { getUserData, logout } from '../store/reducers/auth';
 import { TbLogout } from 'react-icons/tb';
 
 const Account = () => {
+  const token = useSelector(state => state.user.token);
+  const user = useSelector(state => state.user.userData);
   const navigate = useNavigate();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [displayName, setDisplayName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
-  const [address1, setAddress1] = useState('');
-  const [address2, setAddress2] = useState('');
+  const [firstName, setFirstName] = useState(user ? user.firstName : '');
+  const [lastName, setLastName] = useState(user ? user.lastName : '');
+  const [displayName, setDisplayName] = useState(user ? user.displayName : '');
+  const [email, setEmail] = useState(user ? user.email : '');
+  const [phone, setPhone] = useState(user ? user.phone : '');
+  const [address1, setAddress1] = useState(
+    user && user.address ? user.address[0] : ''
+  );
+  const [address2, setAddress2] = useState(
+    user && user.address ? user.address[1] : ''
+  );
   const [currentPassword, setCurrentPassword] = useState('');
   const [newPassword, setNewPassword] = useState('');
   const [passwordConfirm, setPasswordConfirm] = useState('');
-  const token = useSelector(state => state.user.token);
   const dispatch = useDispatch();
   const logoutHandler = () => {
     dispatch(logout());
@@ -41,12 +46,13 @@ const Account = () => {
       firstName,
       lastName,
       displayName,
+      phone,
+      email,
       address,
       password:
         newPassword === passwordConfirm && currentPassword !== newPassword
           ? newPassword
           : '',
-      phone,
     };
     axios
       .patch(`${APIBase}user`, data, {
@@ -85,7 +91,11 @@ const Account = () => {
   useEffect(() => {
     if (!token) navigate('/login');
   }, [token, navigate]);
+  useEffect(() => {
+    if (token) dispatch(getUserData(token));
+  }, [token, dispatch]);
 
+  console.log(user);
   return (
     <div className='account'>
       {token && (

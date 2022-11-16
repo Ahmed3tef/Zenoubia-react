@@ -5,6 +5,7 @@ import { APIBase } from './api';
 
 const initialState = {
   token: '',
+  userData: {},
   isLoading: false,
   error: null,
   isLoggedIn: false,
@@ -39,6 +40,36 @@ export const createUser = createAsyncThunk(
   async (user, thunkAPI) => {
     return axios
       .post(`${APIBase}user/create`, user, thunkAPI)
+      .then(res => {
+        return res.data;
+      })
+      .catch(err => {
+        const errMsg = err.response.data.message;
+        toast.error(`${errMsg}`, {
+          position: 'top-right',
+          autoClose: 4500,
+          hideProgressBar: true,
+          closeOnClick: false,
+          pauseOnHover: true,
+          draggable: true,
+        });
+        return err.response.data;
+      });
+  }
+);
+export const getUserData = createAsyncThunk(
+  'auth/getUserData',
+  async (tokenId, thunkAPI) => {
+    return axios
+      .get(
+        `${APIBase}user`,
+        {
+          headers: {
+            Authorization: tokenId,
+          },
+        },
+        thunkAPI
+      )
       .then(res => {
         return res.data;
       })
@@ -153,6 +184,55 @@ export const authSlice = createSlice({
       state.isLoading = false;
       state.userCreated = false;
 
+      state.error = payload;
+    },
+    [getUserData.pending]: (state, action) => {
+      state.isLoading = true;
+      state.userData = {};
+    },
+    [getUserData.fulfilled]: (state, { payload }) => {
+      // console.log(payload);
+      if (payload) {
+        if (payload.status === 0) {
+          state.isLoading = false;
+          state.error = payload.message;
+          state.userData = {};
+
+          const errMsg = payload.message;
+          toast.error(`${errMsg}`, {
+            position: 'top-right',
+            autoClose: 4500,
+            hideProgressBar: true,
+            closeOnClick: false,
+            pauseOnHover: true,
+            draggable: true,
+          });
+          return;
+        }
+        const {
+          _id: id,
+          firstName,
+          lastName,
+          displayName,
+          email,
+          address,
+          phone,
+        } = payload.data;
+        state.isLoading = false;
+        state.userData = {
+          id,
+          firstName,
+          lastName,
+          displayName,
+          email,
+          address,
+          phone,
+        };
+      }
+    },
+    [getUserData.rejected]: (state, { payload }) => {
+      state.isLoading = false;
+      state.userData = {};
       state.error = payload;
     },
   },
